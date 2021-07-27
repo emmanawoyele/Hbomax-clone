@@ -1,0 +1,18 @@
+@use 'reset';
+@use "_login";
+@use "createuser";
+@use "../component/Ul/Header/header";
+@use "../component/Ul/SideNav/side-nav";
+@use "../component/Ul/FeaturedMedia/Featured.scss";
+@use "../component/Ul/ForYouList/ForYouList";
+@use "../component/Ul/Justadded/justadded";
+@use "../component/Ul/PosterView/PosterView";
+@use "../component/Ul/ExploreCollection/ExploreCollection";
+@use "../component/Ul/CastInfo/CastInfo";
+@use "../component/Ul/Account/Account";
+@use "../component//Ul/searchModal/searchModal";
+
+html,body{
+    background:black
+    
+}

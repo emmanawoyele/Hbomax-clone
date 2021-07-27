@@ -1,0 +1,114 @@
+.search-modal{
+    position:fixed;
+    height: 100vh;
+    width: 100%;
+    background: black;
+    top:0;
+    left:0;
+    opacity: 0;
+    z-index: 13;
+    visibility: hidden;
+    transition: opacity .4s ease-in-out;
+    &__active{
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    padding:20px 0 20px 50px;
+    &__group{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 3rem;
+        
+    }
+    &__input{
+        background: transparent;
+       border: none;
+       border-bottom: 2px solid rgb(132,0,255);
+       font-size: 4rem;
+       outline: none;
+
+    }
+    &__close-btn{
+        position: absolute;
+        top:0;
+        right:0;
+        font-size:3rem;
+        padding: 15px;
+        ;
+    }
+    &__thumbnails{
+        display: flex;
+        flex-wrap:wrap;
+        min-width: 100%;
+        width:calc(100vw- 70px);
+        overflow-x:scroll;
+        &::-webkit-scrollbar{
+            display:none;
+        }
+    }
+    &__title{
+        font-size: 1.6rem;
+        margin-bottom: 1.6rem;
+
+    }
+    &__thumbnail{
+        width: 240px !important;
+        height: 360px!important;
+        margin-right: 10px;
+        position: relative;
+        opacity: 0;
+img{  
+       width:240px!important;
+        height: 360px!important;
+        object-position: center;
+        object-fit: cover;
+}
+    }
+    &__top-layer{
+        height:100%;
+        width: 100%;
+        position:absolute;
+        left: 0;
+        top:0;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity ,.4s ease-in-out;
+        .fa-play{
+            font-size:4rem;
+            transform: translate3d(0,100px,0);
+            opacity: 0;
+            transition: all .3s ease-in-out;
+        }
+        &:hover{
+            color:white;
+            opacity: .9;
+            cursor: pointer;
+            .fa-play{
+                transform: translate3d(0,0,0);
+                opacity: 1;
+            }
+        }
+       
+        background:rgb(94,255,245) ;
+        background:linear-gradient(
+        328deg,
+        rgba(94,158,255,1)0%,
+        rgba(119,30,135,1)100%,
+        rgba(60,38,284,1)100%,
+        rgba(0,0,0,1)100%
+        ) ;
+        
+
+    }
+    @for  $i from 0 through 20{
+        &__active &__thumbnail:nth-child(#{$i+1}){
+            transition-delay: 0.15s * $i;
+            opacity: 1;
+        }
+            }
+}
