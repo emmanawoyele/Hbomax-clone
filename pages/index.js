@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
+
 
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
       {/* user image&name */}
       <div className="login-user__form">
            <div className="login-user__user-box">
-             <img className="login-user__user-img"  src="https://randomuser.me/api/portraits/men/91.jpg"/>
+             <image className="login-user__user-img"  src="https://randomuser.me/api/portraits/men/91.jpg"/>
              <div className="login-user__user">Sango</div>
            </div>
          </div>

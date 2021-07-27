@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
+
 
 
 export default function CreateUser() {
@@ -16,7 +16,7 @@ export default function CreateUser() {
       {/* user image&name */}
       <div className="create-user__form">
     
-             <img className="create-user__user-img"  src="https://randomuser.me/api/portraits/men/91.jpg"/>
+             <image className="create-user__user-img"  src="https://randomuser.me/api/portraits/men/91.jpg" alt="image"/>
              <div className="create-user__input-group">
                  <label>Name</label>
                  <input type="text" className="create-user__inputText"/>
