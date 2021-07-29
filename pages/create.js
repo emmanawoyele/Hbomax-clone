@@ -1,8 +1,10 @@
 import Head from 'next/head'
-
+import { useStateContext } from '../component/HboProvider/hboprovider'
 
 
 export default function CreateUser() {
+  const globalState= useStateContext()
+  console.log(globalState)
   return (
     <div>
       {/* container */}
@@ -16,10 +18,10 @@ export default function CreateUser() {
       {/* user image&name */}
       <div className="create-user__form">
     
-             <image className="create-user__user-img"  src="https://randomuser.me/api/portraits/men/91.jpg" alt="image"/>
+             <img className="create-user__user-img"  src={globalState.defaultImage} alt="image"/>
              <div className="create-user__input-group">
                  <label>Name</label>
-                 <input type="text" className="create-user__inputText"/>
+                 <input type="text" value={globalState.user}className="create-user__inputText" onChange={globalState.createUserAction}/>
                 <div  className="create-user__colors">
                                 <div className="create-user__color create-user__color--active" style={{
                      background: "rgb(2,0,36)",
