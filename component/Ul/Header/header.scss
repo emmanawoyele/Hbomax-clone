@@ -11,9 +11,14 @@
     width:100%;
     z-index:10;
     transition: backgrond .3s ease-in-out;
+    &__menu-bg{
+        background-color: rgba(0,0,0,0);
+    }
+    
     &:hover{
         background-color: rgba(0,0,0,1)  
     }
+   
     &__logo{
       background-image: url(../../../../hbo/logo.svg);
       height: 22px;
@@ -25,12 +30,14 @@
         display: flex;
         div:nth-child(1){
             margin-right: 40px;
+            cursor: pointer;
         }
     }
     &__account{
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
       
     }
     &__user-img{
@@ -41,5 +48,8 @@
         object-fit:cover;
         object-position: center;
         margin-right: 1rem;
+    }
+    &__search-btn{
+      cursor: pointer;
     }
 }

@@ -1,9 +1,13 @@
 import Link from 'next/link'
+import { useStateContext } from '../../HboProvider/hboprovider'
+
 
  function SideNav(props) {
-    return (<div className="side-nav">
-<div className="side-nav__close-btn">
-    <i className="fas fa-times"/>
+     const globalState =useStateContext()
+    return (<div className={`side-nav ${globalState.sideNavOpen?'side-nav--active':''}`}>
+<div className="side-nav__close-btn" onClick={()=>globalState.setSideNavOpen((prev)=>!prev
+       )}>
+    <i className="fas fa-times"  />
 </div>
         <ul className="side-nav__main">
 

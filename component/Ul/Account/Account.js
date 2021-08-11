@@ -1,6 +1,8 @@
 import Link from "next/link"
+import { useStateContext } from "../../HboProvider/hboprovider"
 
  function Account(props) {
+    const globalState =useStateContext()
     const loopComp=(comp,digit)=>{
         let thumbNails=[]
         for(let index =1; index<=digit;index++){
@@ -8,7 +10,10 @@ import Link from "next/link"
         }
   return thumbNails
       }
-    return (<div className="account ">
+      if(globalState.sideNavOpen){
+
+      }
+    return (<div className={`account ${globalState.accountOpen?'account--active':''}`}>
         <div className="account__details">
         <div className="account__title"> My list</div>
             <div className="account__watch-list"> 
@@ -19,7 +24,7 @@ import Link from "next/link"
             <div className="account__watch-circle">
                 <i className="fas fa-play"/>
             </div>
-            <div className="account__watch-circle">
+            <div className="account__watch-circle" >
                 <i className="fas fa-times"/>
             </div>
             </div>

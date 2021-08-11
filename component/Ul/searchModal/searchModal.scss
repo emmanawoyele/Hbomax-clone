@@ -9,6 +9,7 @@
     z-index: 13;
     visibility: hidden;
     transition: opacity .4s ease-in-out;
+    cursor: pointer;
     &__active{
         opacity: 1;
         visibility: visible;
@@ -28,6 +29,7 @@
        border-bottom: 2px solid rgb(132,0,255);
        font-size: 4rem;
        outline: none;
+       color:white;
 
     }
     &__close-btn{

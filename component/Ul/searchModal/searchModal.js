@@ -1,6 +1,13 @@
-
+import { useStateContext } from "../../HboProvider/hboprovider";
 
  function SearchModal(props) {
+ 
+    const globalState =useStateContext()
+    const createUserAction=(e)=>{
+console.log(e.target.value)
+        globalState.setsearchMovieAction(e.target.value)
+        console.log(global.searchMovie)
+    }
     const loopComp=(comp,digit)=>{
       let thumbNails=[]
       for(let index =1; index<=digit;index++){
@@ -8,10 +15,10 @@
       }
 return thumbNails
     }
-   return (<div className="search-modal ">
+   return (<div className={`search-modal ${globalState.searchOpenAction ?'search-modal__active' :''}` }>
        <div className="search-modal__group">
-       <input className="search-modal__input"  placeholder="search for movies"type="text" value=""/>
-<div className="search-modal__close-btn">
+       <input onChange={createUserAction} className="search-modal__input"  placeholder="search for movies"type="text" value={global.searchMovie}/>
+<div className="search-modal__close-btn" onClick={()=>globalState.setsearchOpenAction((prev)=>!prev)}>
     <i className="fas fa-times"/>
 </div>
        </div>
