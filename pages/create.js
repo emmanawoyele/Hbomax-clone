@@ -47,7 +47,7 @@ export default function CreateUser() {
       {/* user image&name */}
       <div className="create-user__form">
     
-             <img className="create-user__user-img"  src={globalState.defaultImage} alt="image"/>
+             <image className="create-user__user-img"  src={globalState.defaultImage} alt="image"/>
              <div className="create-user__input-group">
                  <label>Name</label>
                  <input type="text" value={globalState.user}className="create-user__inputText" onChange={globalState.createUserAction}/>
