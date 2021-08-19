@@ -11,8 +11,6 @@ export default function Homeview(props) {
  <MainLayout>
   
    <FeaturedMedia/>
-
-
    <LazyLoad offset={-200}placeholder={<PlaceHolder title="Drama"  type="small-h"/>}>
      <MediaRow 
      title="Drama" 
