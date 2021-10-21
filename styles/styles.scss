@@ -9,10 +9,14 @@
 @use "../component//Ul/searchModal/searchModal";
 @use "../component/Ul/login/_login";
 @use "../component/Ul/MediaRow/MediaRow";
+@use "../component/Ul/GenreNav/GenreNav";
 
 
 
 html,body{
     background:black
     
+}
+.hide_class{
+    display: none;
 }

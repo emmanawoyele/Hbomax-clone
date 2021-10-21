@@ -1,0 +1,46 @@
+.genre-nav{
+   display: flex;
+   margin-top: 80px;
+   padding:0 0 50px 20px;
+   justify-content: space-between;
+   flex-wrap:wrap;
+  
+   
+   li{
+   
+       transform: translate3d(0,50px,0);
+    opacity: 1;
+    transition:all .3s ease-in-out;
+   }
+   @for  $i from 0 through 20{
+    &--active li:nth-child(#{$i+1}){
+        transition-delay: 0.10s * $i;
+        opacity: 1;
+        transform: translate3d(0,0,0);
+    }
+        }
+
+
+        a{
+            color: white;
+            font-size:.90rem;
+            text-decoration:none;
+            display: block;
+            position: relative;
+            margin-right: 10px;
+            transition: all .2s ease-in-out;
+            &.active, &:hover{
+                font-weight: 500;
+                color: white;
+                transform: scale(1.2);
+                background: rgba(68, 61, 156, 0.8) ;
+                
+
+            }
+        }
+    }
+
+
+    
+
+   

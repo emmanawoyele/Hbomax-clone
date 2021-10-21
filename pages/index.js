@@ -8,7 +8,9 @@ import AuthCheck from '../component/AuthCheck/AuthCheck'
 
 
 
-export default function Home() {
+
+
+export default function Home(props) {
   const router =useRouter()
   const globalState= useStateContext()
   useEffect(() => {
@@ -23,3 +25,4 @@ export default function Home() {
     </div>
   )
 }
+

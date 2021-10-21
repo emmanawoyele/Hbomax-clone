@@ -136,3 +136,15 @@
               
               
     }
+    @media only screen and  (max-width:600px){
+        
+        .create-user{
+            &__form{
+                flex-direction: column;
+                &create-user{
+                    margin-right: 0!important;
+                }
+            }
+        }
+        
+    }

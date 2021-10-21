@@ -4,6 +4,7 @@ const ShufflArray = arr => {
         const rand = Math.floor(Math.random() * (i + 1));
         [newArr[i], newArr[rand]] = [newArr[rand], newArr[i]];
     }
+  
     return newArr
 };
 

@@ -10,6 +10,7 @@
     visibility: hidden;
     transition: opacity .4s ease-in-out;
     cursor: pointer;
+    overflow: auto;
     &__active{
         opacity: 1;
         visibility: visible;
@@ -113,4 +114,20 @@ img{
             opacity: 1;
         }
             }
+}
+@media only screen and  (max-width:600px){
+        
+    .search-modal{
+        width: 100%;
+        padding:20px;
+        &__input{
+            width: 100%;
+            margin-top: 30px;
+            font-size: 1.7rem;
+        }
+        &__close-btn{
+            font-size: 1.7rem;
+        }
+    }
+    
 }
