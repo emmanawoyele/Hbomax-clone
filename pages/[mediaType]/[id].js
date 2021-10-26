@@ -78,29 +78,19 @@ console.log(error.response)
  }
 
   const router = useRouter()
-  console.log({singlepage:props})
-  console.log({check:props.check})
-//   const clickplayHandle=(props,url)=>{
+
+
+  const checkname=()=>{
     
-//     axios.get(`https://api.themoviedb.org/3/movie/${props.mediaId}/videos?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`)
-//     .then(function (response) {
-//         let lists= response.data.results   
-//        console.log(lists)
-//        let a=lists.filter((response)=>{
-//       let b=  response.official!==false || response.type==="Trailer"
-//       console.log({b})
-//           return b
-//        })
-//    console.log(props)
-// console.log(props.MediaUrl)
-// console.log(props.type)
-// //    console.log(myRouter)
-
-//       console.log({a})
+    if(  props.mediaData.results.length===0){
      
-//     })
+      return   "Games of Throne"
+    }else if(props.query.mediaType==='movie' ||'tv'){
+       return props.mediaData.results[0].name
+    }else{  props.mediaData.results[0].name
+    }
+  }
 
-// }
   return AuthCheck (
 
  <MainLayout>
@@ -110,7 +100,7 @@ console.log(error.response)
    mediaType={props.query.mediaType}
    linkUrl={'/movies/id'}
    type="single"
-   movieTitle={props.query.mediaType==='movie' ? props.mediaData.title:props.mediaData.results[0].name ?props.mediaData.results.length==0 :"Games of Throne"}
+   movieTitle={checkname()}
      MediaBackdrop={`https://image.tmdb.org/t/p/original${props.mediaBackDrop_Path.backdrop_path}`}
     MediaUrl={`https://www.youtube.com/embed/${props.mediaData.results.length==0?"EI0ib1NErqg":props.mediaData.results[0].key}?autoplay=1&loop=1&start=10`}
  
@@ -149,8 +139,7 @@ mediaData= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaTy
 check= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}/videos?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`)
 
  }catch(error){
-  //  mediaData= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`)
-alert(error.message)
+
 
  }
   return {

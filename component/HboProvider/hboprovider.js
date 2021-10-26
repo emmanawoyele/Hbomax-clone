@@ -48,17 +48,15 @@ export function HBOProvider({ children }) {
 // Shuffle array and return 1 item
   function shuffle(array) {
     let currentIndex= array.find((array)=>{
-
-      console.log({behind:array})
       return array.offical!=false
-     
     })
-    console.log({currentIndex})
+    
      currentIndex= array.length
 
     let randomIndex;
-
+    
     // While there remain elements to shuffle...
+
     while (currentIndex != 0) {
 
       // Pick a remaining element...
@@ -70,7 +68,8 @@ export function HBOProvider({ children }) {
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
     }
-    console.log({array})
+    
+    
     return array[0];
   }
 //  The first API Generates movie "id" needed for the video API
@@ -79,15 +78,17 @@ export function HBOProvider({ children }) {
       .then((response) => {
         let id=shuffle(response.data.results)
         let key= id.id
-        console.log(key)
-        setRandomId(id)
+     
+        
+          setRandomId(id)
+       
 
    axios.get(`https://api.themoviedb.org/3/movie/${key}/videos?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`)
       .then(function (response) {
-    console.log({repson:response})
+ 
     let filtermovies= response.data.results
  if(filtermovies.length<=0){
-   console.log(id.id)
+
   const video=[{id: "614259b4af85de002a28c33c",
   iso_639_1: "en",
   iso_3166_1: "US",
@@ -101,8 +102,9 @@ export function HBOProvider({ children }) {
    console.log("Your Array is empty")
    setkey(video)
  }else{
-console.log({filtermovies})
-    setkey(shuffle(filtermovies))}
+
+    setkey(shuffle(filtermovies))
+   }
       }).catch((error)=>{
 console.log(error.response)
       })
@@ -114,12 +116,9 @@ console.log(error.response)
 
   // This Method is to add
   const WishlistHandler = (video, id) => {
-    console.log({ video })
-    console.log({ id })
+  
     let mylist = ls('list')
     let itemGet;
-    console.log({ videofrom: video })
-
     if (mylist !== null) {
       itemGet = ls.get('list')
       if (!itemGet.some(item => item.mediaId === video.mediaId)) {
@@ -142,7 +141,7 @@ console.log(error.response)
 
 
   const RemoveMovieList = (VideoId) => {
-    console.log({ VideoId })
+   
     let myList = ls('list')
     myList = myList.filter((item) => item.mediaId !== VideoId)
     ls.set('list', myList)

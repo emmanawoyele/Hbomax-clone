@@ -18,7 +18,7 @@ import CastInfo from '../../component/Ul/CastInfo/CastInfo'
 
 
 export default function Homeview(props) {
-  console.log({indexPage:props})
+
   const globalState =useStateContext()
 
 const showRandomMedia=()=>{
@@ -27,7 +27,6 @@ const showRandomMedia=()=>{
   return props.genresData.map((sections)=>{
     console.log(sections.id)
 thumbs=ShuffleArray(globalState.thumbTypes)[0]
-console.log(thumbs)
 return <LazyLoad key={sections.id} 
 offset={-200} 
 placeholder={<PlaceHolder title={sections.name} 

@@ -14,11 +14,10 @@ import { useStateContext } from "../component/HboProvider/hboprovider"
 import axios from 'axios'
 
 export default function MediaTypePage(props) {
-  console.log(props)
+ 
 const globalState=useStateContext()
 
-console.log({key:globalState.key})
-console.log({home:globalState.randomid})
+
 
 const checkEmptyKey=()=>{
   if(globalState.key.key===''){
@@ -110,33 +109,33 @@ let thumbs=ShuffleArray(globalState.thumbTypes)[0]
   )
 }
 
-// export async function getServerSideProps(context) {
+export async function getServerSideProps(context) {
  
-//   // genresData generate different genre
-//   // feautredData generates movies
+  // genresData generate different genre
+  // feautredData generates movies
 
-// let genresData;
-// featuredData;
-// let videoData;
-//   try{
-//     genresData= await axios.get(`https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`);
-// // videoData=await axios.get(`https://api.themoviedb.org/3/tv/84958/season/${}/videos?api_key=a5879fe83cace23de294d0b28bb346d5`)
-//  featuredData = await axios.get(`https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`);
+let genresData;
+featuredData;
+let videoData;
+  try{
+    genresData= await axios.get(`https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`);
+// videoData=await axios.get(`https://api.themoviedb.org/3/tv/84958/season/${}/videos?api_key=a5879fe83cace23de294d0b28bb346d5`)
+ featuredData = await axios.get(`https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`);
 
-//   }catch(error){
-//  console.log("error")
-//  console.log(error)
-//   }
+  }catch(error){
+ console.log("error")
+ console.log(error)
+  }
 
 
-//    return {
+   return {
    
-//      props: {
-//       genresData:genresData.data.genres,
-//       featuredData:featuredData.data.result,
-//        query:context.query
-//      } // will be passed to the page component as props
-//    };
+     props: {
+      genresData:genresData.data.genres,
+      featuredData:featuredData.data.result,
+       query:context.query
+     } // will be passed to the page component as props
+   };
    
-//  }
+ }
 

@@ -17,66 +17,65 @@ function SearchModal(props) {
 
 
 
-    const handleInputAction = async(e) => {
-      
-      try{
-     
-        setText(e.target.value);
-        let getData = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${e.target.value}&api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US&page=1&include_adult=false`)
-        console.log({getData})
-        let filterItems =getData.data.results
-  filterItems.filter((items,i)=>{
-    items.media_type==="movie" ||items.media_type==="tv"
-  
-     })
-     setSearchData(filterItems)
-    
-     
-     setShowResults(true)
-    
+    const handleInputAction = async (e) => {
 
- 
+        try {
 
-  
-       
-    }catch(error){
-          console.log(error)
-      }
-  
+            setText(e.target.value);
+            let getData = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${e.target.value}&api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US&page=1&include_adult=false`)
+            let filterItems = getData.data.results
+            filterItems.filter((items, i) => {
+                items.media_type === "movie" || items.media_type === "tv"
+
+            })
+            setSearchData(filterItems)
+
+
+            setShowResults(true)
+
+
+
+
+
+
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 
 
-    useEffect( () => {
+    useEffect(() => {
         let shuffuleMovies
         async function dast(params) {
             try {
                 let getData = await axios.get(`https://api.themoviedb.org/3/discover/movie?primany_release_year=2021&api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`)
-                let filteredData=getData.data.results;
-         filteredData.filter((item,i)=>{
-            i>14 
-             shuffuleMovies=ShufflArray(filteredData)
-         })
-        setDefaultData(shuffuleMovies)
-              
-               
-               
-              
-               
-            
+                let filteredData = getData.data.results;
+                filteredData.filter((item, i) => {
+                    i > 14
+                    shuffuleMovies = ShufflArray(filteredData)
+                })
+                setDefaultData(shuffuleMovies)
+
+
+
+
+
+
             }
 
             catch (error) {
                 console.log(error)
             }
         }
-       
-dast()
+
+        dast()
 
 
 
     }, [])
-   
-    
+
+
     useEffect(() => {
         if (globalState.searchOpenAction) {
             document.body.style.overflowY = "hidden"
@@ -87,7 +86,7 @@ dast()
     }, [globalState.searchOpenAction])
 
 
-   
+
     return (<div className={`search-modal ${globalState.searchOpenAction ? 'search-modal__active' : ''}`}>
         <div className="search-modal__group">
             <input onChange={handleInputAction} className="search-modal__input" placeholder="search for movies" type="text" value={text} />
@@ -95,60 +94,60 @@ dast()
                 <i className="fas fa-times" />
             </div>
         </div>
-        <h3 className="search-modal__title">   {showResults&&searchData.length>=1?`search for Results ${":"} ${ text}`:'Popular Searches'} </h3>
+        <h3 className="search-modal__title">   {showResults && searchData.length >= 1 ? `search for Results ${":"} ${text}` : 'Popular Searches'} </h3>
         <div className="search-modal__thumbnails">
-    
-       
-        {showResults&&searchData.length>=1?<ShowSearchResults searchData={searchData}/>:<ShowDefaultPopular DefaultData={DefaultData}/>}
-       
+
+
+            {showResults && searchData.length >= 1 ? <ShowSearchResults searchData={searchData} /> : <ShowDefaultPopular DefaultData={DefaultData} />}
+
 
         </div>
     </div>
     )
 }
- 
-const ShowDefaultPopular=(props)=>{
-       console.log(props)
-       const globalState = useStateContext()
-    return props.DefaultData.map((item,index)=>{
-     
-    return(<Link href={`/movie/${item.id}`} key={index}>
-<a>
-     <div onClick={() => globalState.setsearchOpenAction((prev) => !prev)} className="search-modal__thumbnail" >
-     <img src={`https://image.tmdb.org/t/p/w185${item.poster_path}`} alt={item.original_title} />
-    <div className="search-modal__top-layer">
-        <i className="fas fa-play"></i>
-    </div>
+
+const ShowDefaultPopular = (props) => {
     
-    </div> 
-    </a>
-    </Link>)
+    const globalState = useStateContext()
+    return props.DefaultData.map((item, index) => {
+
+        return (<Link href={`/movie/${item.id}`} key={index}>
+            <a>
+                <div onClick={() => globalState.setsearchOpenAction((prev) => !prev)} className="search-modal__thumbnail" >
+                    <img src={`https://image.tmdb.org/t/p/w185${item.poster_path}`} alt={item.original_title} />
+                    <div className="search-modal__top-layer">
+                        <i className="fas fa-play"></i>
+                    </div>
+
+                </div>
+            </a>
+        </Link>)
     })
-    
-        
-    }
 
 
-    const ShowSearchResults= (props)=>{
-        const globalState = useStateContext()
-        
-        console.log(props.searchData)
-        const data=  props.searchData.map((item,index)=>{
-            console.log(item.backdrop_path)
-       return<Link  href={`/${item.media_type}/${item.id}`} key={index} >
-       <a>
-           <div  className="search-modal__thumbnail"onClick={() => globalState.setsearchOpenAction((prev) => !prev)}>
-           <img   src={`https://image.tmdb.org/t/p/w185${item.poster_path}`} alt={item.original_title} />
-          <div className="search-modal__top-layer">
-              <i className="fas fa-play"></i>
-          </div>
-         
-          </div> 
-          </a>
-          </Link>
-        })
-        return data
-              
-          }
-  
+}
+
+
+const ShowSearchResults = (props) => {
+    const globalState = useStateContext()
+
+    console.log(props.searchData)
+    const data = props.searchData.map((item, index) => {
+
+        return <Link href={`/${item.media_type}/${item.id}`} key={index} >
+            <a>
+                <div className="search-modal__thumbnail" onClick={() => globalState.setsearchOpenAction((prev) => !prev)}>
+                    <img src={`https://image.tmdb.org/t/p/w185${item.poster_path}`} alt={item.original_title} />
+                    <div className="search-modal__top-layer">
+                        <i className="fas fa-play"></i>
+                    </div>
+
+                </div>
+            </a>
+        </Link>
+    })
+    return data
+
+}
+
 export default SearchModal

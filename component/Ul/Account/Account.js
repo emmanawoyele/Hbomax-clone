@@ -4,13 +4,14 @@ import { useState } from "react"
 import { useEffect } from "react"
 import router from "next/router"
 import ls from "local-storage"
+import Image from "next/image"
 
  function Account(props) {
-     console.log({props})
+   
     const globalState =useStateContext()
    
     const localstorgeData =globalState.WishList
-console.log({localstorgeData})
+
 
 
 const LogoutUser=(id)=>{
@@ -21,7 +22,7 @@ router.push('/')
 
 
   const watchlist=(url)=>{
-      console.log({url})
+      
     router.push(url)
     console.log({nonense:router.push(url)})
      globalState.setAccountOpen((prev) => !prev)
@@ -32,7 +33,7 @@ router.push('/')
         if(localstorgeData !==null){
     loopdata= localstorgeData.map((WishlistData)=>{
 return  <div key={WishlistData.mediaId} className="account__watch-video"> 
- <img src={`https://image.tmdb.org/t/p/original ${WishlistData.MediaBackdrop}`}/>
+ <img src={`https://image.tmdb.org/t/p/original ${WishlistData.MediaBackdrop}`} alt={WishlistData.movieTitle}/>
  <div className="account__watch-overlay">
 <div className="account__watch-buttons">
 <div className="account__watch-circle" onClick={()=>watchlist(`/${WishlistData.mediaType}/${WishlistData.mediaId}`)}>
@@ -47,7 +48,7 @@ return  <div key={WishlistData.mediaId} className="account__watch-video">
         })
   return  loopdata
 }else{
-    return <div></div>
+    return <div className="account__watch-video"></div>
 }
  
     }
@@ -61,13 +62,7 @@ return  <div key={WishlistData.mediaId} className="account__watch-video">
            document.body.style.overflowY="auto" 
         }
     }, [globalState.accountOpen])
-//     const loopComp=(comp,digit)=>{
-//         let thumbNails=[]
-//         for(let index =1; index<=digit;index++){
-//             thumbNails.push(comp)
-//         }
-//   return thumbNails
-//       }
+
      
     return (<div className={`account ${globalState.accountOpen?'account--active':''}`}>
         <div className="account__details">

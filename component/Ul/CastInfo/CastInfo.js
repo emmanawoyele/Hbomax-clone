@@ -1,6 +1,7 @@
 import { useState,useEffect } from 'react'
 
  function CastInfo(props) {
+   
     const [loadingdata, setloading] = useState(true)
    const [credits, setcredits] = useState([])
    const [crew, setcrew] = useState([])
@@ -26,7 +27,7 @@ import { useState,useEffect } from 'react'
                 // always executed
 
             })
-    }, [props.update])
+    }, [])
     const showCast =()=>{
       
      return credits.map((item)=>{
@@ -47,14 +48,13 @@ import { useState,useEffect } from 'react'
     const showCrew =()=>{
      
      return crew.map((item)=>{
-       console.log(item)
+     
          if(loadingdata!=true){
-         return (
-         <ul key={item.credit_id }className="cast-info__crew">
+         return <ul key={item.credit_id }className="cast-info__crew">
          <li>{item.job}</li>
          <li>{item.name}</li>
      </ul>
-         )
+         
      }else{
           <p>laoding.....</p>
      }
