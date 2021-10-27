@@ -24,5 +24,17 @@
   "devDependencies": {
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.1"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "next.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmanawoyele/Hbomax-clone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emmanawoyele/Hbomax-clone/issues"
+  },
+  "homepage": "https://github.com/emmanawoyele/Hbomax-clone#readme"
 }

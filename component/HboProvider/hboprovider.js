@@ -69,7 +69,7 @@ export function HBOProvider({ children }) {
         array[randomIndex], array[currentIndex]];
     }
     
-    
+   
     return array[0];
   }
 //  The first API Generates movie "id" needed for the video API

@@ -33,7 +33,7 @@ router.push('/')
         if(localstorgeData !==null){
     loopdata= localstorgeData.map((WishlistData)=>{
 return  <div key={WishlistData.mediaId} className="account__watch-video"> 
- <img src={`https://image.tmdb.org/t/p/original ${WishlistData.MediaBackdrop}`} alt={WishlistData.movieTitle}/>
+ <Image width={200} height={200}src={`https://image.tmdb.org/t/p/original ${WishlistData.MediaBackdrop}`} alt={WishlistData.movieTitle}/>
  <div className="account__watch-overlay">
 <div className="account__watch-buttons">
 <div className="account__watch-circle" onClick={()=>watchlist(`/${WishlistData.mediaType}/${WishlistData.mediaId}`)}>
@@ -64,7 +64,8 @@ return  <div key={WishlistData.mediaId} className="account__watch-video">
     }, [globalState.accountOpen])
 
      
-    return (<div className={`account ${globalState.accountOpen?'account--active':''}`}>
+    return (<>
+    <div className={`account ${globalState.accountOpen?'account--active':''}`}>
         <div className="account__details">
         <div className="account__title"> My list</div>
             <div className="account__watch-list"> 
@@ -96,6 +97,7 @@ return  <div key={WishlistData.mediaId} className="account__watch-video">
            </ul>
        </div>
     </div>
+    </>
         
     )
 }
