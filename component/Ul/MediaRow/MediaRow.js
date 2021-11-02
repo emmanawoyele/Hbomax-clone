@@ -7,7 +7,7 @@ import ShufflArray from "../../Utilities/shuffleArray";
 
 
 function MediaRow(props) {
-    console.log(MediaRow.defaultProps)
+    
     const [loadingData, setLoadingData] = useState(true)
     const [movies, setMoviesData] = useState([])
 
@@ -16,7 +16,7 @@ function MediaRow(props) {
         const axios = require('axios')
 
         // Make a request for a user with a given ID
-        axios.get(`https://api.themoviedb.org/3/${props.endpoint}&api_key=a5879fe83cace23de294d0b28bb346d5`)
+        axios.get(`https://api.themoviedb.org/3/${props.endpoint}&api_key=${process.env.PRIVATE_API_KEY}`)
             .then(function (response) {
               
                 setLoadingData(false)

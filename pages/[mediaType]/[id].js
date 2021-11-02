@@ -9,6 +9,11 @@ import { useState,useEffect } from 'react'
 import axios from 'axios'
 import LazyLoad from 'react-lazyload'
 import PlaceHolder from '../../component/Ul/PlaceHolder/PlaceHolder'
+
+
+
+
+
 export default function SingleMediapage(props) {
 const[defaultMovies,setDefaultMovies]=useState([])
 const[RandomId,setRandomId]=useState([])
@@ -41,14 +46,14 @@ function shuffle(array) {
 }
  const CheckRandom=()=>{
   useEffect(() => {
-    axios.get('https://api.themoviedb.org/3/trending/all/day?api_key=a5879fe83cace23de294d0b28bb346d5')
+    axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.PRIVATE_API_KEY}`)
       .then((response) => {
         let id=shuffle(response.data.results)
         let key= id.id
         console.log(key)
         setRandomId(id)
 
-   axios.get(`https://api.themoviedb.org/3/movie/${key}/videos?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`)
+   axios.get(`https://api.themoviedb.org/3/movie/${key}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
       .then(function (response) {
     console.log({repson:response})
     let filtermovies= response.data.results
@@ -134,9 +139,9 @@ export async function getServerSideProps(context) {
  let mediaBackDrop_Path
  try{
 
-mediaBackDrop_Path= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`)
-mediaData= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}/videos?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`)
-check= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}/videos?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`)
+mediaBackDrop_Path= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
+mediaData= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
+check= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
 
  }catch(error){
 

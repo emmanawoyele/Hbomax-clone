@@ -26,8 +26,7 @@ const showRandomMedia=()=>{
   let thumbs;
   
   return props.genresData.map((sections,index)=>{
-     
-    console.log(sections.id)
+
 thumbs=ShuffleArray(globalState.thumbTypes)[0]
 console.log(thumbs)
 return <LazyLoad key={sections.id} 
@@ -76,9 +75,9 @@ export async function getServerSideProps(context) {
   let genresData;
   let featuredData;
   try{
- genresData= await axios.get(`https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`);
+ genresData= await axios.get(`https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`);
 
- featuredData = await axios.get(`https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&with_genres=${context.query.genre_id}&api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`);
+ featuredData = await axios.get(`https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&with_genres=${context.query.genre_id}&api_key=${process.env.PRIVATE_API_KEY}&language=en-US`);
 
   }catch(error){
  console.log("error")

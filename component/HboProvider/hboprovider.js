@@ -74,7 +74,7 @@ export function HBOProvider({ children }) {
   }
 //  The first API Generates movie "id" needed for the video API
   useEffect(() => {
-    axios.get('https://api.themoviedb.org/3/trending/all/day?api_key=a5879fe83cace23de294d0b28bb346d5')
+    axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.PRIVATE_API_KEY}`)
       .then((response) => {
         let id=shuffle(response.data.results)
         let key= id.id
@@ -83,7 +83,7 @@ export function HBOProvider({ children }) {
           setRandomId(id)
        
 
-   axios.get(`https://api.themoviedb.org/3/movie/${key}/videos?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`)
+   axios.get(`https://api.themoviedb.org/3/movie/${key}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
       .then(function (response) {
  
     let filtermovies= response.data.results
@@ -106,7 +106,7 @@ export function HBOProvider({ children }) {
     setkey(shuffle(filtermovies))
    }
       }).catch((error)=>{
-console.log(error.response)
+console.log(error)
       })
       })
   }, [])

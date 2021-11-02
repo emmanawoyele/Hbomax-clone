@@ -9,7 +9,7 @@ import { useState,useEffect } from 'react'
  
         const axios = require('axios')
         // Make a request for a user with a given ID
-        axios.get(`https://api.themoviedb.org/3/${props.mediaType==="movie"?"movie":"tv"}/${props.credits}?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`)
+        axios.get(`https://api.themoviedb.org/3/${props.mediaType==="movie"?"movie":"tv"}/${props.credits}?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
             .then(function (response) {
             
              

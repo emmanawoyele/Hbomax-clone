@@ -22,7 +22,7 @@ function SearchModal(props) {
         try {
 
             setText(e.target.value);
-            let getData = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${e.target.value}&api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US&page=1&include_adult=false`)
+            let getData = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${e.target.value}&api_key= ${process.env.PRIVATE_API_KEY}&language=en-US&page=1&include_adult=false`)
             let filterItems = getData.data.results
             filterItems.filter((items, i) => {
                 items.media_type === "movie" || items.media_type === "tv"
@@ -49,7 +49,7 @@ function SearchModal(props) {
         let shuffuleMovies
         async function dast(params) {
             try {
-                let getData = await axios.get(`https://api.themoviedb.org/3/discover/movie?primany_release_year=2021&api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`)
+                let getData = await axios.get(`https://api.themoviedb.org/3/discover/movie?primany_release_year=2021&api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
                 let filteredData = getData.data.results;
                 filteredData.filter((item, i) => {
                     i > 14

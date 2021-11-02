@@ -17,6 +17,7 @@ import CastInfo from '../../component/Ul/CastInfo/CastInfo'
 
 
 
+
 export default function Homeview(props) {
 
   const globalState =useStateContext()
@@ -57,9 +58,8 @@ key={sections.id}
 
      <CastInfo credits={`${props.query.id}/credits`} mediaType={props.query.mediaType}/> 
 
-
-      <div>
-      </div>
+     
+    
     </MainLayout>
 
 
@@ -69,19 +69,19 @@ key={sections.id}
 export async function getServerSideProps(context) {
   // genresData generate different genre
   // feautredData generates movies
+ 
 
   let genresData;
   let featuredData;
   try{
- genresData= await axios.get(`https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`);
+ genresData= await axios.get(`https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`);
 
- featuredData = await axios.get(`https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&api_key=a5879fe83cace23de294d0b28bb346d5&language=en-US`);
+ featuredData = await axios.get(`https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&api_key=${process.env.PRIVATE_API_KEY}&language=en-US`);
 
   }catch(error){
  console.log("error")
  console.log(error)
   }
-
 
    return {
    
