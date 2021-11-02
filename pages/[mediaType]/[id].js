@@ -112,14 +112,14 @@ console.log(error.response)
  
      />   
     <LazyLoad offset={-200}placeholder={<PlaceHolder title="Drama"  type="small-h"/>}> 
-      <MediaRow 
+      <MediaRow
       update={props.query.id}
      title="Similar To This" 
      mediaType={props.query.mediaType}
      endpoint={`${props.query.mediaType==='movie' ?'movie':'tv'}/${props.query.id}/similar?`}
       type="small-v"
      
-       /> 
+      > </MediaRow> 
     </LazyLoad>
     <CastInfo credits={`${props.query.id}/credits`}  mediaType={props.query.mediaType}/> 
 

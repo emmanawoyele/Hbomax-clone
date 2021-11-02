@@ -28,12 +28,12 @@ router.push('/')
      globalState.setAccountOpen((prev) => !prev)
   }
 
-    const addwishList=()=>{
+    const AddwishList=()=>{
         let loopdata;
         if(localstorgeData !==null){
     loopdata= localstorgeData.map((WishlistData)=>{
 return  <div key={WishlistData.mediaId} className="account__watch-video"> 
- <Image width={200} height={200}src={`https://image.tmdb.org/t/p/original ${WishlistData.MediaBackdrop}`} alt={WishlistData.movieTitle}/>
+ <Image width={200} height={200}src={`https://image.tmdb.org/t/p/original ${WishlistData.MediaBackdrop}`} alt={WishlistData.movieTitle}></Image>
  <div className="account__watch-overlay">
 <div className="account__watch-buttons">
 <div className="account__watch-circle" onClick={()=>watchlist(`/${WishlistData.mediaType}/${WishlistData.mediaId}`)}>
@@ -64,12 +64,12 @@ return  <div key={WishlistData.mediaId} className="account__watch-video">
     }, [globalState.accountOpen])
 
      
-    return (<>
+    return (
     <div className={`account ${globalState.accountOpen?'account--active':''}`}>
         <div className="account__details">
         <div className="account__title"> My list</div>
             <div className="account__watch-list"> 
-           {addwishList()}
+           {AddwishList()}
          
             </div>
         </div>
@@ -97,7 +97,7 @@ return  <div key={WishlistData.mediaId} className="account__watch-video">
            </ul>
        </div>
     </div>
-    </>
+    
         
     )
 }

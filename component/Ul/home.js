@@ -1,15 +1,15 @@
 import Head from 'next/head'
-import MainLayout from '../component/Layouts/MainLayout'
-import FeaturedMedia from '../component/Ul/FeaturedMedia/FeaturedMedia'
-import AuthCheck from '../component/AuthCheck/AuthCheck'
-import MediaRow from '../component/Ul/MediaRow/MediaRow'
+import MainLayout from '../Layouts/MainLayout'
+import FeaturedMedia from './FeaturedMedia/FeaturedMedia'
+import AuthCheck from '../AuthCheck/AuthCheck'
+import MediaRow from './MediaRow/MediaRow'
 import LazyLoad from 'react-lazyload';
-import PlaceHolder from '../component/Ul/PlaceHolder/PlaceHolder'
-import GenreNav from '../component/Ul/GenreNav/GenreNav'
+import PlaceHolder from './PlaceHolder/PlaceHolder'
+import GenreNav from './GenreNav/GenreNav'
 import { useEffect, useState } from 'react'
-import globalState from '../component/HboProvider/hboprovider'
-import ShuffleArray from '../component/Utilities/shuffleArray'
-import { useStateContext } from "../component/HboProvider/hboprovider"
+import globalState from '../HboProvider/hboprovider'
+import ShuffleArray from '../Utilities/shuffleArray'
+import { useStateContext } from "../HboProvider/hboprovider"
 
 import axios from 'axios'
 
