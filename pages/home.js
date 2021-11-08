@@ -14,7 +14,7 @@ import { useStateContext } from "../component/HboProvider/hboprovider"
 import axios from 'axios'
 
 export default function MediaTypePage(props) {
- 
+  console.log({homepage:props.query})
 const globalState=useStateContext()
 
 
@@ -64,6 +64,7 @@ let thumbs=ShuffleArray(globalState.thumbTypes)[0]
         location={`In theaters and on HBO MAX.SStreaming throught ${globalState.randomid.release_date}`}
         linkUrl={'/movie/id'}
         type="front"
+        globalState={globalState}
         movieTitle={globalState.randomid.original_title}
         MediaUrl={`https://www.youtube.com/embed/${globalState.key.key}?autoplay=1&loop=1&start=10`}
       />

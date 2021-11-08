@@ -1,12 +1,19 @@
+import Head from 'next/head'
+import { useStateContext } from '../component/HboProvider/hboprovider'
+import { useRouter } from 'next/router'
+import ls from "local-storage"
+import {v4} from 'uuid'
+import Login from '../component/Ul/login/login'
+import Review from '../component/Ul/Review/review'
 
 
 
-export default function Review() {
+export default function CreateUser() {
  
  
   return (
     <div>
-<h1 style={{color:"white"}}>review</h1>
+<Review/>
      </div>
   )
 }

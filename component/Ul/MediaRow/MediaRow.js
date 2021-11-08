@@ -7,7 +7,7 @@ import ShufflArray from "../../Utilities/shuffleArray";
 
 
 function MediaRow(props) {
-    
+    console.log(props)
     const [loadingData, setLoadingData] = useState(true)
     const [movies, setMoviesData] = useState([])
 

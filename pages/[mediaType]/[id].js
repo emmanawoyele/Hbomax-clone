@@ -9,12 +9,17 @@ import { useState,useEffect } from 'react'
 import axios from 'axios'
 import LazyLoad from 'react-lazyload'
 import PlaceHolder from '../../component/Ul/PlaceHolder/PlaceHolder'
+import router from "next/router"
+import Review from '../../component/Ul/Review/review'
 
 
 
 
 
 export default function SingleMediapage(props) {
+  
+    
+  console.log(props)
 const[defaultMovies,setDefaultMovies]=useState([])
 const[RandomId,setRandomId]=useState([])
 function shuffle(array) {
@@ -105,6 +110,7 @@ console.log(error.response)
    mediaType={props.query.mediaType}
    linkUrl={'/movies/id'}
    type="single"
+ 
    movieTitle={checkname()}
      MediaBackdrop={`https://image.tmdb.org/t/p/original${props.mediaBackDrop_Path.backdrop_path}`}
     MediaUrl={`https://www.youtube.com/embed/${props.mediaData.results.length==0?"EI0ib1NErqg":props.mediaData.results[0].key}?autoplay=1&loop=1&start=10`}
@@ -144,7 +150,7 @@ mediaData= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaTy
 check= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
 
  }catch(error){
-
+console.log(error)
 
  }
   return {

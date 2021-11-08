@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react'
 import router from "next/router"
 import { useStateContext } from "../../HboProvider/hboprovider";
 import axios from 'axios';
+import Link from 'next/link';
+import Review from '../Review/review';
+
+
 
 
 
@@ -9,8 +13,11 @@ import axios from 'axios';
 
 
 export default function FeaturedMedia(props) {
-
+console.log({me:props.query})
     const globalState =useStateContext()
+    const reviewHandler=(props)=>{
+        console.log("hello review")
+    }
  
 const closebody=()=>{
    globalState.setAccountOpen(false)
@@ -59,7 +66,15 @@ const hideMoreInfo=()=>{
        
     }
 
-   
+   const idHandler=()=>{
+       if(props.mediaType === 'movie'){
+return 'movie'
+       }else if(props.mediaType === 'tv'){
+        return'tv'
+       }else{
+
+       }
+   }
     const ShowMedia = () => {
     
         if (props.type === "front" ||props.type ==="single") {
@@ -85,7 +100,13 @@ const hideMoreInfo=()=>{
                     <div className={`featured_media__play-btn ${props.type==="front"?'hide_class' :""}`} onClick={()=>clickedPlay(props)}>
                         <i className="fas fa-plus" />
                     </div>
-                    
+                    <div className="featured_media__info-btn" >
+                       
+                            <Link href={ `/${props.mediaType === 'movie' ? 'movie' : 'tv'}/review/${props.mediaType=== '/'? props.globalState.randomid.id:props .mediaId}`}>
+                        MORE INFO
+                        </Link>
+    
+    </div>
                     {hideMoreInfo()}
                 </div>
             </div>
@@ -104,4 +125,7 @@ export async function getServerSideProps(context) {
         props:{query: context.query}, // will be passed to the page component as props
     }
 
+}
+FeaturedMedia.defaultProps = {
+    mediaType: '/'
 }
