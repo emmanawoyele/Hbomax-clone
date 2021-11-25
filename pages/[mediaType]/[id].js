@@ -9,8 +9,7 @@ import { useState,useEffect } from 'react'
 import axios from 'axios'
 import LazyLoad from 'react-lazyload'
 import PlaceHolder from '../../component/Ul/PlaceHolder/PlaceHolder'
-import router from "next/router"
-import Review from '../../component/Ul/Review/review'
+
 
 
 
@@ -143,11 +142,14 @@ export async function getServerSideProps(context) {
  let mediaData;
  let check
  let mediaBackDrop_Path
+ let credit
  try{
+   
 
 mediaBackDrop_Path= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
 mediaData= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
 check= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
+credit=await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType==="movie"?"movie":"tv"}/${context.query.id}?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
 
  }catch(error){
 console.log(error)
@@ -158,6 +160,7 @@ console.log(error)
     props: {mediaData:mediaData.data,
       check:check.data,
       mediaBackDrop_Path: mediaBackDrop_Path.data, 
+      credits:credit.data,
       query:context.query} // will be passed to the page component as props
   };
   

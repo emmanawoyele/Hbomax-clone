@@ -22,7 +22,7 @@ function SearchModal(props) {
         try {
 
             setText(e.target.value);
-            let getData = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${e.target.value}&api_key= ${process.env.PRIVATE_API_KEY}&language=en-US&page=1&include_adult=false`)
+            let getData = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${e.target.value}&api_key=${process.env.PRIVATE_API_KEY}&language=en-US&page=1&include_adult=false`)
             let filterItems = getData.data.results
             filterItems.filter((items, i) => {
                 items.media_type === "movie" || items.media_type === "tv"

@@ -14,9 +14,10 @@ import { useStateContext } from "../component/HboProvider/hboprovider"
 import axios from 'axios'
 
 export default function MediaTypePage(props) {
-  console.log({homepage:props.query})
-const globalState=useStateContext()
+console.log({MediaTypePage:props})
 
+const globalState=useStateContext()
+console.log(globalState)
 
 
 const checkEmptyKey=()=>{
@@ -61,7 +62,7 @@ let thumbs=ShuffleArray(globalState.thumbTypes)[0]
 
       <FeaturedMedia 
 
-        location={`In theaters and on HBO MAX.SStreaming throught ${globalState.randomid.release_date}`}
+        location={`Release Date: ${globalState.randomid.release_date}`}
         linkUrl={'/movie/id'}
         type="front"
         globalState={globalState}
@@ -70,36 +71,45 @@ let thumbs=ShuffleArray(globalState.thumbTypes)[0]
       />
 
 
-      <LazyLoad offset={-400} placeholder={<PlaceHolder title="Series" type={thumbs} />}>
-        <MediaRow endpoint="discover/tv?"
+      <LazyLoad offset={-400}
+       placeholder={<PlaceHolder title="Series" type={thumbs} />}>
+        <MediaRow endpoint="discover/movie?with_genres=80&primary_release_year=2021"
           title="Series"
-          mediaType="series" type={thumbs} />
+          mediaType={props.mediaType !=='tv'?'movie':'tv'}
+          type={thumbs}
+           />
       </LazyLoad>
       <LazyLoad offset={-400}
         placeholder={<PlaceHolder title="Crime" type={thumbs} />}>
-        <MediaRow endpoint="discover/movie?with_genres=80&primary_release_year=2021" title="Crime" type="small-h" />
+        <MediaRow endpoint="discover/movie?with_genres=80&primary_release_year=2021" 
+        title="Crime" type={thumbs}
+        mediaType={props.mediaType !=='tv'?'movie':'tv'} />
       </LazyLoad>
       <LazyLoad offset={-400} placeholder={<PlaceHolder title="Action" type={thumbs} />}>
         <MediaRow
           endpoint="discover/movie?with_genres=28&primary_release_year=2021"
           title="Action"
-          type={thumbs} />
+          type={thumbs} 
+          mediaType={props.mediaType !=='tv'?'movie':'tv'}/>
       </LazyLoad>
       <LazyLoad offset={-400} placeholder={<PlaceHolder title="Animation" type={thumbs} />}>
         <MediaRow
           endpoint={"discover/movie?with_genres=16&primary_release_year=2021"}
           title="Animation"
-          type={thumbs} />
+          type={thumbs} 
+          mediaType={props.mediaType !=='tv'?'movie':'tv'}/>
       </LazyLoad>
       <LazyLoad offset={-400} placeholder={<PlaceHolder title="Horror" type={thumbs} />}>
         <MediaRow endpoint="discover/movie?with_genres=27&primary_release_year=2021"
           title="Horror"
-          type={thumbs} />
+          type={thumbs} 
+          mediaType={props.mediaType !=='tv'?'movie':'tv'}/>
       </LazyLoad>
       <LazyLoad offset={-200} placeholder={<PlaceHolder title="Scific" type={thumbs} />}>
         <MediaRow endpoint="discover/movie?with_genres=878&primary_release_year=2021"
           title="Scific"
-          type={thumbs} />
+          type={thumbs}
+          mediaType={props.mediaType !=='tv'?'movie':'tv'} />
       </LazyLoad>
 
       <div>

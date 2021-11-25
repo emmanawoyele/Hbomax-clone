@@ -4,19 +4,20 @@ import MediaRow from "../../../component/Ul/MediaRow/MediaRow"
 import { useStateContext } from '../../../component/HboProvider/hboprovider'
 import Review from "../../../component/Ul/Review/review";
 import axios from "axios";
+import  FeaturedMedia from "../../../component/Ul/FeaturedMedia/FeaturedMedia"
 
 
 
 export default function ReviewIdComponent(props) {
     const globalState =useStateContext()
 
- console.log(props)
+ console.log({props})
+ console.log(props.query.review)
   return (
     <MainLayout>
-  <Review reviewProps={props.media}/>
     
-     {/* <MediaRow></MediaRow>
-    */}
+  <Review reviewProps={props.media}/>
+  
      </MainLayout>
   )
 }
@@ -27,10 +28,11 @@ export async function getServerSideProps(context) {
 
   let mediaData;
   let featuredData;
+  let getCreditsImage;
   try{
-    mediaData= await axios.get(`https://api.themoviedb.org/3/movie/${context.query.review}?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`);
-
- featuredData = await axios.get(`https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&with_genres=${context.query.genre_id}&api_key=${process.env.PRIVATE_API_KEY}&language=en-US`);
+    mediaData= await axios.get(`https://api.themoviedb.org/3/movie/${context.query.review}?api_key=${process.env.PRIVATE_API_KEY}&append_to_response=credits&language=en-US`);
+    // getCreditsImage= await axios.get(`https://api.themoviedb.org/3/person/${context.query.review}?api_key=${process.env.PRIVATE_API_KEY}&append_to_response=credits`);
+    featuredData = await axios.get(`https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&with_genres=${context.query.genre_id}&api_key=${process.env.PRIVATE_API_KEY}&language=en-US`);
 
   }catch(error){
  console.log("error")
@@ -41,6 +43,7 @@ export async function getServerSideProps(context) {
    return {
      props: {
       media:mediaData.data,
+      // image:getCreditsImage.data,
       // featuredData:ShuffleArray(featuredData.data.results)[0],
        query:context.query
      } // will be passed to the page component as props

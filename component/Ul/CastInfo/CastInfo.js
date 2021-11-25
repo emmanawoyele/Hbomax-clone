@@ -5,18 +5,19 @@ import { useState,useEffect } from 'react'
     const [loadingdata, setloading] = useState(true)
    const [credits, setcredits] = useState([])
    const [crew, setcrew] = useState([])
-    useEffect(() => {
+    useEffect( async() => {
  
         const axios = require('axios')
         // Make a request for a user with a given ID
-        axios.get(`https://api.themoviedb.org/3/${props.mediaType==="movie"?"movie":"tv"}/${props.credits}?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
+        await axios.get(`https://api.themoviedb.org/3/${props.mediaType==="movie"?"movie":"tv"}/${props.credits}?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
             .then(function (response) {
-            
+            console.log(response)
              
             setcredits(response.data.cast)
             setcrew(response.data.crew)
                 // handle success
                 setloading(false)
+
             })
             .catch(function (error) {
                 // handle error

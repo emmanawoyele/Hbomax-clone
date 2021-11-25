@@ -102,12 +102,12 @@ return 'movie'
                     </div>
                     <div className="featured_media__info-btn" >
                        
-                            <Link href={ `/${props.mediaType === 'movie' ? 'movie' : 'tv'}/review/${props.mediaType=== '/'? props.globalState.randomid.id:props .mediaId}`}>
-                        MORE INFO
+                            <Link href={ `/${props.mediaType === 'tv' ? 'tv' : 'movie'}/review/${props.mediaType=== '/'? props.globalState.randomid.id:props .mediaId}`}>
+                      <a>  Read Reviews</a>
                         </Link>
     
     </div>
-                    {hideMoreInfo()}
+                    {/* {hideMoreInfo()} */}
                 </div>
             </div>
 

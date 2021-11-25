@@ -19,7 +19,7 @@ import CastInfo from '../../component/Ul/CastInfo/CastInfo'
 
 
 export default function Homeview(props) {
-  
+ 
   const globalState =useStateContext()
 
 const showRandomMedia=()=>{
@@ -33,10 +33,11 @@ offset={-200}
 placeholder={<PlaceHolder title={sections.name} 
 type={thumbs} />}>
 <MediaRow
-key={sections.id}
+  key={sections.id}
   title={sections.name}
   endpoint={`discover/${props.query.mediaType}?with_genres=${sections.id}&primary_release_year=2021`}
   type={thumbs}
+  mediaType={props.query.mediaType }
 />
 </LazyLoad>
 
@@ -53,10 +54,11 @@ key={sections.id}
         movieTitle={props.query.mediaType ==='movie'?props.featuredData.original_title:props.featuredData.name}
         MediaUrl={`https://image.tmdb.org/t/p/original${props.featuredData.backdrop_path}`}
       />
-         <GenreNav mediaType={props.query.mediaType} genresData={props.genresData}/>
+         <GenreNav mediaType={props.query.mediaType !='tv' ?'movie':'tv'} genresData={props.genresData}/>
      {showRandomMedia()}
 
      <CastInfo credits={`${props.query.id}/credits`} mediaType={props.query.mediaType}/> 
+     {/* <CastInfo />  */}
 
      
     

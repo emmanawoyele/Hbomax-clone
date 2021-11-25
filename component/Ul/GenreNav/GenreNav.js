@@ -7,6 +7,7 @@ import React,{useState} from 'react';
 
  function GenreNav(props) {
     
+    console.log({checkprops:props})
      const globalState =useStateContext()
      const[activeNav,setActiveNav]=useState(false)
      setTimeout(()=>setActiveNav(true)

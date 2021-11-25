@@ -7,9 +7,11 @@ import ShufflArray from "../../Utilities/shuffleArray";
 
 
 function MediaRow(props) {
-    console.log(props)
+    console.log({media:props})
     const [loadingData, setLoadingData] = useState(true)
     const [movies, setMoviesData] = useState([])
+
+   
 
     useEffect(() => {
 
@@ -18,7 +20,7 @@ function MediaRow(props) {
         // Make a request for a user with a given ID
         axios.get(`https://api.themoviedb.org/3/${props.endpoint}&api_key=${process.env.PRIVATE_API_KEY}`)
             .then(function (response) {
-              
+              console.log({response})
                 setLoadingData(false)
                 // handle success
 
@@ -47,17 +49,20 @@ function MediaRow(props) {
 
 
     const showThumbNails = (props) => {
-
+        console.log({checkpropShowThumbNail:props})
+        console.log({mediaType:props.mediaType})
         return loadingData
             ? loopComp(<SkeletonComp />, 10)
             : movies.map((moviesData) => {
+                
                 return <ThumbNails key={moviesData.id} moviesprops={moviesData} type={props.type}
-                    mediaType={props.mediaType} />
+                    mediaType={props.mediaType !=='tv'?'movie':'tv'} />
             })
 
 
     };
 
+    
     return (<div className={`mediaRow-list ${props.type}`}>
         <h3 className="mediaRow-list__title"> {props.title}</h3>
         <div className="mediaRow-list__thumbnails">
@@ -67,7 +72,11 @@ function MediaRow(props) {
     </div>
     )
 }
+
+
 const ThumbNails = (props) => {
+    
+    
     const ThumbSize = (type) => {
         if (type === "small-v") {
             return '185';
@@ -94,9 +103,10 @@ const ThumbNails = (props) => {
 
 
     }
+
     return (
 
-        <Link href={`/${props.mediaType === 'movie' ? 'movie' : 'tv'}/${props.moviesprops.id}`}>
+        <Link href={`/${props.mediaType !='tv'?'movie':'tv'}/${props.moviesprops.id}`}>
             <a>
                 <div className="mediaRow-list__thumbnail">
                     <img src={`https://image.tmdb.org/t/p/w${ThumbSize(props.type)}/${props.moviesprops.poster_path}`} alt={props.moviesprops.title} />
@@ -111,6 +121,9 @@ const ThumbNails = (props) => {
 
     )
 }
+
+
+
 const SkeletonComp = (index) => {
     return (
         <div className="mediaRow-list__thumbnail-skeleton">
@@ -121,7 +134,9 @@ const SkeletonComp = (index) => {
 }
 
 MediaRow.defaultProps = {
-    mediaType: 'movie'
+    mediaType:'tv',
+    
 }
+
 
 export default MediaRow

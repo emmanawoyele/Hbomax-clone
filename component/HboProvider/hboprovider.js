@@ -99,8 +99,9 @@ export function HBOProvider({ children }) {
   site: "YouTube",
   size: 1080,
   type: "Trailer",}]
+  
    console.log("Your Array is empty")
-   setkey(video)
+   setRandomId(video)
  }else{
 
     setkey(shuffle(filtermovies))
