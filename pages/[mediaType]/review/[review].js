@@ -11,8 +11,7 @@ import  FeaturedMedia from "../../../component/Ul/FeaturedMedia/FeaturedMedia"
 export default function ReviewIdComponent(props) {
     const globalState =useStateContext()
 
- console.log({props})
- console.log(props.query.review)
+
   return (
     <MainLayout>
     
@@ -30,7 +29,7 @@ export async function getServerSideProps(context) {
   let featuredData;
   let getCreditsImage;
   try{
-    mediaData= await axios.get(`https://api.themoviedb.org/3/movie/${context.query.review}?api_key=${process.env.PRIVATE_API_KEY}&append_to_response=credits&language=en-US`);
+    mediaData= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.review}?api_key=${process.env.PRIVATE_API_KEY}&append_to_response=credits&language=en-US`);
     // getCreditsImage= await axios.get(`https://api.themoviedb.org/3/person/${context.query.review}?api_key=${process.env.PRIVATE_API_KEY}&append_to_response=credits`);
     featuredData = await axios.get(`https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&with_genres=${context.query.genre_id}&api_key=${process.env.PRIVATE_API_KEY}&language=en-US`);
 

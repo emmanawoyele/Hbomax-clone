@@ -17,8 +17,7 @@ import PlaceHolder from '../../component/Ul/PlaceHolder/PlaceHolder'
 
 export default function SingleMediapage(props) {
   
-    
-  console.log(props)
+
 const[defaultMovies,setDefaultMovies]=useState([])
 const[RandomId,setRandomId]=useState([])
 function shuffle(array) {
@@ -45,7 +44,7 @@ function shuffle(array) {
     [array[currentIndex], array[randomIndex]] = [
       array[randomIndex], array[currentIndex]];
   }
-  console.log({array})
+
   return array[0];
 }
  const CheckRandom=()=>{
@@ -54,7 +53,6 @@ function shuffle(array) {
       .then((response) => {
         let id=shuffle(response.data.results)
         let key= id.id
-        console.log(key)
         setRandomId(id)
 
    axios.get(`https://api.themoviedb.org/3/movie/${key}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)

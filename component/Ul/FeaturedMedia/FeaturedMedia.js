@@ -13,11 +13,9 @@ import Review from '../Review/review';
 
 
 export default function FeaturedMedia(props) {
-console.log({me:props.query})
+
     const globalState =useStateContext()
-    const reviewHandler=(props)=>{
-        console.log("hello review")
-    }
+   
  
 const closebody=()=>{
    globalState.setAccountOpen(false)
@@ -102,7 +100,7 @@ return 'movie'
                     </div>
                     <div className="featured_media__info-btn" >
                        
-                            <Link href={ `/${props.mediaType === 'tv' ? 'tv' : 'movie'}/review/${props.mediaType=== '/'? props.globalState.randomid.id:props .mediaId}`}>
+                            <Link href={ `/${props.mediaType === 'tv' ? 'tv' : 'movie'}/review/${props.mediaType=== '/'? props.globalState.randomid.id:props.mediaId}`}>
                       <a>  Read Reviews</a>
                         </Link>
     

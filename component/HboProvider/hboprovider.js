@@ -17,10 +17,15 @@ export function HBOProvider({ children }) {
   const defaultImage = 'https://randomuser.me/api/portraits/men/91.jpg'
 
   const createUserAction = (e) => {
-
     setUser(e.target.value)
   }
 
+  const removeStringFromDate=()=>{
+  let str = "2017-02-20 15:25:56 UTC";
+  const str1=str.replace("15:25:56 UTC", "")
+  return str1
+  }
+  
   const data=[{adult: false,
     backdrop_path: "/m4lKVel1iHWdS3i4oaSWBcY5RgU.jpg",
     genre_ids: (2) [878, 10749],
@@ -47,8 +52,9 @@ export function HBOProvider({ children }) {
   const [randomid, setRandomId] = useState([])
 // Shuffle array and return 1 item
   function shuffle(array) {
+    
     let currentIndex= array.find((array)=>{
-      return array.offical!=false
+      return array.offical!=false 
     })
     
      currentIndex= array.length
@@ -74,10 +80,22 @@ export function HBOProvider({ children }) {
   }
 //  The first API Generates movie "id" needed for the video API
   useEffect(() => {
+    const video={id: "5b5b91c2925141523700502c",
+    iso_639_1: "en",
+    iso_3166_1: "US",
+    key: "bjqEWgDVPe0",
+    name: "GAME OF THRONES - SEASON 1- TRAILER",
+    official: true,
+    published_at:removeStringFromDate() ,
+    site: "YouTube",
+    size: 1080,
+    type: "Trailer",}
     axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.PRIVATE_API_KEY}`)
       .then((response) => {
         let id=shuffle(response.data.results)
+
         let key= id.id
+   
      
         
           setRandomId(id)
@@ -87,27 +105,34 @@ export function HBOProvider({ children }) {
       .then(function (response) {
  
     let filtermovies= response.data.results
- if(filtermovies.length<=0){
+ 
+ if(filtermovies ===undefined ||filtermovies.length===0||filtermovies==='404'){
+  setkey(video)
+  setRandomId({original_name:video.name,first_air_date:video.published_at})
 
-  const video=[{id: "614259b4af85de002a28c33c",
-  iso_639_1: "en",
-  iso_3166_1: "US",
-  key: "ZPKL9aSgbCw",
-  name: "Needle in a Timestack (2021 Movie) Teaser Trailer – Leslie Odom Jr., Cynthia Erivo, Orlando Bloom",
-  official: true,
-  published_at: "2021-09-15 16:07:13 UTC",
-  site: "YouTube",
-  size: 1080,
-  type: "Trailer",}]
-  
    console.log("Your Array is empty")
-   setRandomId(video)
+  
+  
  }else{
-
-    setkey(shuffle(filtermovies))
-   }
+  setkey(shuffle(filtermovies))
+ }
+   
+   
       }).catch((error)=>{
-console.log(error)
+      if(error.response.status===404)
+          console.log({error:error.response})
+          // axios.get(`https://api.themoviedb.org/3/movie/5b5b91c2925141523700502c/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
+          // .then((response)=>{
+          //   console.log({sit:response})
+          //   setkey(response.data.results[0])
+          // })
+     
+          setRandomId({original_name:video.name,first_air_date:video.published_at})
+      setkey(video)
+      
+     
+      
+
       })
       })
   }, [])
@@ -132,7 +157,7 @@ console.log(error)
 
 
     } else {
-      console.log("not same")
+    
       ls.set('list', [video])
     }
 

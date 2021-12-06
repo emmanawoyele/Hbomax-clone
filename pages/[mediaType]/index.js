@@ -26,7 +26,7 @@ const showRandomMedia=()=>{
   let thumbs;
   
   return props.genresData.map((sections)=>{
-    console.log(sections.id)
+    
 thumbs=ShuffleArray(globalState.thumbTypes)[0]
 return <LazyLoad key={sections.id} 
 offset={-200} 

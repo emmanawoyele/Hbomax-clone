@@ -14,10 +14,27 @@ import { useStateContext } from "../component/HboProvider/hboprovider"
 import axios from 'axios'
 
 export default function MediaTypePage(props) {
-console.log({MediaTypePage:props})
+
 
 const globalState=useStateContext()
-console.log(globalState)
+
+const checkLenght=()=>{}
+
+
+// This function check GlobalState.randomid original_name and original_title
+const checkGlobalRandom=()=>{
+  if(globalState.randomid.hasOwnProperty('original_name')){
+   return globalState.randomid.original_name
+   
+  }else if(globalState.randomid.hasOwnProperty('name')){
+    globalState.randomid.name
+  }else{
+    
+    // console.log(Object.values(globalState.randomid.original_title).join("").length)
+     return globalState.randomid.original_title
+  }
+  
+}
 
 
 const checkEmptyKey=()=>{
@@ -62,11 +79,11 @@ let thumbs=ShuffleArray(globalState.thumbTypes)[0]
 
       <FeaturedMedia 
 
-        location={`Release Date: ${globalState.randomid.release_date}`}
+        location={`Release Date: ${globalState.randomid.hasOwnProperty('release_date')?globalState.randomid.release_date:globalState.randomid.first_air_date}`}
         linkUrl={'/movie/id'}
         type="front"
         globalState={globalState}
-        movieTitle={globalState.randomid.original_title}
+        movieTitle={checkGlobalRandom()}
         MediaUrl={`https://www.youtube.com/embed/${globalState.key.key}?autoplay=1&loop=1&start=10`}
       />
 
@@ -85,27 +102,31 @@ let thumbs=ShuffleArray(globalState.thumbTypes)[0]
         title="Crime" type={thumbs}
         mediaType={props.mediaType !=='tv'?'movie':'tv'} />
       </LazyLoad>
-      <LazyLoad offset={-400} placeholder={<PlaceHolder title="Action" type={thumbs} />}>
+      <LazyLoad offset={-400} 
+      placeholder={<PlaceHolder title="Action" type={thumbs} />}>
         <MediaRow
           endpoint="discover/movie?with_genres=28&primary_release_year=2021"
           title="Action"
           type={thumbs} 
           mediaType={props.mediaType !=='tv'?'movie':'tv'}/>
       </LazyLoad>
-      <LazyLoad offset={-400} placeholder={<PlaceHolder title="Animation" type={thumbs} />}>
+      <LazyLoad offset={-400}
+       placeholder={<PlaceHolder title="Animation" type={thumbs} />}>
         <MediaRow
           endpoint={"discover/movie?with_genres=16&primary_release_year=2021"}
           title="Animation"
           type={thumbs} 
           mediaType={props.mediaType !=='tv'?'movie':'tv'}/>
       </LazyLoad>
-      <LazyLoad offset={-400} placeholder={<PlaceHolder title="Horror" type={thumbs} />}>
+      <LazyLoad offset={-400} 
+      placeholder={<PlaceHolder title="Horror" type={thumbs} />}>
         <MediaRow endpoint="discover/movie?with_genres=27&primary_release_year=2021"
           title="Horror"
           type={thumbs} 
           mediaType={props.mediaType !=='tv'?'movie':'tv'}/>
       </LazyLoad>
-      <LazyLoad offset={-200} placeholder={<PlaceHolder title="Scific" type={thumbs} />}>
+      <LazyLoad offset={-200}
+       placeholder={<PlaceHolder title="Scific" type={thumbs} />}>
         <MediaRow endpoint="discover/movie?with_genres=878&primary_release_year=2021"
           title="Scific"
           type={thumbs}
@@ -124,7 +145,7 @@ export async function getServerSideProps(context) {
  
   // genresData generate different genre
   // feautredData generates movies
-  console.log(process.env.PRIVATE_API_KEY)
+
 
 let genresData;
 featuredData;

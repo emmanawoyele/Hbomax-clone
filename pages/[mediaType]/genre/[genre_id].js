@@ -19,7 +19,7 @@ import CastInfo from '../../../component/Ul/CastInfo/CastInfo'
 
 export default function Homeview(props) {
   
-console.log(props)
+
   const globalState =useStateContext()
 
 const showRandomMedia=()=>{
