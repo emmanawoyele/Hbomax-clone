@@ -3,7 +3,7 @@ import router from "next/router"
 import { useStateContext } from "../../HboProvider/hboprovider";
 import axios from 'axios';
 import Link from 'next/link';
-import Review from '../Review/review';
+// import Review from '../Review/review';
 
 
 
@@ -100,9 +100,9 @@ return 'movie'
                     </div>
                     <div className="featured_media__info-btn" >
                        
-                            <Link href={ `/${props.mediaType === 'tv' ? 'tv' : 'movie'}/review/${props.mediaType=== '/'? props.globalState.randomid.id:props.mediaId}`}>
+                            {/* <Link href={ `/${props.mediaType === 'tv' ? 'tv' : 'movie'}/review/${props.mediaType=== '/'? props.globalState.randomid.id:props.mediaId}`}>
                       <a>  Read Reviews</a>
-                        </Link>
+                        </Link> */}
     
     </div>
                     {/* {hideMoreInfo()} */}
