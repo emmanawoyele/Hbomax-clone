@@ -7,10 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
-    
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "local-storage": "^2.0.0",
     "next": "11.0.1",
     "react": "17.0.2",
@@ -18,7 +17,7 @@
     "react-lazy-image-load": "^1.5.1",
     "react-lazy-load-image-component": "^1.5.1",
     "react-lazyload": "^3.2.0",
-    "sass": "^1.35.1",
+    "sass": "^1.44.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

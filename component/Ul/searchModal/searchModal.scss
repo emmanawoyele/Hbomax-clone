@@ -1,3 +1,5 @@
+ 
+
 .search-modal{
     position:fixed;
     height: 100vh;
@@ -45,7 +47,7 @@
         display: flex;
         flex-wrap:wrap;
         min-width: 100%;
-        width:calc(100vw- 70px);
+        width:calc(100vw - 70px);
         overflow-x:scroll;
         &::-webkit-scrollbar{
             display:none;

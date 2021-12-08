@@ -1,15 +1,15 @@
 
-@use "createuser";
-@use "../component/Ul/Header/header";
-@use "../component/Ul/SideNav/side-nav";
+@use '../styles/reset';
+@use "../component/Ul/Header/header.scss";
+@use "../component/Ul/SideNav/side-nav.scss";
 @use "../component/Ul/FeaturedMedia/Featured.scss";
-@use "../component/Ul/CastInfo/CastInfo";
-@use "../component/Ul/Account/Account";
-@use "../component//Ul/searchModal/searchModal";
-@use "../component/Ul/login/_login";
-@use "../component/Ul/MediaRow/MediaRow";
-@use "../component/Ul/GenreNav/GenreNav";
-@use "../component/Ul/Review/review";
+@use "../component/Ul/CastInfo/CastInfo.scss";
+@use "../component/Ul/Account/Account.scss";
+@use "../component//Ul/searchModal/searchModal.scss";
+@use "../component/Ul/login/_login.scss";
+@use "../component/Ul/MediaRow/MediaRow.scss";
+@use "../component/Ul/GenreNav/GenreNav.scss";
+@use "../component/Ul/Review/review.scss";
 
 
 
