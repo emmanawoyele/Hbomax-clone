@@ -1,5 +1,4 @@
 @use 'reset';
-
 @use "createuser";
 @use "../component/Ul/Header/header";
 @use "../component/Ul/SideNav/side-nav";
@@ -10,7 +9,7 @@
 @use "../component/Ul/login/_login";
 @use "../component/Ul/MediaRow/MediaRow";
 @use "../component/Ul/GenreNav/GenreNav";
-// @use "../component/Ul/Review/review";
+@use "../component/Ul/Review/review";
 
 
 
