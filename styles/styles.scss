@@ -3,8 +3,8 @@
 @use "createuser.scss";
 @use "../component/Ul/Header/header.scss";
 @use "../component/Ul/SideNav/side-nav.scss";
-@use "../component/Ul/FeaturedMedia/Featured.scss";
-@use "../component/Ul/CastInfo/CastInfo.scss";
+@use "../component/Ul/FeaturedMedia/_Featured.scss";
+@use "../component/Ul/CastInfo/Castinfo.scss";
 @use "../component/Ul/Account/Account.scss";
 @use "../component//Ul/searchModal/searchModal.scss";
 @use "../component/Ul/login/_login.scss";
