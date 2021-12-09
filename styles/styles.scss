@@ -1,5 +1,6 @@
 
-@use '../styles/reset';
+@use 'reset';
+@use "createuser.scss";
 @use "../component/Ul/Header/header.scss";
 @use "../component/Ul/SideNav/side-nav.scss";
 @use "../component/Ul/FeaturedMedia/Featured.scss";
