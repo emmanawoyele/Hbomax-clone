@@ -1,10 +1,10 @@
 
 import MainLayout from "../../../component/Layouts/MainLayout";
-import MediaRow from "../../../component/Ul/MediaRow/MediaRow"
+
 import { useStateContext } from '../../../component/HboProvider/hboprovider'
 import Review from "../../../component/Ul/Review/review";
 import axios from "axios";
-import  FeaturedMedia from "../../../component/Ul/FeaturedMedia/FeaturedMedia"
+
 
 
 
