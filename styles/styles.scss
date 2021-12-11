@@ -1,0 +1,28 @@
+
+@use 'reset';
+@use "createuser";
+@use "create";
+@use "../component/Ul/Header/header.scss";
+@use "../component/Ul/SideNav/side-nav.scss";
+@use "../component/Ul/FeaturedMedia/_Featured.scss";
+@use "../component/Ul/CastInfo/CastInfo.scss";
+@use "../component/Ul/Account/Account.scss";
+@use "../component//Ul/searchModal/searchModal.scss";
+@use "../component/Ul/login/_login.scss";
+@use "../component/Ul/MediaRow/MediaRow.scss";
+@use "../component/Ul/GenreNav/GenreNav.scss";
+@use "../component/Ul/Review/review.scss";
+
+
+
+
+html,body{
+    background:black
+    
+}
+*{
+    box-sizing:border-box ;
+}
+.hide_class{
+    display: none;
+}
