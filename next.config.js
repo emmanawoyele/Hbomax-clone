@@ -1,5 +1,5 @@
 
-const path = require('path')
+
 module.exports = {
   reactStrictMode: true,
   images: {
@@ -8,8 +8,6 @@ module.exports = {
   env: {
     PRIVATE_API_KEY:'a5879fe83cace23de294d0b28bb346d5'
   },
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-  },
+ 
 }
 
