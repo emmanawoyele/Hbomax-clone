@@ -1,3 +1,5 @@
+
+
 module.exports = {
   reactStrictMode: true,
   images: {
@@ -6,8 +8,6 @@ module.exports = {
   env: {
     PRIVATE_API_KEY:'a5879fe83cace23de294d0b28bb346d5'
   },
-  
 
 }
-const withSass = require('@zeit/next-sass')
-module.exports = withSass()
+
