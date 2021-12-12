@@ -8,9 +8,9 @@
 @use "../component/Ul/CastInfo/_CastInfo.scss" as *;
 @use "../component/Ul/Account/_Account.scss"as *;
 @use "../component//Ul/searchModal/_searchModal.scss"as *;
-@use "../component/Ul/login/_login.scss";
-@use "../component/Ul/MediaRow/_MediaRow.scss";
-// @use "../component/Ul/PlaceHolder/_Placeholder";
+@use "../component/Ul/login/_login.scss" as *;
+@use "../component/Ul/MediaRow/_MediaRow.scss" as *;
+@use "../component/Ul/PlaceHolder/_MediaRow" as *;
 @use "../component/Ul/GenreNav/_GenreNav.scss"as *;
 @use "../component/Ul/Review/_review.scss" as *;
 

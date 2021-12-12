@@ -1,4 +1,5 @@
-import '../styles/styles.scss'
+import '../styles/styles.scss';
+
 import {HBOProvider} from '../component/HboProvider/hboprovider'
 
 

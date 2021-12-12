@@ -1,5 +1,4 @@
 
-@use "../../../styles/styles.scss" as *;
 .mediaRow-list{
     padding:20px 0 20px 50px;
     &__title{
@@ -12,7 +11,7 @@
         display: flex;
         flex-wrap:nowrap;
         min-width: 100%;
-        width:calc(100vw"-" 70px);
+        width:calc(100vw - 70px);
         overflow-x:scroll;
         &::-webkit-scrollbar{
             display:none;
