@@ -3,7 +3,7 @@
 // @use "_createuser" as *;
 // @use "_create";
 @use "../component/Ul/Header/_header" as * ;
-// @use "../component/Ul/SideNav/_side-nav"  ;
+@use "../component/Ul/SideNav/_side-nav" as *  ;
 @use "../component/Ul/FeaturedMedia/Featured" as *;
 @use "../component/Ul/CastInfo/_CastInfo" as * ;
 @use "../component/Ul/Account/_Account" as *;
