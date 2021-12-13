@@ -2,12 +2,13 @@
 // @use 'reset';
 // @use "_createuser";
 // @use "_create";
-// @use "../component/Ul/Header/_header"  ;
+
 // @use "../component/Ul/SideNav/_side-nav"  ;
 // @use "../component/Ul/FeaturedMedia/_Featured" ;
 // @use "../component/Ul/CastInfo/_CastInfo" ;
 // @use "../component/Ul/Account/_Account";
-@use "../component//Ul/searchModal/_searchModal";
+// @use "../component//Ul/searchModal/_searchModal";
+@use "../component/Ul/Header/_header"  ;
 @use "../component/Ul/login/_login" ;
 @use "../component/Ul/MediaRow/_MediaRow" ;
 // // @use "../component/Ul/PlaceHolder/_MediaRow" ;
