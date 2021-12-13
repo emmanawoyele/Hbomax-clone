@@ -8,11 +8,11 @@
 @use "../component/Ul/CastInfo/_CastInfo" as * ;
 @use "../component/Ul/Account/_Account" as *;
 @use "../component/Ul/searchModal/_searchModal" as *;
-// @use "../component/Ul/Login/_login" as * ;
+@use "../component/Ul/Login/_login" as * ;
 @use "../component/Ul/MediaRow/_MediaRow" as * ;
-// @use "../component/Ul/PlaceHolder/_MediaRow" ;
+@use "../component/Ul/PlaceHolder/_MediaRow" ;
 @use "../component/Ul/GenreNav/_GenreNav" as *;
-// @use "../component/Ul/Review/_review" ;
+@use "../component/Ul/Review/_review"  as *;
 
 
 
