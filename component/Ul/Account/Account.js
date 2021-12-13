@@ -5,7 +5,6 @@ import { useEffect } from "react"
 import router from "next/router"
 import ls from "local-storage"
 import Image from "next/image"
-
  function Account(props) {
    
     const globalState =useStateContext()

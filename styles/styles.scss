@@ -2,17 +2,17 @@
 // @use 'reset';
 // @use "_createuser";
 // @use "_create";
-// @use "../component/Ul/Header/_header.scss"  as *;
-// @use "../component/Ul/SideNav/_side-nav.scss" as * ;
-// @use "../component/Ul/FeaturedMedia/_Featured.scss" as *;
-// @use "../component/Ul/CastInfo/_CastInfo.scss" ;
-// @use "../component/Ul/Account/_Account.scss";
-// @use "../component//Ul/searchModal/_searchModal.scss";
-// @use "../component/Ul/login/_login.scss" ;
-// @use "../component/Ul/MediaRow/_MediaRow.scss" ;
+// @use "../component/Ul/Header/_header"  ;
+// @use "../component/Ul/SideNav/_side-nav"  ;
+// @use "../component/Ul/FeaturedMedia/_Featured" ;
+// @use "../component/Ul/CastInfo/_CastInfo" ;
+// @use "../component/Ul/Account/_Account";
+// @use "../component//Ul/searchModal/_searchModal";
+// @use "../component/Ul/login/_login" ;
+@use "../component/Ul/MediaRow/_MediaRow" ;
 // // @use "../component/Ul/PlaceHolder/_MediaRow" ;
-// @use "../component/Ul/GenreNav/_GenreNav.scss";
-// @use "../component/Ul/Review/_review.scss" ;
+// @use "../component/Ul/GenreNav/_GenreNav";
+// @use "../component/Ul/Review/_review" ;
 
 
 
