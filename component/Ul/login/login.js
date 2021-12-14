@@ -5,6 +5,8 @@ import ls from "local-storage"
 import next from 'next'
 import router, { useRouter } from 'next/router'
 import { useMounted } from '../../Hooks/useMounted'
+import Image from 'next/image'
+
 
 export default function Login() {
   const globalState= useStateContext()
@@ -29,10 +31,11 @@ router.push('/')
 
 const showUsers=()=>{
   if(!loadingUsers){
-return users.map((user)=>{
+return users.map((user,index)=>{
+  
 return ( 
-<div  onClick={()=>selectUser(user.id)} Key={user.id}className="login-user__user-box">
-<img className="login-user__user-img"  src="https://randomuser.me/api/portraits/men/91.jpg"/>
+<div  onClick={()=>selectUser(user.id)} key={index}className="login-user__user-box">
+<Image className="login-user__user-img" width={125} height={125}  src="https://randomuser.me/api/portraits/men/91.jpg" alt={user.id}/>
 <div className="login-user__user">{user.user}</div>
 </div>)
 })

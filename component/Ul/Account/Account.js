@@ -1,11 +1,14 @@
 import Link from "next/link"
 import { useStateContext} from "../../HboProvider/hboprovider"
+
 import { useState } from "react"
 import { useEffect } from "react"
 import router from "next/router"
 import ls from "local-storage"
 import Image from "next/image"
  function Account(props) {
+  
+     console.log(props)
    
     const globalState =useStateContext()
    
@@ -14,16 +17,18 @@ import Image from "next/image"
 
 
 const LogoutUser=(id)=>{
-console.log({id})
-ls.remove('users')
-router.push('/')
-}
 
+ls.remove('users')
+router.push(href)
+}
+useEffect(() => {
+
+}, [globalState.user])
 
   const watchlist=(url)=>{
       
     router.push(url)
-    console.log({nonense:router.push(url)})
+   
      globalState.setAccountOpen((prev) => !prev)
   }
 

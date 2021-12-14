@@ -3,6 +3,8 @@ import { useStateContext } from '../component/HboProvider/hboprovider'
 import { useRouter } from 'next/router'
 import ls from "local-storage"
 import {v4} from 'uuid'
+import Image from 'next/image'
+
 
 
 
@@ -10,9 +12,11 @@ export default function CreateUser() {
   const router=useRouter()
   const globalState= useStateContext()
   const saveUser=()=>{
+
    let users=[],
-   user;
-   if(ls('users')<1){
+    user;
+   if(ls('users')<1 ){
+     
      user={
        id:v4(),
        user:globalState.user,
@@ -20,7 +24,8 @@ export default function CreateUser() {
      }
      users.push(user)
      ls('users',users)
-   }else{
+   }
+   else{
      users=ls('users')
     user={
       id:v4(),
@@ -40,14 +45,14 @@ export default function CreateUser() {
     <div className="create-user">
       <div className="create-user__top"> 
       <div className="create-user__logo"/> 
-      <span className="create-user__title">Who is Watching</span>
+      <span className="create-user__title">Create A User Account</span>
  
        
       </div>
       {/* user image&name */}
       <div className="create-user__form">
     
-             <image className="create-user__user-img"  src={globalState.defaultImage} alt="image"/>
+             <Image width={125} height={125} className="create-user__user-img"  src={globalState.defaultImage} alt="image"/>
              <div className="create-user__input-group">
                  <label>Name</label>
                  <input type="text" value={globalState.user}className="create-user__inputText" onChange={globalState.createUserAction}/>

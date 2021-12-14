@@ -11,13 +11,16 @@ export const StateContext = React.createContext()
 export function useStateContext() {
   return useContext(StateContext)
 }
+
 export function HBOProvider({ children }) {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState("")
 
   const defaultImage = 'https://randomuser.me/api/portraits/men/91.jpg'
 
   const createUserAction = (e) => {
+    console.log(e.target.value)
     setUser(e.target.value)
+  
   }
 
   const removeStringFromDate=()=>{
