@@ -7,18 +7,18 @@ import LazyLoad from 'react-lazyload';
 import PlaceHolder from '../component/Ul/PlaceHolder/PlaceHolder'
 import GenreNav from '../component/Ul/GenreNav/GenreNav'
 import { useEffect, useState } from 'react'
-import globalState from '../component/HboProvider/hboprovider'
 import ShuffleArray from '../component/Utilities/shuffleArray'
 import { useStateContext } from "../component/HboProvider/hboprovider"
-
 import axios from 'axios'
 
 export default function MediaTypePage(props) {
-
+console.log({a:props .query})  
 
 const globalState=useStateContext()
-
+console.log(globalState)
 const checkLenght=()=>{}
+
+
 
 
 // This function check GlobalState.randomid original_name and original_title
@@ -37,28 +37,28 @@ const checkGlobalRandom=()=>{
 }
 
 
-const checkEmptyKey=()=>{
-  if(globalState.key.key===''){
-    const data=[{adult: false,
-      backdrop_path: "/m4lKVel1iHWdS3i4oaSWBcY5RgU.jpg",
-      genre_ids: (2) [878, 10749],
-      id: 452019,
-      media_type: "movie",
-      original_language: "en",
-      original_title: "Needle in a Timestack",
-      overview: "A devoted husband will stop at nothing to save his marriage when it's destroyed by a time-traveling rival.",
-      popularity: 97.825,
-      poster_path: "/rjGYOszxlaUAe6EC5yZ4Q8l3aVL.jpg",
-      release_date: "2021-10-15",
-      title: "Needle in a Timestack",
-      video: false,
-      vote_average: 6.4,
-      vote_count: 5}]
-    // setKey(129680)
-console.log(data)
-  }
-}
-checkEmptyKey()
+// const checkEmptyKey=()=>{
+//   if(globalState.key.key===''){
+//     const data=[{adult: false,
+//       backdrop_path: "/m4lKVel1iHWdS3i4oaSWBcY5RgU.jpg",
+//       genre_ids: (2) [878, 10749],
+//       id: 452019,
+//       media_type: "movie",
+//       original_language: "en",
+//       original_title: "Needle in a Timestack",
+//       overview: "A devoted husband will stop at nothing to save his marriage when it's destroyed by a time-traveling rival.",
+//       popularity: 97.825,
+//       poster_path: "/rjGYOszxlaUAe6EC5yZ4Q8l3aVL.jpg",
+//       release_date: "2021-10-15",
+//       title: "Needle in a Timestack",
+//       video: false,
+//       vote_average: 6.4,
+//       vote_count: 5}]
+//     // setKey(129680)
+// console.log(data)
+//   }
+// }
+// checkEmptyKey()
 // const[key,setKey]=useState[]
 let thumbs=ShuffleArray(globalState.thumbTypes)[0]
 
@@ -79,7 +79,7 @@ let thumbs=ShuffleArray(globalState.thumbTypes)[0]
 
       <FeaturedMedia 
 
-        location={`Release Date: ${globalState.randomid.hasOwnProperty('release_date')?globalState.randomid.release_date:globalState.randomid.first_air_date}`}
+      release_date={` ${globalState.randomid.hasOwnProperty('release_date')?globalState.randomid.release_date:globalState.randomid.first_air_date}`}
         linkUrl={'/movie/id'}
         type="front"
         globalState={globalState}
@@ -87,8 +87,7 @@ let thumbs=ShuffleArray(globalState.thumbTypes)[0]
         MediaUrl={`https://www.youtube.com/embed/${globalState.key.key}?autoplay=1&loop=1&start=10`}
       />
 
-
-      <LazyLoad offset={-400}
+<LazyLoad offset={-400}
        placeholder={<PlaceHolder title="Series" type={thumbs} />}>
         <MediaRow endpoint="discover/movie?with_genres=80&primary_release_year=2021"
           title="Series"

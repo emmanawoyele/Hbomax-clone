@@ -33,6 +33,11 @@ console.log(text)
    setHidecomment(!false)
  }
 
+
+ const SendPost=()=>{
+   console.log({text})
+   
+ }
  const LikeButtonHandlers=()=>{
    const number =1
    if(like ===0){
@@ -108,16 +113,14 @@ Release Date: {props.reviewProps.release_date}
    data-gramm="false" contentEditable={true} suppressContentEditableWarning={true} data-placeholder="Add a comment…" 
    aria-placeholder="Add a comment…" 
    aria-label="Text editor for creating content" 
-   role="textbox" aria-multiline="true" 
-  
-  spellCheck="false">
+   role="textbox" aria-multiline="true" spellCheck="false">
 <p></p>
   </div>
   
     
   
       </div>
-      <div className="review__comments-container_btn-post">Post</div>
+      <div className="review__comments-container_btn-post" onClick={SendPost}>Post</div>
      </div>
 
       
@@ -127,12 +130,12 @@ Release Date: {props.reviewProps.release_date}
     <img src="http://localhost:3000/_next/image?url=https%3A%2F%2Frandomuser.me%2Fapi%2Fportraits%2Fmen%2F91.jpg&w=64&q=75"></img>
     <span>Emmanuel</span>
   </div >
-
-<p>An LA girl, unlucky in love, falls for an East Coast guy on a dating app and decides to surprise him for Christmas, only to discover that she’s been catfished. But the object of her affection actually lives in the same town, and the guy who duped her offers to set them
- up if she pretends to be his own girlfriend for the holidays
- An LA girl, unlucky in love, falls for an East Coast guy on a dating app and decides to surprise him for Christmas, only to discover that she’s been catfished. But the object of her affection actually lives in the same town, and the guy who duped her offers to set them up if she pretends to be his own girlfriend for the holidays
- An LA girl, unlucky in love, falls for an East Coast guy on a dating app and decides to surprise him for Christmas, only to discover that she’s been catfished. But the object of her affection actually lives in the same town, and the guy who duped her offers to set them up if she pretends to be his own girlfriend for the holidays
+<div className="review__comments__userInfo_text">
+<p>
+  {text}
  </p>
+</div>
+
  <div className="review__comments__userInfo-container">
  <div className="review__comments__userInfo-container-icon-count">
    <div className="review__comments__userInfo-container-icon-count-container">
@@ -167,7 +170,7 @@ Release Date: {props.reviewProps.release_date}
 
 
   <form>
-  <div onInput={(e)=>setText(e.target.innerText)} 
+  <div style={{background:"red"}}onInput={(e)=>setText(e.target.innerText)} 
   className="infomation-container_input"
    data-gramm="false" contentEditable={true} suppressContentEditableWarning={true} data-placeholder="Add a comment…" 
    aria-placeholder="Add a comment…" 
@@ -175,7 +178,7 @@ Release Date: {props.reviewProps.release_date}
    role="textbox" aria-multiline="true" 
     
   spellCheck="false">
-<p>{text}</p>
+{text}
   </div>
   </form>
 

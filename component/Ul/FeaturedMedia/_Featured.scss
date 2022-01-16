@@ -47,7 +47,7 @@ transition: opacity  .5s ease-in-out;;
        }
    
     &__title{
-font-size: 7rem;
+font-size: 5rem;
 font-weight: 700;
 color:white;
 margin-bottom: 1rem;
@@ -137,6 +137,9 @@ a{
             &__title{
                 font-size:4rem
             }
+            &__video{
+                transform: scale(1);
+            }
         }
 
        
@@ -149,7 +152,10 @@ a{
     .featured_media{
         width:100vw;
         &__title{
-            font-size:4rem
+            font-size:2rem
+        }
+        &__video{
+            transform: scale(1);
         }
     }
 }

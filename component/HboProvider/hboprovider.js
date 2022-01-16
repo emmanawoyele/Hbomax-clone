@@ -2,7 +2,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ls from 'local-storage';
 import axios from 'axios';
-import ShufflArray from '../Utilities/shuffleArray';
+
 
 
 
@@ -18,7 +18,7 @@ export function HBOProvider({ children }) {
   const defaultImage = 'https://randomuser.me/api/portraits/men/91.jpg'
 
   const createUserAction = (e) => {
-    console.log(e.target.value)
+    
     setUser(e.target.value)
   
   }
@@ -53,6 +53,7 @@ export function HBOProvider({ children }) {
   const [WishList, SetWishList] = useState(ls.get('list'))
   const [key, setkey] = useState('')
   const [randomid, setRandomId] = useState([])
+
 // Shuffle array and return 1 item
   function shuffle(array) {
     
@@ -83,37 +84,55 @@ export function HBOProvider({ children }) {
   }
 //  The first API Generates movie "id" needed for the video API
   useEffect(() => {
-    const video={id: "5b5b91c2925141523700502c",
-    iso_639_1: "en",
-    iso_3166_1: "US",
-    key: "bjqEWgDVPe0",
-    name: "GAME OF THRONES - SEASON 1- TRAILER",
-    official: true,
-    published_at:removeStringFromDate() ,
-    site: "YouTube",
-    size: 1080,
-    type: "Trailer",}
+
+    const data={  adult: false,
+      backdrop_path: "/1xt57PFCseTBZVXqzMrb00fJwq8.jpg",
+      genre_ids: (2) [10770, 99],
+      id: 635293,
+      media_type: "movie",
+      original_language: "en",
+      original_title: "Game Of Thrones",
+      overview: "Across the past seven seasons of the legendary series Game of Thrones, many behind-the-scenes had happened. In this special movie, we see the cast recount their memorable moments that they lived. On another hand, the movie presents interviews with some celebrities that they are real fans for the series.",
+      popularity: 13.836,
+      poster_path: "/y9jXHOydIUjRo1fxUvH7UxNeFH.jpg",
+      release_date: "2019-12-15",
+      title: "Game Of Thrones: Greatest Moments",
+      video: true,
+      vote_average: 8.6,
+      vote_count: 21,}
+    const video={
+id: "61ae8487f8aee8001a94e098",
+iso_639_1: "en",
+iso_3166_1: "US",
+key: "KPLWWIOCOOQ",
+name: "Official Trailer 2",
+official: true,
+published_at: "2021-12-06T17:00:29.000Z",
+site: "YouTube",
+size: 1080,
+type: "Trailer",}
+
     axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.PRIVATE_API_KEY}`)
       .then((response) => {
-        let id=shuffle(response.data.results)
-
-        let key= id.id
+  
+        let oneTreading_Movie=shuffle(response.data.results)
+        let key= oneTreading_Movie.id
    
-     
         
-          setRandomId(id)
+          setRandomId(oneTreading_Movie)
        
 
    axios.get(`https://api.themoviedb.org/3/movie/${key}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
       .then(function (response) {
- 
+        
     let filtermovies= response.data.results
- 
- if(filtermovies ===undefined ||filtermovies.length===0||filtermovies==='404'){
-  setkey(video)
-  setRandomId({original_name:video.name,first_air_date:video.published_at})
 
-   console.log("Your Array is empty")
+ if(!filtermovies.length>0){
+  setRandomId(data)
+  setkey(video)
+
+
+
   
   
  }else{
@@ -122,19 +141,9 @@ export function HBOProvider({ children }) {
    
    
       }).catch((error)=>{
-      if(error.response.status===404)
-          console.log({error:error.response})
-          // axios.get(`https://api.themoviedb.org/3/movie/5b5b91c2925141523700502c/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
-          // .then((response)=>{
-          //   console.log({sit:response})
-          //   setkey(response.data.results[0])
-          // })
-     
-          setRandomId({original_name:video.name,first_air_date:video.published_at})
+      if(error.response.status===404 ||error.response.status===204 ||error.response.status===500) 
+      setRandomId(data)
       setkey(video)
-      
-     
-      
 
       })
       })

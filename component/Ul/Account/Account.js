@@ -8,7 +8,6 @@ import ls from "local-storage"
 import Image from "next/image"
  function Account(props) {
   
-     console.log(props)
    
     const globalState =useStateContext()
    

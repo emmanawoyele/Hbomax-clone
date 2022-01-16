@@ -3,6 +3,7 @@ import router from "next/router"
 import { useStateContext } from "../../HboProvider/hboprovider";
 import axios from 'axios';
 import Link from 'next/link';
+import { get } from 'local-storage';
 // import Review from '../Review/review';
 
 
@@ -16,10 +17,21 @@ export default function FeaturedMedia(props) {
 
     const globalState =useStateContext()
    
- 
+//  console.log({globalrandomid:props.globalState.randomid.id })
+//  console.log({globalkey:props.globalState.key.key})
+//  console.log({mediaId:props.mediaId})
 const closebody=()=>{
    globalState.setAccountOpen(false)
 }
+
+const clickedPlay = (props) => {
+        
+      globalState.WishlistHandler(props)
+
+
+   
+       
+    }
 // method to hide props type
 const hideMoreInfo=()=>{
     if(props.type==="single" ){
@@ -30,6 +42,7 @@ const hideMoreInfo=()=>{
     </div>
     }
 }
+
 
 // method to play traillers
 // const clickplayHandle=(props,url)=>{
@@ -53,26 +66,24 @@ const hideMoreInfo=()=>{
 //         })
   
 // }
-    const [playing, setPlaying] = useState('')
-    const clickedPlay = (props) => {
-        
-    //   globalState.WishlistHandler({mediaId:props.mediaId,mediaType:props.mediaType,mediaUrl:props.MediaUrl},props.mediaId)
-      globalState.WishlistHandler(props)
-
-
+    
    
-       
-    }
+const idHandler=()=>{
+    const props_Date =new Date(props.release_date)
+  console.log(props_Date)
+       let getThis_month= props_Date.getMonth()
+ 
 
-   const idHandler=()=>{
-       if(props.mediaType === 'movie'){
-return 'movie'
-       }else if(props.mediaType === 'tv'){
-        return'tv'
-       }else{
+const a = new Date()
 
-       }
+if( getThis_month===a.getMonth()){
+    return <span style={{background:"red",padding:"5px"}}>New</span>
+}else{
+    return null
+}
+
    }
+
     const ShowMedia = () => {
     
         if (props.type === "front" ||props.type ==="single") {
@@ -90,7 +101,9 @@ return 'movie'
             <div className="featured_media__container">
                 <div className="featured_media__title">{props. movieTitle}</div>
                 <div className="featured_media__playing">NOW PLAYING</div>
-                <div className={`featured_media__location ${props.type==='single' ? 'hide_class' :""}`}>{props.location}</div>
+
+                <div className={`featured_media__location ${props.type==='single' ? 'hide_class' :""}`}>Release Date:   {props.release_date} <span style={{fontSize:"20px"}}>{idHandler()}</span> </div>
+           
                 <div className="featured_media__buttons">
                     <div className="featured_media__play-btn" onClick={()=>clickplayHandle(`/${props.mediaType}/${props.mediaId}`)}>
                         <i className="fas fa-play" />
@@ -99,7 +112,7 @@ return 'movie'
                         <i className="fas fa-plus" />
                     </div>
                     <div className="featured_media__info-btn" >
-                       
+                   
                             <Link href={ `/${props.mediaType === 'tv' ? 'tv' : 'movie'}/review/${props.mediaType=== '/'? props.globalState.randomid.id:props.mediaId}`}>
                       <a>  Read Reviews</a>
                         </Link>

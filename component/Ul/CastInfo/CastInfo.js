@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react'
 
  function CastInfo(props) {
-   
+ 
     const [loadingdata, setloading] = useState(true)
    const [credits, setcredits] = useState([])
    const [crew, setcrew] = useState([])
@@ -10,7 +10,7 @@ import { useState,useEffect } from 'react'
         const axios = require('axios')
         // Make a request for a user with a given ID
         async function fetchCast(){
-            await axios.get(`https://api.themoviedb.org/3/${props.mediaType==="movie"?"movie":"tv"}/${props.credits}?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
+            await axios.get(`https://api.themoviedb.org/3/${props.mediaType==="movie"?"movie":"tv"}/${props.creditsId}?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
             .then(function (response) {
           
              
@@ -31,7 +31,7 @@ import { useState,useEffect } from 'react'
             })
         }
        fetchCast()
-    }, [])
+    }, [props])
     const showCast =()=>{
       
      return credits.map((item)=>{

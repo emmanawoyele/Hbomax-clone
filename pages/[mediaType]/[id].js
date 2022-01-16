@@ -17,13 +17,13 @@ import PlaceHolder from '../../component/Ul/PlaceHolder/PlaceHolder'
 
 export default function SingleMediapage(props) {
   
-
+console.log(props)
 const[defaultMovies,setDefaultMovies]=useState([])
 const[RandomId,setRandomId]=useState([])
 function shuffle(array) {
   let currentIndex= array.find((array)=>{
 
-    console.log({behind:array})
+   
     return array.offical!=false
    
   })
@@ -124,7 +124,7 @@ console.log(error.response)
      
       > </MediaRow> 
     </LazyLoad>
-    <CastInfo credits={`${props.query.id}/credits`}  mediaType={props.query.mediaType}/> 
+    <CastInfo creditsId={`${props.query.id}/credits`}  mediaType={props.query.mediaType}/> 
 
 <div>
 </div>
