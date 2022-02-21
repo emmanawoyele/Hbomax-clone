@@ -43,7 +43,7 @@ transition: opacity  .5s ease-in-out;;
     }
     &__container{
        
-      
+     
        }
    
     &__title{
@@ -121,9 +121,19 @@ a{
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    // .featured_media{
-    //     display: none;
-    // }
+    .featured_media{
+        &__bg{
+display: none;
+        }
+        &__container{
+            position: absolute;
+            z-index: 2;
+            bottom: 0;
+            background: transparent;
+            width: 100%;
+        
+        }
+    }
 }
 
 @media only screen 

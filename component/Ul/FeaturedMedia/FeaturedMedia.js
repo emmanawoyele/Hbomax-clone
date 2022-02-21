@@ -96,6 +96,7 @@ if( getThis_month===a.getMonth()){
 
     return (<div  onClick={closebody}className={`featured_media ${props.type==="single"? "featured-media__single":""}`} >
           {ShowMedia()}
+          
         <div className="featured_media__bg">
           
             <div className="featured_media__container">
