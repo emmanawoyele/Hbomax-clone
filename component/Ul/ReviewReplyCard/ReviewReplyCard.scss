@@ -1,0 +1,60 @@
+.reply_container{
+    background-color: white;
+max-width: 500px;
+width: 500px;
+min-height: 40px;
+border-radius: 13px ;
+padding:5px ;
+margin: 15px 0 15px 0;
+&-userInfo{
+    padding: 20px;
+    margin: 10px;
+    &-userImg{
+        display: flex;
+        align-items: center;
+     
+        img{
+            border-radius: 50px;
+            padding: 5px;
+        }
+        span{
+            margin-left: 5px;
+            font-weight: 50px;
+            font-size: 15px;
+        }
+    }
+    &-icons{
+       
+       
+        &-count{
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            padding-top:1rem;
+            margin-left: .9rem;
+            margin-right: .9rem;
+            padding-bottom: 20px;
+            &-like{
+                padding:5px 3px 5px;
+               color: #000;
+               span{
+                padding:5px
+               }
+            }
+        }
+        &-thumbs-up{
+display: flex;
+border-top: 1px solid gray;
+border-bottom:  1px solid gray;
+&-like,&-comment{
+    padding:5px 30px 5px 30px;
+   
+
+}
+
+
+        }
+    }
+}
+}
+

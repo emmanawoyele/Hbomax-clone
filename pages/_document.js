@@ -16,7 +16,7 @@ class MyDocument extends Document {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossOrigin="anonymous" referrerPolicy="no-referrer" />   
 {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
 <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}/>
-<script>
+{/* <script>
 dangerouslySetInnerHTML={{
               __html: `
             window.dataLayer = window.dataLayer || [];
@@ -26,7 +26,7 @@ dangerouslySetInnerHTML={{
               page_path: window.location.pathname,
             });
           `,
-</script>       
+</script>        */}
   </Head>
         <body>
           <Main />

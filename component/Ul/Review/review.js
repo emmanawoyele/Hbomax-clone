@@ -6,12 +6,14 @@ import { set } from "local-storage";
 import Image from 'next/image'
 import  FeaturedMedia from "../FeaturedMedia/FeaturedMedia"
 import axios from "axios";
+import Backdrop from "../Backdrop/Backdrop";
+import PostModal from "../PostInputModal/PostInputModal";
 
 
 
 
 export default function Review(props) {
-  
+  console.log({props})
   const globalState =useStateContext()
   const [text,setText] = useState("")
   const [hidecomment, setHidecomment]=useState(false)
@@ -83,6 +85,9 @@ console.log(text)
  
   return (
     <MainLayout>
+ 
+
+  
     <div className="review">
       <div className="review__container-image">
         <div className="review__image">
@@ -196,6 +201,7 @@ Release Date: {props.reviewProps.release_date}
  
 </div>
     </div>
+
      </MainLayout>
      
   )

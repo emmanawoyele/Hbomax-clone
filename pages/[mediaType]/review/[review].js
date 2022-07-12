@@ -2,8 +2,10 @@
 import MainLayout from "../../../component/Layouts/MainLayout";
 
 import { useStateContext } from '../../../component/HboProvider/hboprovider'
-import Review from "../../../component/Ul/Review/review";
+import Review from "../../../component/Ul/Review/review2";
 import axios from "axios";
+import Backdrop from "../../../component/Ul/Backdrop/Backdrop";
+import PostModal from "../../../component/Ul/PostInputModal/PostInputModal";
 
 
 
@@ -13,9 +15,12 @@ export default function ReviewIdComponent(props) {
 
 
   return (
-    <MainLayout>
     
-  <Review reviewProps={props.media}/>
+    <MainLayout>
+
+     <Review reviewProps={props.media}/>
+
+ 
   
      </MainLayout>
   )
@@ -32,7 +37,7 @@ export async function getServerSideProps(context) {
     mediaData= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.review}?api_key=${process.env.PRIVATE_API_KEY}&append_to_response=credits&language=en-US`);
     // getCreditsImage= await axios.get(`https://api.themoviedb.org/3/person/${context.query.review}?api_key=${process.env.PRIVATE_API_KEY}&append_to_response=credits`);
     featuredData = await axios.get(`https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&with_genres=${context.query.genre_id}&api_key=${process.env.PRIVATE_API_KEY}&language=en-US`);
-
+console.log({mediaData})
   }catch(error){
  console.log("error")
  console.log(error)

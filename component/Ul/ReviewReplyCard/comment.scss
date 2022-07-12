@@ -1,0 +1,55 @@
+.card-form{
+    padding: 15px;
+    background:yellow;
+    border-radius: 15px;
+    margin:10px 0 10px 0;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    &_contenteditable{
+        outline: none;
+        cursor: pointer;
+        word-wrap: break-word;
+        -ms-word-break: break-all;
+    }
+}
+.comments_card{
+    background-color: green;
+    display: flex;
+    padding: 10px 0 10px 0;
+    
+  
+    &-container{
+        // display: flex;
+        // align-items: center;
+      
+      
+        
+        &-userImg{
+        
+            max-width:100px;
+            max-height: 100px;
+            padding-left:10px;
+            padding-top: 10px;
+            img{
+                width: 40px;
+                height: 40px;
+                object-fit: cover;
+                border-radius: 50px;
+               
+            }
+        }
+        &-response{
+            margin-left: 5px;
+            margin-right: 5px;
+            background-color: gray;
+            border-radius: 10px;
+            
+            p{
+                word-wrap: break-word;
+                padding: 20px 5px 20px 5px;
+            }
+        }
+    }
+  
+}

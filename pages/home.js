@@ -12,11 +12,11 @@ import { useStateContext } from "../component/HboProvider/hboprovider"
 import axios from 'axios'
 
 export default function MediaTypePage(props) {
-console.log({a:props .query})  
+// console.log({a:props.featuredData})  
 
 const globalState=useStateContext()
 console.log(globalState)
-const checkLenght=()=>{}
+
 
 
 
@@ -153,7 +153,6 @@ let videoData;
     genresData= await axios.get(`https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?api_key= ${process.env.PRIVATE_API_KEY}&language=en-US`);
 // videoData=await axios.get(`https://api.themoviedb.org/3/tv/84958/season/${}/videos?api_key=${process.env.PRIVATE_API_KEY}`)
  featuredData = await axios.get(`https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&api_key=${process.env.PRIVATE_API_KEY}&language=en-US`);
-
   }catch(error){
  console.log("error")
  console.log(error)

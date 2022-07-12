@@ -126,6 +126,7 @@ type: "Trailer",}
       .then(function (response) {
         
     let filtermovies= response.data.results
+    console.log({filtermovies})
 
  if(!filtermovies.length>0){
   setRandomId(data)

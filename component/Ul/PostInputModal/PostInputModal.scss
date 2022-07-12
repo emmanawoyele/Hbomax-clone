@@ -1,0 +1,97 @@
+.Modal-container{
+    // background-color: rgba(240, 237, 237, 0.8);
+    // width:100%;
+    // height: 100vh;
+    // z-index: 20;
+    // position: relative;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    &_informations{
+        border-radius: 10px;
+        background-color: white;
+        // height: 400px;
+        min-height: 400px;
+        width: 600px;
+        min-width:600px;
+        position: relative;
+        top:10;
+        
+        
+        
+    }
+    &_writeReveiw-closebtn{
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        color: #000;
+        font-size: 18px;
+        font-weight: 500;
+        border-bottom: 1px solid rgb(222, 220, 220);
+        &-btn{
+        
+             i{
+               padding-right: 10px;
+               font-size: 25px;
+               font-weight: 600;
+            }
+        }
+    }
+    &_user{
+        background-color: white;
+       display: flex;
+       margin:15px 10px 10px 10px;
+       align-content: center;
+       padding: 20px;
+       border-radius: 8px;
+
+       &_userProfile{
+           img{
+               width: 50px;
+               border-radius: 50%;
+           }
+       }
+       &_input{
+        background-color: white;
+        color: #000;
+        width:400px;
+       min-width: 400px;
+       max-height: 200px;
+        border-radius: 20px;
+        outline: none;
+        cursor: pointer;
+        box-shadow: none;
+        text-align:start;
+        padding: 10px;
+        margin-left: 10px;
+    outline: none;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+    overflow-y: auto;
+  
+
+       }
+
+       &_btn-post{
+        font-size: 1.3rem;
+        color:white;
+        font-weight: 600;
+        background-color: black;
+        border-radius: 50px;
+        text-align: center;
+        padding:10px 8px 10px 8px;
+        width: 100px;
+        height: 40px;
+        margin-top: 10px;
+        cursor: pointer;
+        margin: 0 auto;
+        margin-top: 10px;
+        position: absolute;
+        bottom: 10%;
+        left: 25%;
+        right: 25%;
+
+       }
+    }
+}
