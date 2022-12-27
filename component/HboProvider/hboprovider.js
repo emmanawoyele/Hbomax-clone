@@ -13,15 +13,11 @@ export function useStateContext() {
 }
 
 export function HBOProvider({ children }) {
-  const [user, setUser] = useState("")
+
 
   const defaultImage = 'https://randomuser.me/api/portraits/men/91.jpg'
 
-  const createUserAction = (e) => {
-    
-    setUser(e.target.value)
   
-  }
 
   const removeStringFromDate=()=>{
   let str = "2017-02-20 15:25:56 UTC";
@@ -53,7 +49,23 @@ export function HBOProvider({ children }) {
   const [WishList, SetWishList] = useState(ls.get('list'))
   const [key, setkey] = useState('')
   const [randomid, setRandomId] = useState([])
+  const [InformationUser, setUser] = useState({ name:"", username:"", email:"", password:""})
+  const[user_login,setUser_login]=useState({email:"",password:""})
+  const [userInfo,setUserInfo]=useState({})
+  const [errorMessage,setErormessage]=useState("")
+  const [token,setToken]=useState("")
 
+  const createUserAction = (e) => {
+    const value = e.target.value;
+  
+    setUser({...InformationUser,[e.target.name]:value})
+  
+  }
+
+  const createUserLoginAction=(e)=>{
+const value=e.target.value;
+setUser_login({...user_login,[e.target.name]:value})
+  }
 // Shuffle array and return 1 item
   function shuffle(array) {
     
@@ -190,11 +202,13 @@ type: "Trailer",}
   return (
 
     <StateContext.Provider value={{
-      user, createUserAction, defaultImage, sideNavOpen,
+      InformationUser, createUserAction, defaultImage, sideNavOpen,
       setSideNavOpen, accountOpen, setAccountOpen,
       searchOpenAction, setsearchOpenAction,
       searchMovie, setsearchMovieAction, thumbTypes,
-      WishList, WishlistHandler, RemoveMovieList, key, setkey, randomid
+      WishList, WishlistHandler, RemoveMovieList, key, setkey, 
+      randomid,userInfo,setUserInfo,user_login,setUser_login,
+      createUserLoginAction,errorMessage,setErormessage,token,setToken
 
     }}>
 

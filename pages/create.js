@@ -1,44 +1,104 @@
 import Head from 'next/head'
 import { useStateContext } from '../component/HboProvider/hboprovider'
 import { useRouter } from 'next/router'
+import { useEffect,useRef,useState } from 'react'
+import{faCheck,faTimes,faInfoCircle} from '@fortawesome/fontawesome-svg-core'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import ls from "local-storage"
 import {v4} from 'uuid'
 import Image from 'next/image'
+import axios from 'axios'
+import React from 'react'
+import Link from 'next/link'
+
 
 
 
 
 export default function CreateUser() {
+  const[validateName, setvalidateName]=useState(false)
   const router=useRouter()
   const globalState= useStateContext()
-  const saveUser=()=>{
+  const User_REGEX=/^[a-z]{1}[a-z0-9_]{3,23}$/;
 
-   let users=[],
-    user;
-   if(ls('users')<1 ){
+  const SendFormDataHandler=async(e)=>{
+    
+  axios({
+        
+        method: "post",
+        url: "https://crowded-turtleneck-eel.cyclic.app/create",
+        data: globalState.InformationUser,
+        headers:{  "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+      }).then((response)=>{
+        console.log(response)
+        globalState.setUserInfo(response.data)
+        if(response.status===201){
+         return router.push('/login')
+        }else{
+          return null
+        }
+      
+    //     let users=[],
+    //  user;
+    //     if(ls("users")>1){
+    //        user={
+    //         id:globalState.userInfo._id,
+    //         user:globalState.userInfo,
+    //         myListID:[],
+    //       }
+    //       users.push(user),
+    //       ls('users',users)
+    //     }else{
+    //       users=ls("users")
+    //       user={
+    //             id:globalState.user._id,
+    //             user:globalState.user,
+    //             myListID:[]
+    //           }
+    //           users.push(user)
+    //           ls('users',users)
+             
+             
+    //     }
+      
+      }).catch((e)=>{
+console.log({e})
+      });
+      
+   
+}
+
+
+  // const saveUser=()=>{
+
+  //  let users=[],
+  //   user;
+  //  if(ls('users')<1 ){
      
-     user={
-       id:v4(),
-       user:globalState.user,
-       myListID:[]
-     }
-     users.push(user)
-     ls('users',users)
-   }
-   else{
-     users=ls('users')
-    user={
-      id:v4(),
-      user:globalState.user,
-      myListID:[]
-    }
-    users.push(user)
-    ls('users',users)
-   }
-   router.push('/login')
+  //    user={
+  //      id:v4(),
+  //      user:globalState.user,
+  //      myListID:[]
+  //    }
+  //    users.push(user)
+  //    ls('users',users)
+  //  }
+  //  else{
+  //    users=ls('users')
+  //   user={
+  //     id:v4(),
+  //     user:globalState.user,
+  //     myListID:[]
+  //   }
+  //   users.push(user)
+  //   ls('users',users)
+  //  }
+  //  router.push('/login')
 
 
-  }
+  // }
   return (
     <div>
       {/* container */}
@@ -46,16 +106,23 @@ export default function CreateUser() {
       <div className="create-user__top"> 
       <div className="create-user__logo"/> 
       <span className="create-user__title">Create A User Account</span>
- 
+      <Image width={125} height={125} className="create-user__user-img"  src={globalState.defaultImage} alt="image"/>
+
        
       </div>
       {/* user image&name */}
+      <form method="post"  >
       <div className="create-user__form">
     
-             <Image width={125} height={125} className="create-user__user-img"  src={globalState.defaultImage} alt="image"/>
              <div className="create-user__input-group">
-                 <label>Name</label>
-                 <input type="text" value={globalState.user}className="create-user__inputText" onChange={globalState.createUserAction}/>
+                 <label htmlFor='create-user__inputText'>Name</label>
+                 <input type="text"  name="name" value={globalState.InformationUser.name} className="create-user__inputText" onChange={globalState.createUserAction} autoComplete="off"/>
+                 <label>UserName</label>
+                 <input type="text"  name="username" value={globalState.InformationUser.username}  className="create-user__inputText" onChange={globalState.createUserAction}/>
+                 <label>email</label>
+                 <input type="email"  name="email" value={globalState.InformationUser.email}  className="create-user__inputText" onChange={globalState.createUserAction}/>
+                 <label>Password</label>
+                 <input type="password"  name="password" value={globalState.InformationUser.password}  className="create-user__inputText" onChange={globalState.createUserAction}/>
                 <div  className="create-user__colors">
                                 <div className="create-user__color create-user__color--active" style={{
                      background: "rgb(2,0,36)",
@@ -78,9 +145,17 @@ export default function CreateUser() {
           
          </div>
          <div className="create-user__buttons">
-           <div className="create-user__cancel">Cancel</div>
-           <div className="create-user__save" onClick={saveUser}>Save</div>
+           <button type='submit' className="create-user__cancel">Cancel</button>
+           <div className="create-user__save"  onClick={()=>SendFormDataHandler()}>Save</div>
          </div>
+         </form>
+         <div className="create-user__register"  >
+           <span>
+            Already have an account? <Link href="/login">
+   <a>Login</a>
+        </Link>      
+            </span>
+        </div>
     </div>
     </div>
   )

@@ -2,11 +2,12 @@
 .create-user{
     background: rgb(26,39,103);
     background: linear-gradient(312deg,rgba(26,39,103,1)0%, rgba(48,20,94,1)45%,rgba(0,0,0,1)100%);
-    height:100vh;
+    height:100%;
     display: flex;
     justify-content:space-between;
     align-items: center;
     flex-direction: column;
+    min-height: 100vh;
     &__top{
        
         display: flex;
@@ -27,6 +28,7 @@
         color:white;
         font-size:2rem;
         font-weight: 300;
+        margin-bottom: 2.3rem;
     }
     &__form{
        
@@ -94,7 +96,9 @@
         }
         &__buttons{
             display:flex;
-            margin-bottom: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
         }
         &__cancel,&__save{
             display: flex;
@@ -122,6 +126,25 @@
         }
         &__save{
             opacity: 1;
+              }
+              &__register{
+               
+                margin:0px 5px 0px;
+                padding-bottom: 2.5rem;
+                display:block;
+                span{
+                    color: #737373;
+                }
+                a{
+                    color:#fff;
+                    font-size: 1.3rem;
+                    text-decoration: none;
+
+                }
+                a:hover{
+                    color:red;
+                    text-decoration: underline;
+                }
               }
               
               

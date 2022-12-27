@@ -15,9 +15,8 @@ export default function MediaTypePage(props) {
 // console.log({a:props.featuredData})  
 
 const globalState=useStateContext()
-console.log(globalState)
 
-
+console.log(globalState.userInfo)
 
 
 
@@ -147,7 +146,7 @@ export async function getServerSideProps(context) {
 
 
 let genresData;
-featuredData;
+let featuredData;
 let videoData;
   try{
     genresData= await axios.get(`https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?api_key= ${process.env.PRIVATE_API_KEY}&language=en-US`);
@@ -155,7 +154,7 @@ let videoData;
  featuredData = await axios.get(`https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&api_key=${process.env.PRIVATE_API_KEY}&language=en-US`);
   }catch(error){
  console.log("error")
- console.log(error)
+ console.log({error})
   }
 
 

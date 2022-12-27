@@ -5,26 +5,51 @@ import { useEffect } from "react"
 import router from "next/router"
 import ls from "local-storage"
 import Image from "next/image"
+import axios from "axios"
  function Account(props) {
   
    
     const globalState =useStateContext()
-   
+    console.log(props)
+    console.log( {gblobalstate:globalState.userInfo})
     const localstorgeData =globalState.WishList
 
 
 
-const LogoutUser=(id)=>{
+const LogoutUser=async(id)=>{
+ console.log(globalState.userInfo)
+    axios({
+        
+        method: "post",
+        url: "https://crowded-turtleneck-eel.cyclic.app/create/logout",
+    
+        headers:{
+        Authorization:
+            "Bearer " + globalState.userInfo.token,
+        
+        }
+      }).then((response)=>{
+        console.log(response)
+        if(response.status===200){
+        ls.remove('users')
+        ls.remove('activeUId')
 
-ls.remove('users')
-router.push(href)
+          return router.push('/login')
+        }
+       
+      
+      }).catch((e)=>{
+console.log({e})
+      });
+
+
 }
 useEffect(() => {
 
 }, [globalState.user])
 
   const watchlist=(url)=>{
-      
+      console.log(url)
     router.push(url)
    
      globalState.setAccountOpen((prev) => !prev)
@@ -92,9 +117,9 @@ return  <div key={WishlistData.mediaId} className="account__watch-video">
         </Link>
                </li>
                <li>
-               <Link href="/">
+               
           <a  onClick={()=>LogoutUser()}>Sign Out</a>
-        </Link>
+        
                </li>
            </ul>
        </div>

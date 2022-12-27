@@ -67,13 +67,11 @@ const hideMoreInfo=()=>{
   
 // }
     
-   
 const idHandler=()=>{
-    console.log({Sango:props})
-    const props_Date =new Date(props.release_date)
-  console.log({props_Date})
+    console.log({iyan:props. release_date})
+    const props_Date =new Date(props.release_date.replace(/-/g,'/'))
+  console.log(props_Date)
        let getThis_month= props_Date.getMonth()
-       console.log(getThis_month)
  
 
 const a = new Date()
@@ -105,7 +103,7 @@ if( getThis_month===a.getMonth()){
                 <div className="featured_media__title">{props. movieTitle}</div>
                 <div className="featured_media__playing">NOW PLAYING</div>
 
-                <div className={`featured_media__location ${props.type==='single' ? 'hide_class' :""}`}>Release Date:   {props.release_date} <span style={{fontSize:"20px"}}></span> </div>
+                <div className={`featured_media__location ${props.type==='single' ? 'hide_class' :""}`}>Release Date:   {props.release_date} <span style={{fontSize:"20px"}}>{idHandler()}</span> </div>
            
                 <div className="featured_media__buttons">
                     <div className="featured_media__play-btn" onClick={()=>clickplayHandle(`/${props.mediaType}/${props.mediaId}`)}>

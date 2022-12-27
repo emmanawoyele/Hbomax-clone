@@ -6,12 +6,13 @@ import next from 'next'
 import router, { useRouter } from 'next/router'
 import { useMounted } from '../../Hooks/useMounted'
 import Image from 'next/image'
+import LoginUser from "../TestingNewLogin/Login_2"
 
 
 export default function Login() {
   const globalState= useStateContext()
   const[loadingUsers, setloadingUsers]=useState(false)
-  let users= ls("users")!==null?ls("users"):[]
+  let users= ls("user")!==null?ls("users"):[]
   let {hasMounted}=useMounted()
   
   useEffect(() => {
@@ -32,9 +33,9 @@ router.push('/')
 const showUsers=()=>{
   if(!loadingUsers){
 return users.map((user,index)=>{
-  
+  console.log(user)
 return ( 
-<div  onClick={()=>selectUser(user.id)} key={index}className="login-user__user-box">
+<div  onClick={()=>selectUser(user._id)} key={index}className="login-user__user-box">
 <Image className="login-user__user-img" width={125} height={125}  src="https://randomuser.me/api/portraits/men/91.jpg" alt={user.id}/>
 <div className="login-user__user">{user.user}</div>
 </div>)
@@ -46,25 +47,10 @@ const createUser=()=>{
   router.push('/create')
 }
   return (
+<>
     <div>
-      {/* container */}
-    <div className="login-user">
-      <div className="login-user__top"> 
-      <div className="login-user__logo"/> 
-      <span className="login-user__title">Who is Watching?</span>
- 
-       
-      </div>
-      {/* user image&name */}
-      <div className="login-user__form">
-        {hasMounted ? showUsers():""}
-       
-         </div>
-         <div className="login-user__buttons">
-           <div className="login-user__adult" onClick={createUser}>Creat User</div>
-           <div className="login-user__kid">Add Kid</div>
-         </div>
+      <LoginUser/>
     </div>
-    </div>
+    </>
   )
 }

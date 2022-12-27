@@ -150,7 +150,7 @@ check= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/
 credit=await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType==="movie"?"movie":"tv"}/${context.query.id}?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
 
  }catch(error){
-console.log(error)
+console.log({error})
 
  }
   return {
