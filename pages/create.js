@@ -28,11 +28,9 @@ export default function CreateUser() {
         method: "post",
         url: "https://crowded-turtleneck-eel.cyclic.app/create",
         data: globalState.InformationUser,
-        headers:{  "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-      },
+      headers:{  "Content-Type": "application/json" }
       }).then((response)=>{
-        console.log(response)
+        console.log({a:response})
         globalState.setUserInfo(response.data)
         if(response.status===201){
          return router.push('/login')
