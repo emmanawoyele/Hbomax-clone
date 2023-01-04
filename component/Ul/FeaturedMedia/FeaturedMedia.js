@@ -68,8 +68,7 @@ const hideMoreInfo=()=>{
 // }
     
 const idHandler=()=>{
-    console.log({iyan:props. release_date})
-    const props_Date =new Date(props.release_date.replace(/-/g,'/'))
+    const props_Date =new Date(props.release_date)
   console.log(props_Date)
        let getThis_month= props_Date.getMonth()
  

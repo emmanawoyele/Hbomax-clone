@@ -22,13 +22,19 @@ export default function CreateUser() {
   const User_REGEX=/^[a-z]{1}[a-z0-9_]{3,23}$/;
 
   const SendFormDataHandler=async(e)=>{
+    var bodyFormData = new FormData();
+    bodyFormData.append('name',globalState.InformationUser.name);
+    bodyFormData.append('username',globalState.InformationUser.username);
+    bodyFormData.append('email',globalState.InformationUser.email);
+    bodyFormData.append('password',globalState.InformationUser.password);
+    console.log(bodyFormData)
     
   axios({
         
         method: "post",
         url: "https://crowded-turtleneck-eel.cyclic.app/create",
-        data: globalState.InformationUser,
-      headers:{  "Content-Type": "application/json" }
+        data: bodyFormData,
+      headers:{   'Content-Type': 'application/json' }
       }).then((response)=>{
         console.log({a:response})
         globalState.setUserInfo(response.data)
