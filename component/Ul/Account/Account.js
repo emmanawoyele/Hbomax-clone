@@ -2,34 +2,31 @@ import Link from "next/link"
 import { useStateContext} from "../../HboProvider/hboprovider"
 import { useState } from "react"
 import { useEffect } from "react"
-import router from "next/router"
+
 import ls from "local-storage"
 import Image from "next/image"
 import axios from "axios"
+import AddwishList from "./AddedMovies"
  function Account(props) {
   
    
     const globalState =useStateContext()
-    console.log(props)
-    console.log( {gblobalstate:globalState.userInfo})
     const localstorgeData =globalState.WishList
+    let localstorageToken= ls("token")
 
+const LogoutUser=async(e)=>{
 
-
-const LogoutUser=async(id)=>{
- console.log(globalState.userInfo)
-    axios({
+   axios({
         
         method: "post",
         url: "https://crowded-turtleneck-eel.cyclic.app/create/logout",
     
         headers:{
-        Authorization:
-            "Bearer " + globalState.userInfo.token,
+        Authorization:"Bearer " + localstorageToken,
         
         }
       }).then((response)=>{
-        console.log(response)
+      
         if(response.status===200){
         ls.remove('users')
         ls.remove('activeUId')
@@ -45,40 +42,37 @@ console.log({e})
 
 }
 useEffect(() => {
+    
 
-}, [globalState.user])
+}, [])
 
-  const watchlist=(url)=>{
-      console.log(url)
-    router.push(url)
-   
-     globalState.setAccountOpen((prev) => !prev)
-  }
-
-    const AddwishList=()=>{
-        let loopdata;
-        if(localstorgeData !==null){
-    loopdata= localstorgeData.map((WishlistData)=>{
-return  <div key={WishlistData.mediaId} className="account__watch-video"> 
- <Image width={200} height={200}src={`https://image.tmdb.org/t/p/original ${WishlistData.MediaBackdrop}`} alt={WishlistData.movieTitle}></Image>
- <div className="account__watch-overlay">
-<div className="account__watch-buttons">
-<div className="account__watch-circle" onClick={()=>watchlist(`/${WishlistData.mediaType}/${WishlistData.mediaId}`)}>
-    <i className="fas fa-play"/>
-</div>
-<div className="account__watch-circle" onClick={()=>globalState.RemoveMovieList(WishlistData.mediaId)} >
-    <i className="fas fa-times"/>
-</div>
-</div>
-</div>
-</div>
-        })
-  return  loopdata
-}else{
-    return <div className="account__watch-video"></div>
-}
+  
+// 
+//     const AddwishList=()=>{
+//         console.log(localstorgeData)
+//         let loopdata;
+//         if(localstorgeData !==null){
+//     loopdata= localstorgeData.map((WishlistData)=>{
+// return  <div key={WishlistData.mediaId} className="account__watch-video"> 
+//  <Image width={200} height={200}src={`https://image.tmdb.org/t/p/original ${WishlistData.MediaBackdrop}`} alt={WishlistData.movieTitle}></Image>
+//  <div className="account__watch-overlay">
+// <div className="account__watch-buttons">
+// <div className="account__watch-circle" onClick={()=>watchlist(`/${WishlistData.mediaType}/${WishlistData.mediaId}`)}>
+//     <i className="fas fa-play"/>
+// </div>
+// <div className="account__watch-circle" onClick={()=>globalState.RemoveMovieList(WishlistData.mediaId)} >
+//     <i className="fas fa-times"/>
+// </div>
+// </div>
+// </div>
+// </div>
+//         })
+//   return  loopdata
+// }else{
+//     return <div className="account__watch-video"></div>
+// }
  
-    }
+//     }
 
 
     useEffect(() => {
@@ -96,7 +90,7 @@ return  <div key={WishlistData.mediaId} className="account__watch-video">
         <div className="account__details">
         <div className="account__title"> My list</div>
             <div className="account__watch-list"> 
-           {AddwishList()}
+           <AddwishList/>
          
             </div>
         </div>

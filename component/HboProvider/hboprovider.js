@@ -13,11 +13,9 @@ export function useStateContext() {
 }
 
 export function HBOProvider({ children }) {
-
-
+  let localstorageToken= ls("token")
   const defaultImage = 'https://randomuser.me/api/portraits/men/91.jpg'
 
-  
 
   const removeStringFromDate=()=>{
   let str = "2017-02-20 15:25:56 UTC";
@@ -54,6 +52,8 @@ export function HBOProvider({ children }) {
   const [userInfo,setUserInfo]=useState({})
   const [errorMessage,setErormessage]=useState("")
   const [token,setToken]=useState("")
+  const [favouriteMovies,setmovies]=useState([])
+
 
   const createUserAction = (e) => {
     const value = e.target.value;
@@ -96,7 +96,8 @@ setUser_login({...user_login,[e.target.name]:value})
   }
 //  The first API Generates movie "id" needed for the video API
   useEffect(() => {
-
+    // callig API to get the wishlist of movies
+  
     const data={  adult: false,
       backdrop_path: "/1xt57PFCseTBZVXqzMrb00fJwq8.jpg",
       genre_ids: (2) [10770, 99],
@@ -138,14 +139,11 @@ type: "Trailer",}
       .then(function (response) {
         
     let filtermovies= response.data.results
-    console.log({filtermovies})
+   
 
  if(!filtermovies.length>0){
   setRandomId(data)
   setkey(video)
-
-
-
   
   
  }else{
@@ -160,43 +158,97 @@ type: "Trailer",}
 
       })
       })
-  }, [])
+
+  }, [favouriteMovies])
  
  
 
 
   // This Method is to add
-  const WishlistHandler = (video, id) => {
+  const WishlistHandler = async(video, id) => {
+    console.log({video})
+   await axios({
+      
+      method: "post",
+      url: "https://crowded-turtleneck-eel.cyclic.app/movie",
+      data:video,
   
-    let mylist = ls('list')
-    let itemGet;
-    if (mylist !== null) {
-      itemGet = ls.get('list')
-      if (!itemGet.some(item => item.mediaId === video.mediaId)) {
-        itemGet.push(video)
-        ls.set('list', itemGet)
-        SetWishList(itemGet)
+      headers:{
+          "Content-Type": "application/json",
+          Authorization:"Bearer " + localstorageToken,
+      
       }
+    }).then((response)=>{
+   setmovies(current => [...current, response.data])
+     
+
+    }).catch((e)=>{
+console.log({e})
+    });
+    // let localstorageToken= ls("token")
+
+    // let mylist = ls('list')
+    // let itemGet;
+    // if (mylist !== null) {
+    //   itemGet = ls.get('list')
+    //   // if (!itemGet.some(item => item.mediaId === video.mediaId)) {
+    //   //   itemGet.push(video)
+    //   //   ls.set('list', itemGet)
+    //   //   SetWishList(itemGet)
+    //   // }
+
+    //   itemGet.push(video)
+    //   ls.set('list', itemGet)
+    //   SetWishList(itemGet)
 
 
-
-
-    } else {
+    // } else {
     
-      ls.set('list', [video])
-    }
+    //   ls.set('list', [video])
+    // }
+    
+    
 
 
 
   }
 
 
-  const RemoveMovieList = (VideoId) => {
+
+//method remove movies
+
+  const RemoveMovieList = async(VideoId) => {
+    console.log(VideoId)
+
+  await axios({
+      
+    method: "delete",
+    url: `https://crowded-turtleneck-eel.cyclic.app//movie/wishlist/${VideoId}`,
+    
+
+    headers:{
+        "Content-Type": "application/json",
+        Authorization:"Bearer " + localstorageToken,
+    
+    }
+  }).then((response)=>{
+    console.log({deleted:response})
+    setmovies((prevState) => {
+      console.log({prevState})
+      const updatedItems = prevState.filter((item) => item !== VideoId);
+      console.log({updatedItems})
+      return updatedItems ;
+    });
    
-    let myList = ls('list')
-    myList = myList.filter((item) => item.mediaId !== VideoId)
-    ls.set('list', myList)
-    SetWishList(myList)
+
+  }).catch((e)=>{
+console.log({e})
+  });
+   
+    // let myList = ls('list')
+    // myList = myList.filter((item) => item.mediaId !== VideoId)
+    // ls.set('list', myList)
+    // SetWishList(myList)
 
   }
   return (
@@ -208,7 +260,7 @@ type: "Trailer",}
       searchMovie, setsearchMovieAction, thumbTypes,
       WishList, WishlistHandler, RemoveMovieList, key, setkey, 
       randomid,userInfo,setUserInfo,user_login,setUser_login,
-      createUserLoginAction,errorMessage,setErormessage,token,setToken
+      createUserLoginAction,errorMessage,setErormessage,token,setToken,favouriteMovies,setmovies
 
     }}>
 

@@ -5,16 +5,15 @@ import ls from "local-storage";
 import  {useStateContext} from "../HboProvider/hboprovider"
 
 const AuthCheck=(component)=>{
-    console.log({component})
+ 
   
     const globalState= useStateContext()
     
     const[UserLoggedIn,setUserLoggedIn]=useState(false)
     const router=useRouter();
     const {hasMounted} =useMounted()
-    console.log("hey1")
+   
     let activeUId =ls("activeUId")
-    console.log({activeUId})
     let users = ls('users')!==null ?ls('users'):[]
     useEffect(() => {
         if(activeUId ===null &&users.length<1){

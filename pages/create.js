@@ -33,7 +33,7 @@ export default function CreateUser() {
         
         method: "post",
         url: "https://crowded-turtleneck-eel.cyclic.app/create",
-        data: bodyFormData,
+        data: globalState.InformationUser,
       headers:{   'Content-Type': 'application/json' }
       }).then((response)=>{
         console.log({a:response})

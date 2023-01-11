@@ -3,6 +3,7 @@ import router from "next/router"
 import { useStateContext } from "../../HboProvider/hboprovider";
 import axios from 'axios';
 import Link from 'next/link';
+import ls from "local-storage"
 import { get } from 'local-storage';
 // import Review from '../Review/review';
 
@@ -25,10 +26,9 @@ const closebody=()=>{
 }
 
 const clickedPlay = (props) => {
-        
+   
       globalState.WishlistHandler(props)
-
-
+      
    
        
     }
@@ -69,7 +69,7 @@ const hideMoreInfo=()=>{
     
 const idHandler=()=>{
     const props_Date =new Date(props.release_date)
-  console.log(props_Date)
+ 
        let getThis_month= props_Date.getMonth()
  
 
@@ -108,7 +108,7 @@ if( getThis_month===a.getMonth()){
                     <div className="featured_media__play-btn" onClick={()=>clickplayHandle(`/${props.mediaType}/${props.mediaId}`)}>
                         <i className="fas fa-play" />
                     </div>
-                    <div className={`featured_media__play-btn ${props.type==="front"?'hide_class' :""}`} onClick={()=>clickedPlay(props)}>
+                    <div className={`featured_media__play-btn ${props.type==="front"?'hide_class' :""}`} onClick={()=>{globalState.WishlistHandler(props)}}>
                         <i className="fas fa-plus" />
                     </div>
                     <div className="featured_media__info-btn" >

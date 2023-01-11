@@ -11,7 +11,6 @@ function MediaRow(props) {
     const [loadingData, setLoadingData] = useState(true)
     const [movies, setMoviesData] = useState([])
 
- console.log(props)
 
     useEffect(() => {
 
@@ -20,7 +19,7 @@ function MediaRow(props) {
         // Make a request for a user with a given ID
         axios.get(`https://api.themoviedb.org/3/${props.endpoint}&api_key=${process.env.PRIVATE_API_KEY}`)
             .then(function (response) {
-              console.log(response)
+            
                 setLoadingData(false)
                 // handle success
 

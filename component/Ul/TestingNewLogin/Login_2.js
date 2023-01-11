@@ -29,7 +29,8 @@ userRef.current.focus();
       
       let  users=[],
        user;
-       
+       let storeTokens=[],
+       stored_Token;
    await axios({
           
           method: "post",
@@ -39,19 +40,27 @@ userRef.current.focus();
         }).then((response)=>{
           if(response.status===201){
            globalState.setUserInfo(response.data)
-           globalState.setToken(response.data.token)
+           
+           globalState.setToken(response)
          
-            if(ls("users")>1){
+            if(ls("users")||("token")>1){
             user= response.data.user
             users.push(user)
+            stored_Token=response.data.token
+            storeTokens.push(stored_Token)
          ls("users",users)
            return router.push('/userDash')
             }else{
              ls("users")
+             ls("token")
              user= response.data.user
-            
+            stored_Token=response.data.token
+            storeTokens.push(stored_Token)
+
          users.push(user)
+
                   ls('users',users)
+                  ls('token',storeTokens)
              return router.push('/userDash')
              
             }
@@ -142,7 +151,7 @@ userRef.current.focus();
             
                    <input type="email" ref={userRef}  name="email" value={globalState.user_login.email}  className="create-user__inputText" onChange={globalState.createUserLoginAction}/>
                    <label>Password</label>
-                   <input type="password"  name="password" value={globalState.user_login.password}  className="create-user__inputText" onChange={globalState.createUserLoginAction}/>
+                   <input type="password"  name="password" value={globalState.user_login.password} autoComplete="on" className="create-user__inputText" onChange={globalState.createUserLoginAction}/>
                   <div  className="create-user__colors">
                                   <div className="create-user__color create-user__color--active" style={{
                        background: "rgb(2,0,36)",
