@@ -2,17 +2,22 @@ import Link from "next/link"
 import { useStateContext} from "../../HboProvider/hboprovider"
 import { useState } from "react"
 import { useEffect } from "react"
-
 import ls from "local-storage"
 import Image from "next/image"
 import axios from "axios"
 import AddwishList from "./AddedMovies"
+import { useRouter } from 'next/router'
+
  function Account(props) {
-  
-   
+    const router=useRouter()
+
     const globalState =useStateContext()
     const localstorgeData =globalState.WishList
     let localstorageToken= ls("token")
+    useEffect(() => {
+    
+
+    }, [])
 
 const LogoutUser=async(e)=>{
 
@@ -29,7 +34,7 @@ const LogoutUser=async(e)=>{
       
         if(response.status===200){
         ls.remove('users')
-        ls.remove('activeUId')
+        ls.remove('token')
 
           return router.push('/login')
         }
@@ -41,10 +46,7 @@ console.log({e})
 
 
 }
-useEffect(() => {
-    
 
-}, [])
 
   
 // 
