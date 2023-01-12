@@ -21,7 +21,7 @@ import { useRouter } from 'next/router'
 
 const LogoutUser=async(e)=>{
 
-   axios({
+   await axios({
         
         method: "post",
         url: "https://crowded-turtleneck-eel.cyclic.app/create/logout",
