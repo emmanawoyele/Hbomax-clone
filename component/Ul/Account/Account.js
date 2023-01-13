@@ -27,7 +27,7 @@ console.log(localstorageToken)
         url: "https://crowded-turtleneck-eel.cyclic.app/create/logout",
     
         headers:{
-        Authorization:"Bearer " + localstorageToken,
+        Authorization:"Bearer " +localstorageToken,
         
         }
       }).then((response)=>{
