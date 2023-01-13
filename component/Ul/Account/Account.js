@@ -20,7 +20,7 @@ import { useRouter } from 'next/router'
     }, [])
 
 const LogoutUser=async(e)=>{
-
+console.log(localstorageToken)
    await axios({
         
         method: "post",
@@ -31,10 +31,12 @@ const LogoutUser=async(e)=>{
         
         }
       }).then((response)=>{
-      
+      console.log({onethenthisfuck:response})
         if(response.status===200){
         ls.remove('users')
         ls.remove('token')
+        ls.remove('list')
+
 
           return router.push('/login')
         }

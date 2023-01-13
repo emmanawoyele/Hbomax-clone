@@ -3,13 +3,14 @@ import { useStateContext } from '../../HboProvider/hboprovider'
 import { useState,useEffect } from 'react'
 import ls from "local-storage"
 import next from 'next'
-import router, { useRouter } from 'next/router'
+import  { useRouter } from 'next/router'
 import { useMounted } from '../../Hooks/useMounted'
 import Image from 'next/image'
 import LoginUser from "../TestingNewLogin/Login_2"
 
 
 export default function Login() {
+  const router = useRouter()
   const globalState= useStateContext()
   const[loadingUsers, setloadingUsers]=useState(false)
   let users= ls("user")!==null?ls("users"):[]

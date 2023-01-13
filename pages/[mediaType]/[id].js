@@ -16,8 +16,7 @@ import PlaceHolder from '../../component/Ul/PlaceHolder/PlaceHolder'
 
 
 export default function SingleMediapage(props) {
-  
-console.log(props)
+ 
 const[defaultMovies,setDefaultMovies]=useState([])
 const[RandomId,setRandomId]=useState([])
 function shuffle(array) {
@@ -83,8 +82,6 @@ console.log(error.response)
   }, [])
  
  }
-
-  const router = useRouter()
 
 
   const checkname=()=>{
