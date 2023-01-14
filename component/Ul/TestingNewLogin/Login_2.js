@@ -38,10 +38,10 @@ userRef.current.focus();
           data:  globalState.user_login,
           headers:{  "Content-Type": "application/json"},
         }).then((response)=>{
-          if(response.status===201){
-           globalState.setUserInfo(response.data)
+          if(response.status===200){
+          //  globalState.setUserInfo(response.data)
            
-           globalState.setToken(response)
+          //  globalState.setToken(response)
          
             if(ls("users")||("token")>1){
             user= response.data.user
