@@ -16,7 +16,7 @@ export default function MediaTypePage(props) {
 
 const globalState=useStateContext()
 
-console.log(globalState.userInfo)
+
 
 
 

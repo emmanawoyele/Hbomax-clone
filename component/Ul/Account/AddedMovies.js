@@ -31,9 +31,9 @@ export default  function AddwishList(){
             }
         
           }).then((response)=>{
-            console.log({response:response.data})
+          
             globalState. setmovies(response.data)
-            console.log({a:globalState. favouriteMovies})
+           
            
             let mymovieList = ls('list')
            if(mymovieList!==null){
@@ -57,7 +57,7 @@ export default  function AddwishList(){
     // let localstorgeData =WishList
   
     let loopdata;
-  console.log(globalState. favouriteMovies)
+ 
     if(globalState.favouriteMovies!==[]){
 loopdata= globalState.favouriteMovies.map((WishlistData)=>{
   

@@ -1,11 +1,8 @@
-import { useEffect, useState } from 'react'
-import router from "next/router"
+
 import { useStateContext } from "../../HboProvider/hboprovider";
-import axios from 'axios';
+
 import Link from 'next/link';
-import ls from "local-storage"
-import { get } from 'local-storage';
-// import Review from '../Review/review';
+
 
 
 
@@ -68,14 +65,15 @@ const hideMoreInfo=()=>{
 // }
     
 const idHandler=()=>{
+ 
     const props_Date =new Date(props.release_date)
  
        let getThis_month= props_Date.getMonth()
  
 
-const a = new Date()
+const newdate = new Date()
 
-if( getThis_month===a.getMonth()){
+if( getThis_month===newdate.getMonth()){
     return <span style={{background:"red",padding:"5px"}}>New</span>
 }else{
     return null

@@ -159,7 +159,7 @@ type: "Trailer",}
       })
       })
 
-  }, [favouriteMovies])
+  }, [])
  
  
 
