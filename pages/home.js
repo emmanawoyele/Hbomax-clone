@@ -88,7 +88,7 @@ let thumbs=ShuffleArray(globalState.thumbTypes)[0]
 
 <LazyLoad offset={-400}
        placeholder={<PlaceHolder title="Series" type={thumbs} />}>
-        <MediaRow endpoint="discover/movie?with_genres=80&primary_release_year=2021"
+        <MediaRow endpoint="discover/movie?with_genres=80&primary_release_year=2022"
           title="Series"
           mediaType={props.mediaType !=='tv'?'movie':'tv'}
           type={thumbs}
