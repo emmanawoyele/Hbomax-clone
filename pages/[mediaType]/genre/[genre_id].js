@@ -24,11 +24,11 @@ export default function Homeview(props) {
 
 const showRandomMedia=()=>{
   let thumbs;
-  
+  console.log(props.genresData)
   return props.genresData.map((sections,index)=>{
 
 thumbs=ShuffleArray(globalState.thumbTypes)[0]
-console.log(thumbs)
+
 return <LazyLoad key={sections.id} 
 offset={-200} 
 placeholder={<PlaceHolder title={sections.name} 

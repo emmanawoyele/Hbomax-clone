@@ -78,9 +78,9 @@ export default function ReviewReplyCard(){
        <span  ><i className="fas fa-thumbs-up" ></i></span> 
        <span style={{paddingLeft:8+"px"}}>Like</span>
        </div>
-       <div className="reply_container-userInfo-icons-thumbs-up-comment">
-      <span onClick={HideCommentHandler}>  <i className="fas fa-comment"></i> </span>
-      <span style={{paddingLeft:8+"px"}}>Comment</span>
+       <div className="reply_container-userInfo-icons-thumbs-up-comment" onClick={HideCommentHandler}>
+      <span className="reply_container-userInfo-icons-thumbs-up-comment-likeIcon" >  <i className="fas fa-comment"></i> </span>
+      <span reply_container-userInfo-icons-thumbs-up-comment-likeIcon style={{paddingTop:8+"px"}}>Comment</span>
       </div>
       {/* <div className="reply_container__userInfo-container-thumbs-up__like">
       <span>  <i className="fas fa-share"></i> share</span>

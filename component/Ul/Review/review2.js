@@ -64,7 +64,7 @@ const OpenAndCloseModal=()=>{
  
   return (
   
-    <MainLayout>
+    
       
         <div className="review_box">
     
@@ -102,12 +102,14 @@ Release Date: {props.reviewProps.release_date}
 <p></p>
   </div>
   
-    
+  {/* <ReviewReplyCard/>
+
+<ReviewReplyCard/>
+<ReviewReplyCard/> */}
   
       </div>
     
-   
-
+  
     <div className="right">
   {props.reviewProps.credits.cast.map((cast ,index)=>{
     return <div key={cast.credit_id} className="right-container">
@@ -124,7 +126,7 @@ Release Date: {props.reviewProps.release_date}
    
     </div>
     
-     </MainLayout>
+
      
   )
 }

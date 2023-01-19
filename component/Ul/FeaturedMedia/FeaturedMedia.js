@@ -100,7 +100,7 @@ if( getThis_month===newdate.getMonth()){
                 <div className="featured_media__title">{props. movieTitle}</div>
                 <div className="featured_media__playing">NOW PLAYING</div>
 
-                <div className={`featured_media__location ${props.type==='single' ? 'hide_class' :""}`}>Release Date:   {props.release_date} <span style={{fontSize:"20px"}}>{idHandler()}</span> </div>
+                <div className={`featured_media__location ${props.type==='single' ? 'hide_class' :""}`}>Release Date:  {` ${props.release_date === undefined ?"" :props.release_date}`} <span style={{fontSize:"20px"}}>{idHandler()}</span> </div>
            
                 <div className="featured_media__buttons">
                     <div className="featured_media__play-btn" onClick={()=>clickplayHandle(`/${props.mediaType}/${props.mediaId}`)}>

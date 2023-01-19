@@ -2,36 +2,82 @@ import { useState } from "react"
 
 
 const HideComment=(props)=>{
-    const[response,setresponse]=useState("its a very good movie you should watchit")
-    
+    const[response,setresponse]=useState("ts a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchiits a very good movie you should watchit")
+    const [name,setName]=useState("Emmanuel  awoyele")
+
+    let a=[]
+    let b;
+    while(b=0,b<10,b++){
+return <div className="comments_card " >
+       
+<div className="comments_card-container-userImg"  key={b}> 
+<img src="http://www.tellafrica.com.ng/wp-content/uploads/2019/10/20191016_160311.jpg"/>
+</div > 
+<div className="comments_card-container">
+
+<div className="comments_card-container-response">
+<div  className="comments_card-container-response-usersInformation">
+<span className="comments_card-container-response-usersInformation-span1">
+{name}</span>
+
+</div>
+<p>{response}</p>
+</div>
+
+</div>
+
+</div>
+
+    }
     return<>
-     <div className="card-form">
-        <form>
-      <div  className="card-form_contenteditable" 
-      data-gramm="false" contentEditable={true} suppressContentEditableWarning={true} 
-      data-placeholder="Add a comment…" aria-placeholder="Add a comment…" 
-      aria-label="Text editor for creating content" role="textbox" 
-      aria-multiline="true"  
-      spellCheck="false">
+    <div className="card-container">
+      
     
+      <div className="card-container-userImg" > 
+        <img src="http://www.tellafrica.com.ng/wp-content/uploads/2019/10/20191016_160311.jpg"/>
+      </div >
+
+      <div className="card-container-form">
+      
+      <form>
+    <div  className="card-container-form-contenteditable" 
+    data-gramm="false" contentEditable={true} suppressContentEditableWarning={true} 
+    data-placeholder="Add a comment…" aria-placeholder="Add a comment…" 
+    aria-label="Text editor for creating content" role="textbox" 
+    aria-multiline="true"  
+    spellCheck="false">
+  
+    </div>
+    </form>
+      
       </div>
-      </form>
+      </div>
     
-        </div>
-   
+   {/* response card */}
+  
     <div className="comments_card " >
        
         <div className="comments_card-container-userImg" > 
         <img src="http://www.tellafrica.com.ng/wp-content/uploads/2019/10/20191016_160311.jpg"/>
       </div > 
 <div className="comments_card-container">
+  
       <div className="comments_card-container-response">
+      <div  className="comments_card-container-response-usersInformation">
+<span className="comments_card-container-response-usersInformation-span1">
+    {name}</span>
+   
+  </div>
         <p>{response}</p>
       </div>
 
       </div>
 
       </div>
+     
       </>
   }
   export default HideComment
+
+
+  

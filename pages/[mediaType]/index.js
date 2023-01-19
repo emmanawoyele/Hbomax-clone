@@ -37,7 +37,7 @@ type={thumbs} />}>
   title={sections.name}
   endpoint={`discover/${props.query.mediaType}?with_genres=${sections.id}&primary_release_year=2021`}
   type={thumbs}
-  mediaType={props.query.mediaType }
+  mediaType={props.query.mediaType !=='tv' ?'movie':'tv'} 
 />
 </LazyLoad>
 
@@ -54,7 +54,7 @@ type={thumbs} />}>
         movieTitle={props.query.mediaType ==='movie'?props.featuredData.original_title:props.featuredData.name}
         MediaUrl={`https://image.tmdb.org/t/p/original${props.featuredData.backdrop_path}`}
       />
-         <GenreNav mediaType={props.query.mediaType !='tv' ?'movie':'tv'} genresData={props.genresData}/>
+         <GenreNav mediaType={props.query.mediaType !=='tv' ?'movie':'tv'} genresData={props.genresData}/>
      {showRandomMedia()}
 
      <CastInfo credits={`${props.query.id}/credits`} mediaType={props.query.mediaType}/> 

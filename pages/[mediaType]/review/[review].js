@@ -2,7 +2,7 @@
 import MainLayout from "../../../component/Layouts/MainLayout";
 
 import { useStateContext } from '../../../component/HboProvider/hboprovider'
-import Review from "../../../component/Ul/Review/review2";
+import Review from "../../../component/Ul/Review/review3";
 import axios from "axios";
 import Backdrop from "../../../component/Ul/Backdrop/Backdrop";
 import PostModal from "../../../component/Ul/PostInputModal/PostInputModal";

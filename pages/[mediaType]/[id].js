@@ -16,6 +16,7 @@ import PlaceHolder from '../../component/Ul/PlaceHolder/PlaceHolder'
 
 
 export default function SingleMediapage(props) {
+  console.log(props)
  
 const[defaultMovies,setDefaultMovies]=useState([])
 const[RandomId,setRandomId]=useState([])
@@ -115,8 +116,8 @@ console.log(error.response)
       <MediaRow
       update={props.query.id}
      title="Similar To This" 
-     mediaType={props.query.mediaType}
-     endpoint={`${props.query.mediaType==='movie' ?'movie':'tv'}/${props.query.id}/similar?`}
+     mediaType={`${props.query.mediaType !=='movie' ?'tv':'movie'}`}
+     endpoint={`${props.query.mediaType ==='movie' ?'movie':'tv'}/${props.query.id}/similar?`}
       type="small-v"
      
       > </MediaRow> 
@@ -133,21 +134,20 @@ console.log(error.response)
 
 
 export async function getServerSideProps(context) {
-  
+
  let mediaData;
  let check
  let mediaBackDrop_Path
  let credit
  try{
-   
-
+  
 mediaBackDrop_Path= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
 mediaData= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
 check= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
 credit=await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType==="movie"?"movie":"tv"}/${context.query.id}?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
-
+console.log(mediaData)
  }catch(error){
-console.log({error})
+
 
  }
   return {
@@ -158,5 +158,4 @@ console.log({error})
       credits:credit.data,
       query:context.query} // will be passed to the page component as props
   };
-  
 }
