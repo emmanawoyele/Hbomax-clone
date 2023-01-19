@@ -65,10 +65,7 @@ const OpenAndCloseModal=()=>{
   return (
   
     <MainLayout>
-      <Backdrop openModal={openModal} OpenAndClose={OpenAndCloseModal}>
-        <PostModal OpenAndCloseModal={OpenAndCloseModal}/>
-        </Backdrop>  
-   
+      
         <div className="review_box">
     
       <div className="left">
@@ -87,6 +84,10 @@ Release Date: {props.reviewProps.release_date}
     
 
       <div className="review__comments-container">
+      <Backdrop openModal={openModal} OpenAndClose={OpenAndCloseModal}>
+        <PostModal OpenAndCloseModal={OpenAndCloseModal}/>
+        </Backdrop>  
+   
         <div className="review__comments-container-userProfile">
         <img src="http://localhost:3000/_next/image?url=https%3A%2F%2Frandomuser.me%2Fapi%2Fportraits%2Fmen%2F91.jpg&w=64&q=75"></img>
 
@@ -105,11 +106,7 @@ Release Date: {props.reviewProps.release_date}
   
       </div>
     
-    <ReviewReplyCard/>
-    <ReviewReplyCard/>
-    <ReviewReplyCard/>
-    <ReviewReplyCard/>
-
+   
 
     <div className="right">
   {props.reviewProps.credits.cast.map((cast ,index)=>{
