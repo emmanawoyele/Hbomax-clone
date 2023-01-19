@@ -2,6 +2,7 @@
 import { useStateContext } from "../../HboProvider/hboprovider";
 
 import Link from 'next/link';
+import { useEffect,useRef,useState } from "react";
 
 
 
@@ -12,6 +13,21 @@ import Link from 'next/link';
 
 
 export default function FeaturedMedia(props) {
+    const[getwidth,setwidth]=useState('')
+   
+
+    const windowRef = useRef(null);
+let width;
+  useEffect(() => {
+   width= windowRef.current = window;
+    if(windowRef.current >500){
+        setwidth('container')
+
+    }
+    console.log(getwidth)
+  }, []);
+  
+
 //   console.log({props})
     const globalState =useStateContext()
    
@@ -98,7 +114,7 @@ if( getThis_month===newdate.getMonth()){
           
             <div className="featured_media__container">
                 <div className="featured_media__title">{props. movieTitle}</div>
-                <div className="featured_media__playing">NOW PLAYING</div>
+                <div className="featured_media__playing">NOW PLAYING {getwidth}</div>
 
                 <div className={`featured_media__location ${props.type==='single' ? 'hide_class' :""}`}>Release Date:  {` ${props.release_date === undefined ?"" :props.release_date}`} <span style={{fontSize:"20px"}}>{idHandler()}</span> </div>
            
