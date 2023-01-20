@@ -73,7 +73,7 @@ export default function Review(props){
 <div className="review__box-right">
   {props.reviewProps.credits.cast.map((cast ,index)=>{
     return <div key={cast.credit_id} className="review__box-right-container">
-      {cast.profile_path!=null ?<img alt={cast.name} className={'review__box-right-container-casts-image'} layout="responsive"   objectfit="cover" objectposition="center"  src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}/>:<span>
+      {cast.profile_path!==null ?<img alt={cast.name} className={'review__box-right-container-casts-image'} layout="responsive"   objectfit="cover" objectposition="center"  src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}/>:<span>
       <i className="fas fa-image"></i><p>{cast.name} image is missing  </p>
       </span>
       

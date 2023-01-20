@@ -144,24 +144,23 @@ height:auto !important;
 @media screen and (max-width:767px) and (min-width: 320px) {
 
     .review__box {
-        // display: grid;
-        // grid-template-columns: 1fr;
-        margin: 20px 5px 5px 0;
+        
+        margin: 2px;
         height: auto;
-        max-width: 100%;
-        margin: 20px 5px 5px 0;
-    height: auto;
-    grid-template-columns: 1fr ;
+        grid-template-columns: 1fr ;
+        // width:495px;
+        min-width: 100vw;
+      
         &-left{
        margin-top: 20px;
        padding-bottom: 20px;
        margin-bottom: 10px;
        display: flex;
     flex-direction: column;
-    position: static!important;
+    max-width: 100%;
 
        &-image img{
-        width: 100%;
+        max-width: 100%;
         
        }
        &-information{
@@ -171,13 +170,13 @@ height:auto !important;
         word-spacing: 1px;
         letter-spacing: 1px;
         line-height: 21px;
-        padding: 1em;
+        padding: .9em;
         max-width: 100%;
         &-title{
-            padding: 10px;
-            margin-bottom: 52px;
+            padding: 5px;
+          
          &-span1{ 
-            font-size: 60px;
+            font-size: 45px;
             font-weight: 600;
             margin-right: 0;
             padding: 10px 0 10px ;
@@ -185,7 +184,7 @@ height:auto !important;
         }
         &-span2{ 
             
-            font-size: 45px;
+            font-size: 35px;
             font-weight: 200;
         }
         }
@@ -206,7 +205,7 @@ height:auto !important;
             flex-direction: column;
             align-items: center;
             padding: 15px 15px 15px 5px;
-            max-width: 100%;
+            width: 100%;
             &-userProfile{
                 margin-right: 0.5rem;
                 img{
@@ -214,7 +213,7 @@ height:auto !important;
                 }
             }
            &-input{
-             background-color: black;
+            background-color: whitesmoke;
              p{
                 padding: 10px;
                font-size: 1.8em;
@@ -234,6 +233,7 @@ height:auto !important;
      
             width: 100%;
             max-width: 100%;
+            transform: translate3d(0px,0px,0px);
             &-container{
                 width: 100%;
                 max-width: 100%;
@@ -362,7 +362,7 @@ height:auto !important;
                 }
             }
            &-input{
-             background-color: black;
+          background-color: whitesmoke;
              p{
                 padding: 10px;
                font-size: 1.8em;
@@ -384,6 +384,7 @@ height:auto !important;
             gap: 15px;
             width: 100%;
             max-width: 100%;
+            transform: translate3d(0px,0px,0px);
             &-container{
                 width: 100%;
                 max-width: 100%;
@@ -396,6 +397,30 @@ height:auto !important;
         }
         
     }
+
+    
+  }
+  
+  
+
+// media query for 1200px
+@media (min-width: 991px) and (max-width: 1200px) {
+    .review__box {
+        
+       
+        &-comments-container{
+           
+          
+            margin: 0;
+            max-width: 100%;
+            &-house{
+                max-width: 100%;
+            }
+           
+            }
+        }
+        
+    
 
     
   }
