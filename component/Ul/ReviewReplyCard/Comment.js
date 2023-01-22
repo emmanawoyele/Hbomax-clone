@@ -2,7 +2,7 @@ import { useState } from "react"
 
 
 const HideComment=(props)=>{
-    const[response,setresponse]=useState("ts a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchiits a very good movie you should watchit")
+    const[response,setresponse]=useState("ts a ts a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchiits a very good movie you should watchitts a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchiits a very good movie you should watchitts a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchiits a very good movie you should watchitts a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchiits a very good movie you should watchitts a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchiits a very good movie you should watchit very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchits a very good movie you should watchiits a very good movie you should watchit")
     const [name,setName]=useState("Emmanuel  awoyele")
 
     let a=[]
@@ -53,7 +53,6 @@ return <div className="comments_card " >
       </div>
       </div>
     
-   {/* response card */}
   
     <div className="comments_card " >
        

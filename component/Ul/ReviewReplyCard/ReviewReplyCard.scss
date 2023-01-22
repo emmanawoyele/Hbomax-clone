@@ -1,11 +1,11 @@
 .reply_container{
     background-color: white;
-    max-width: 90%;
-    width: 90%;
+    max-width: 100%;
+    width: 100%;
     min-height: 40px;
     border-radius: 13px ;
     padding:5px ;
-    margin: 34px 0 15px 24px;
+    margin: 34px 0 15px;
 
 &-userInfo{
     padding: 20px;
@@ -52,6 +52,7 @@
         }
         &-thumbs-up{
 display: flex;
+flex-wrap: wrap;
 border-top: 1px solid gray;
 border-bottom:  1px solid gray;
 cursor: pointer;
@@ -80,4 +81,62 @@ cursor: pointer;
     }
 }
 }
+// Mobile phones
+@media screen and (max-width:767px) and (min-width: 320px) {
 
+    .reply_container{
+        &-userInfo{
+            padding:0;
+            margin: 0;
+            &-userImg{
+                display: flex;
+                align-items: center;
+             
+                img{
+                    
+                    padding: 2px;
+                }
+                span{
+                    margin-left: 5px;
+                    font-weight: 50px;
+                    font-size: 15px;
+                }
+            }
+            &-icons{
+               
+               
+                &-count{
+              
+                    &-like{
+                       
+                       cursor: pointer;
+                       span{
+                     
+                        
+                       }
+                    }
+                }
+                &-thumbs-up{
+    
+        &-like,&-comment{
+            padding: 10px;
+            span{
+                padding:0 5px 0!important;
+            }
+   
+            
+             
+        &-comment-likeIcon{
+            
+        }
+        }
+        
+        
+        
+                }
+            }
+
+        }
+    }
+   
+}

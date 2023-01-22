@@ -6,12 +6,22 @@
     justify-content: center;
     align-items: center;
     gap:4px;
-    width: 100%;
+    width:500px;
+    max-width: 100vw;
     padding: 10px;
+    position: relative;
     &-userImg{
+        position: absolute;
+        top:13%;
+        left:-2%;
+        width: 41px;
+    height: 41px;
+
+
+        
        img{ 
-        width: 30px;
-        height: 30px;
+        width: 100%;
+        height: 100%;
         border-radius: 50px;
         object-fit: cover;
         object-position: center;
@@ -20,6 +30,7 @@
 
     }
 &-form{
+    right:-12px;
     padding: 15px;
     background: #fff;
     border-radius: 15px;
@@ -30,6 +41,8 @@
     // max-width: 80%;
     width: 90%;
     height: auto;
+    position: relative;
+    top:0;
   
     cursor: pointer;
     &-contenteditable{
@@ -38,6 +51,9 @@
         word-wrap: break-word;
         -ms-word-break: break-all;
         color:#141415;
+        letter-spacing: 1px;
+        font-size: 1.13rem;
+        
     }
 }
 }
@@ -92,3 +108,56 @@
     }
   
 }
+
+
+
+// media query for 1200px
+@media (max-width:767px) and (min-width: 320px) {
+    .card-container{
+    width:100%;
+    gap: 0;
+    grid-gap:0;
+
+        &-form{
+       &-contenteditable{
+        font-size: 24px;
+      
+
+       }
+     
+        }
+        &-userImg {
+            
+            left:-2%;
+        }
+    }
+}
+
+// media query for 1200px
+@media (min-width: 768px) and (max-width: 991px) {
+    .card-container{
+    
+
+   
+        &-form{
+       &-contenteditable{
+        font-size: 1.13rem;
+       }
+        }
+    }
+}
+  
+// media query for 1200px
+@media (min-width: 991px) and (max-width: 1200px) {
+    .card-container{
+        max-width: 100%;
+   
+        &-form{
+       &-contenteditable{
+        font-size: 1.13rem;
+       }
+        }
+    }
+}
+  
+  
