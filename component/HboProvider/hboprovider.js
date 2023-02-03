@@ -53,6 +53,7 @@ export function HBOProvider({ children }) {
   const [errorMessage,setErormessage]=useState("")
   const [token,setToken]=useState("")
   const [favouriteMovies,setmovies]=useState([])
+  const[getMovieId,setMovieId]=useState({movieId:"",movieTitle:""})
 
 
   const createUserAction = (e) => {
@@ -139,7 +140,7 @@ type: "Trailer",}
       .then(function (response) {
         
     let filtermovies= response.data.results
-   
+   console.log(favouriteMovies)
 
  if(!filtermovies.length>0){
   setRandomId(data)
@@ -213,7 +214,11 @@ console.log({e})
 
   }
 
+// method to get id from featuredMedia when user click on the Review button. 
+const getMovieIdHandler=(id,props)=>{
 
+
+}
 
 //method remove movies
 
@@ -260,7 +265,8 @@ console.log({e})
       searchMovie, setsearchMovieAction, thumbTypes,
       WishList, WishlistHandler, RemoveMovieList, key, setkey, 
       randomid,userInfo,setUserInfo,user_login,setUser_login,
-      createUserLoginAction,errorMessage,setErormessage,token,setToken,favouriteMovies,setmovies
+      createUserLoginAction,errorMessage,setErormessage,token,setToken,favouriteMovies,setmovies,
+      getMovieIdHandler,getMovieId,setMovieId
 
     }}>
 

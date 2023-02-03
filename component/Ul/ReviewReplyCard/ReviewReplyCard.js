@@ -1,9 +1,16 @@
 import { useState,useEffect } from "react";
 import HideComment from "./Comment";
+import ls from "local-storage";
+import axios from 'axios'
 
 
-export default function ReviewReplyCard(){
-    const [text,setText] = useState("")
+
+
+
+export default function ReviewReplyCard(props){
+  let localstorageToken= ls("token")
+
+    const [text,setText] = useState('')
     const [like, setLike]=useState(0)
     const [dislike, setDisLike]=useState(0)
     const [hidecomment, setHidecomment]=useState(false)
@@ -42,10 +49,6 @@ export default function ReviewReplyCard(){
     return(
         <>
     <div className="reply_container"> 
-
-     
-     
-
       
     <div className="reply_container-userInfo">
       <div className="reply_container-userInfo-userImg">
@@ -54,8 +57,8 @@ export default function ReviewReplyCard(){
         <span>Emmanuel</span>
       </div >
     <div className="reply_comments-userInfo_text">
-    <p>
-      {text}
+    <p style={{color:"black"}}>
+      {props.feed.comments}
      </p>
     </div>
     
@@ -112,4 +115,3 @@ export default function ReviewReplyCard(){
     )
        
 }
-

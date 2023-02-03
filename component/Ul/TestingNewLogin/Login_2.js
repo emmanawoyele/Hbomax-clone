@@ -35,6 +35,8 @@ userRef.current.focus();
           
           method: "post",
           url: "https://crowded-turtleneck-eel.cyclic.app/create/login",
+          // url: "http://localhost:8000/create/login",
+
           data:  globalState.user_login,
           headers:{  "Content-Type": "application/json"},
         }).then((response)=>{
@@ -93,7 +95,7 @@ userRef.current.focus();
         
         }).catch((e)=>{
           console.log({error:e})
-  return globalState.setErormessage(e.response.data)
+  return globalState.setErormessage()
         });
         
      
@@ -149,7 +151,7 @@ userRef.current.focus();
       
                <div className="create-user__input-group">
             
-                   <input type="email" ref={userRef}  name="email" value={globalState.user_login.email}  className="create-user__inputText" onChange={globalState.createUserLoginAction}/>
+                   <input type="text" ref={userRef}  name="email" value={globalState.user_login.email}  className="create-user__inputText" onChange={globalState.createUserLoginAction}/>
                    <label>Password</label>
                    <input type="password"  name="password" value={globalState.user_login.password} autoComplete="on" className="create-user__inputText" onChange={globalState.createUserLoginAction}/>
                   <div  className="create-user__colors">

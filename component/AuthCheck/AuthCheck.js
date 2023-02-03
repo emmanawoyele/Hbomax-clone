@@ -16,12 +16,9 @@ const AuthCheck=(component)=>{
     let activeUId =ls("activeUId")
     let users = ls('users')!==null ?ls('users'):[]
     useEffect(() => {
-        if(activeUId ===null &&users.length<1){
+        if(activeUId ===null && users.length<1){
             router.push('/login')
-        }
-       
-        
-        if(users.length >1 &&activeUId!==null ){
+        }else if(users.length >1 &&activeUId!==null ){
             return hasMounted ?(component):(<div className="create-user">
                 <div className="create-user__top">
                     <div className="create-user__logo"></div>

@@ -85,7 +85,6 @@ let thumbs=ShuffleArray(globalState.thumbTypes)[0]
         movieTitle={checkGlobalRandom()}
         MediaUrl={`https://www.youtube.com/embed/${globalState.key.key}?autoplay=1&loop=1&start=10`}
       />
-
 <LazyLoad offset={-400}
        placeholder={<PlaceHolder title="Series" type={thumbs} />}>
         <MediaRow endpoint="discover/movie?with_genres=80&primary_release_year=2022"

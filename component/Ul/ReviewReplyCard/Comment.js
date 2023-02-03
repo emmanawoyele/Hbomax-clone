@@ -34,7 +34,7 @@ return <div className="comments_card " >
       
     
       <div className="card-container-userImg" > 
-        <img src="http://www.tellafrica.com.ng/wp-content/uploads/2019/10/20191016_160311.jpg"/>
+        <img src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-732x549.jpg"/>
       </div >
 
       <div className="card-container-form">
@@ -57,7 +57,7 @@ return <div className="comments_card " >
     <div className="comments_card " >
        
         <div className="comments_card-container-userImg" > 
-        <img src="http://www.tellafrica.com.ng/wp-content/uploads/2019/10/20191016_160311.jpg"/>
+        <img src="https://gorillas.org/wp-content/uploads/thumb-gorillaaboutus.jpg"/>
       </div > 
 <div className="comments_card-container">
   

@@ -14,7 +14,7 @@ import { useEffect,useRef,useState } from "react";
 
 export default function FeaturedMedia(props) {
     const[getwidth,setwidth]=useState('')
-   
+    const globalState =useStateContext()
 
     const windowRef = useRef(null);
 let width;
@@ -27,13 +27,8 @@ let width;
     console.log(getwidth)
   }, []);
   
-
-//   console.log({props})
-    const globalState =useStateContext()
+  
    
-//  console.log({globalrandomid:props.globalState.randomid.id })
-//  console.log({globalkey:props.globalState.key.key})
-//  console.log({mediaId:props.mediaId})
 const closebody=()=>{
    globalState.setAccountOpen(false)
 }
@@ -127,7 +122,7 @@ if( getThis_month===newdate.getMonth()){
                     </div>
                     <div className="featured_media__info-btn" >
                    
-                            <Link href={ `/${props.mediaType === 'tv' ? 'tv' : 'movie'}/review/${props.mediaType=== '/'? props.globalState.randomid.id:props.mediaId}`}>
+                            <Link href={ `/${props.mediaType === 'tv' ? 'tv' : 'movie'}/review/${props.mediaType=== '/'? props.globalState.randomid.id:props.mediaId}`} >
                       <a>  Read Reviews</a>
                         </Link>
     

@@ -15,31 +15,26 @@ import { useRouter } from 'next/router'
     const localstorgeData =globalState.WishList
     let localstorageToken= ls("token")
     useEffect(() => {
-    
-
     }, [])
 
 const LogoutUser=async(e)=>{
 
-   await axios({
-        
+   await axios({ 
         method: "post",
         url: "https://crowded-turtleneck-eel.cyclic.app/create/logout",
     
+
         headers:{
-        Authorization:"Bearer " +localstorageToken,
-        
+        Authorization:`Bearer ${localstorageToken}`,
         }
       }).then((response)=>{
      
         if(response.status===200){
-            ls.remove('activeUId')
+         ls.remove('activeUId')
         ls.remove('users')
         ls.remove('token')
         ls.remove('list')
-
-
-          return router.push('/login')
+           return router.push('/login')
         }
        
       

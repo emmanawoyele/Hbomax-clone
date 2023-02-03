@@ -1,11 +1,9 @@
-import MainLayout from "../../Layouts/MainLayout";
-import MediaRow from "../MediaRow/MediaRow";
+
 import { useStateContext } from '../../HboProvider/hboprovider'
 import { useState,useEffect } from "react";
 import Backdrop from "../Backdrop/Backdrop";
-import { set } from "local-storage";
+import ls from "local-storage";
 import Image from 'next/image'
-import  FeaturedMedia from "../FeaturedMedia/FeaturedMedia"
 import axios from "axios";
 import PostModal from "../PostInputModal/PostInputModal";
 import ReviewReplyCard from "../ReviewReplyCard/ReviewReplyCard";
@@ -13,13 +11,31 @@ import ReviewReplyCard from "../ReviewReplyCard/ReviewReplyCard";
 
 
 export default function Review(props){
+  const globalState=useStateContext()
     const [openModal,setModal]=useState(false)
     const[text,setText]=useState()
-
+    const[FeedCard,setFeedCard]=useState([])
+    let localstorageToken= ls("token")
+   
+    useEffect(() => {
+      console.log(localstorageToken)
+      let source = new EventSource(`https://crowded-turtleneck-eel.cyclic.app/comment?token=${localstorageToken}`,{
+        // let source = new EventSource(`http://localhost:8000/comment?token=${localstorageToken}`,{
+  
+      });
+      source.onmessage = (event) => {
+        let parsedEventData=JSON.parse(event.data)
+        console.log(parsedEventData)
+        setFeedCard(parsedEventData)
+        
+      };
+    }, []);
+// OPEN AND CLOSE MODAL HADLER
     const OpenAndCloseModal=()=>{
- 
         setModal((prev) => !prev)
       }
+
+
     return(
     <div className="review__box">
 <div className="review__box-left">
@@ -48,7 +64,7 @@ export default function Review(props){
 
         </div>
         <Backdrop openModal={openModal} OpenAndClose={OpenAndCloseModal}>
-        <PostModal OpenAndCloseModal={OpenAndCloseModal}/>
+        <PostModal OpenAndCloseModal={OpenAndCloseModal} reviewProps={props}/>
         </Backdrop>  
       <div disabled onInput={(e)=>setText(e.target.innerText)} 
   className="review__box-comments-container-input"
@@ -63,9 +79,11 @@ export default function Review(props){
        
 
   <div  className="review__box-comments-container-replaycard">
-  <ReviewReplyCard/>
-  <ReviewReplyCard/>
-   <ReviewReplyCard/>
+    {FeedCard.map((feeds)=>{
+     return <ReviewReplyCard feed={feeds} key={feeds._id}/>
+    })}
+ 
+
   </div>
   
       </div>
