@@ -21,7 +21,7 @@ await axios({
       url: "https://crowded-turtleneck-eel.cyclic.app/comment",
       data:text ,
       headers:{  "Content-Type": "application/json",
-      Authorization:"Bearer " + localstorageToken},
+      Authorization:`Bearer ${localstorageToken}`},
     }).then((response)=>{
       console.log(response)
       if(response.status===201){
