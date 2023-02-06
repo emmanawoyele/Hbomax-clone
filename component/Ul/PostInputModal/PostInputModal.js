@@ -18,7 +18,9 @@ export default function PostModal(props){
 await axios({
       
       method: "post",
-      url: "https://crowded-turtleneck-eel.cyclic.app/comment",
+      // url: "https://crowded-turtleneck-eel.cyclic.app/comment",
+      url: "http://localhost:8000/comment",
+
       data:text ,
       headers:{  "Content-Type": "application/json",
       Authorization:`Bearer ${localstorageToken}`},
