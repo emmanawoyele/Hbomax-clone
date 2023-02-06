@@ -29,8 +29,8 @@ export default function Review(props){
 
     useEffect(() => {
       console.log(localstorageToken)
-      // let source = new EventSource(`https://crowded-turtleneck-eel.cyclic.app/comment?token=${localstorageToken}`,{
-        let source = new EventSource(`http://localhost:8000/comment?token=${localstorageToken}`,{
+      let source = new EventSource(`https://crowded-turtleneck-eel.cyclic.app/comment?token=${localstorageToken}`,{
+        // let source = new EventSource(`http://localhost:8000/comment?token=${localstorageToken}`,{
   
       });
       source.onmessage = async(event) => {
@@ -42,7 +42,7 @@ export default function Review(props){
         
       };
     }, []);
-    
+
 // OPEN AND CLOSE MODAL HADLER
     const OpenAndCloseModal=()=>{
         setModal((prev) => !prev)
