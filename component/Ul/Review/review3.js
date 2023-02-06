@@ -11,7 +11,7 @@ import ReviewReplyCard from "../ReviewReplyCard/ReviewReplyCard";
 
 
 export default function Review(props){
-  console.log(props)
+ 
   const globalState=useStateContext()
     const [openModal,setModal]=useState(false)
     const[text,setText]=useState()
@@ -28,13 +28,12 @@ export default function Review(props){
       
 
     useEffect(() => {
-      console.log(localstorageToken)
+ 
       let source = new EventSource(`https://crowded-turtleneck-eel.cyclic.app/comment?token=${localstorageToken}`,{
-        // let source = new EventSource(`http://localhost:8000/comment?token=${localstorageToken}`,{
   
       });
       source.onmessage = async(event) => {
-        let parsedEventData=await JSON.parse(event.data).filter((filterdMovie)=>{
+        let parsedEventData= JSON.parse(event.data).filter((filterdMovie)=>{
            return filterdMovie.movieId === props.reviewProps.id
         })
        const sortedArray = sortByCreatedAt(parsedEventData)
