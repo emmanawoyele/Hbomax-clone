@@ -34,16 +34,15 @@ userRef.current.focus();
    await axios({
           
           method: "post",
-          url: "https://crowded-turtleneck-eel.cyclic.app/create/login",
-          // url: "http://localhost:8000/create/login",
+          url: "https://hboback-end.herokuapp.com/create/login",
+          // url: "https://vast-pink-puffer-coat.cyclic.app/create/login",
+
+          // url: "http://localhost:9000/create/login",
 
           data:  globalState.user_login,
           headers:{  "Content-Type": "application/json"},
         }).then((response)=>{
           if(response.status===200){
-          //  globalState.setUserInfo(response.data)
-           
-          //  globalState.setToken(response)
          
             if(ls("users")||("token")>1){
             user= response.data.user
@@ -103,37 +102,7 @@ userRef.current.focus();
 
 
   
-  
-    // const saveUser=()=>{
-  
-    //  let users=[],
-    //   user;
-    //  if(ls('users')<1 ){
-       
-    //    user={
-    //      id:v4(),
-    //      user:globalState.user,
-    //      myListID:[]
-    //    }
-    //    users.push(user)
-    //    ls('users',users)
-    //  }
-    //  else{
-    //    users=ls('users')
-    //   user={
-    //     id:v4(),
-    //     user:globalState.user,
-    //     myListID:[]
-    //   }
-    //   users.push(user)
-    //   ls('users',users)
-    //  }
-    //  router.push('/login')
-  
-  
-    // }
-    console.log(globalState.userInfo)
-    console.log({my:globalState.token})
+
     return (
       <div>
         {/* container */}

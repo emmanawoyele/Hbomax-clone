@@ -2,13 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import { useStateContext } from "../../HboProvider/hboprovider";
 import ls from "local-storage";
+import Backdrop from "../Backdrop/Backdrop";
 
 
 
 
 export default function PostModal(props){
   let localstorageToken= ls("token")
-  console.log({getreay:props})
+
   const globalState = useStateContext()
   const [text,setText] = useState({comments:"", movieId:"",Title:""})
   
@@ -18,23 +19,18 @@ export default function PostModal(props){
 await axios({
       
       method: "post",
-      url: "https://crowded-turtleneck-eel.cyclic.app/comment",
-      // url: "http://localhost:8000/comment",
-
+      url: "https://hboback-end.herokuapp.com/comment",
+      // url: "http://localhost:9000/comment",
       data:text ,
       headers:{  "Content-Type": "application/json",
       Authorization:`Bearer ${localstorageToken}`},
     }).then((response)=>{
-      console.log(response)
+   
       if(response.status===201){
         props.OpenAndCloseModal(false)
-
       }
-  
-    
     }).catch((e)=>{
       console.log({error:e})
-
     });
     
  
@@ -43,6 +39,8 @@ console.log(text)
     
     return ( 
       <>
+       <Backdrop openModal={props.openModal} OpenAndClose={props.OpenAndCloseModal}>
+    
 
     <div className="Modal-container">
 
@@ -73,6 +71,7 @@ console.log(text)
   </div>
   
       </div>
+      </Backdrop>
     
   </>
    

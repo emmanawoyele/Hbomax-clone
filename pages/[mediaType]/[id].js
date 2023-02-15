@@ -22,12 +22,8 @@ const[defaultMovies,setDefaultMovies]=useState([])
 const[RandomId,setRandomId]=useState([])
 function shuffle(array) {
   let currentIndex= array.find((array)=>{
-
-   
-    return array.offical!=false
-   
+     return array.offical!==false
   })
-  console.log({currentIndex})
    currentIndex= array.length
 
   let randomIndex;

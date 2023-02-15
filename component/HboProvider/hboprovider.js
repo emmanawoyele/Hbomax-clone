@@ -171,7 +171,10 @@ type: "Trailer",}
    await axios({
       
       method: "post",
-      url: "https://crowded-turtleneck-eel.cyclic.app/movie",
+      url: `https://hboback-end.herokuapp.com/movie`,
+      // url: `http://localhost:9000/movie`,
+
+      
       data:video,
   
       headers:{

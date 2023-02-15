@@ -21,8 +21,8 @@ const LogoutUser=async(e)=>{
 
    await axios({ 
         method: "post",
-        url: "https://crowded-turtleneck-eel.cyclic.app/create/logout",
-    
+        url: "https://hboback-end.herokuapp.com/create/logout",
+        // url: "http://localhost:9000/create/logout",
 
         headers:{
         Authorization:`Bearer ${localstorageToken}`,
@@ -46,33 +46,6 @@ console.log({e})
 }
 
 
-  
-// 
-//     const AddwishList=()=>{
-//         console.log(localstorgeData)
-//         let loopdata;
-//         if(localstorgeData !==null){
-//     loopdata= localstorgeData.map((WishlistData)=>{
-// return  <div key={WishlistData.mediaId} className="account__watch-video"> 
-//  <Image width={200} height={200}src={`https://image.tmdb.org/t/p/original ${WishlistData.MediaBackdrop}`} alt={WishlistData.movieTitle}></Image>
-//  <div className="account__watch-overlay">
-// <div className="account__watch-buttons">
-// <div className="account__watch-circle" onClick={()=>watchlist(`/${WishlistData.mediaType}/${WishlistData.mediaId}`)}>
-//     <i className="fas fa-play"/>
-// </div>
-// <div className="account__watch-circle" onClick={()=>globalState.RemoveMovieList(WishlistData.mediaId)} >
-//     <i className="fas fa-times"/>
-// </div>
-// </div>
-// </div>
-// </div>
-//         })
-//   return  loopdata
-// }else{
-//     return <div className="account__watch-video"></div>
-// }
- 
-//     }
 
 
     useEffect(() => {

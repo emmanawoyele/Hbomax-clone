@@ -18,32 +18,40 @@ export default function Review(props){
     const[FeedCard,setFeedCard]=useState([])
     let localstorageToken= ls("token")
    
+    // sorting fucntion
     function sortByCreatedAt(arr) {
       let i
       i=arr.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-       console.log(i)
+    
         return i  
     }
     
       
 
     useEffect(() => {
- 
-      let source = new EventSource(`https://crowded-turtleneck-eel.cyclic.app/comment?token=${localstorageToken}`,{
-  
-      });
-      source.onmessage = async(event) => {
+      let source = new EventSource(`https://hboback-end.herokuapp.com/comment?token=${localstorageToken}`
+        // let source = new EventSource(`http://localhost:9000/comment?token=${localstorageToken}&id=${props.reviewProps.id}`,
+);
+      source.onmessage = (event) => {
+        
+let i =JSON.parse(event.data)
+console.log(i)
         let parsedEventData= JSON.parse(event.data).filter((filterdMovie)=>{
            return filterdMovie.movieId === props.reviewProps.id
-        })
-       const sortedArray = sortByCreatedAt(parsedEventData)
+        });
+
+       const sortedArray = sortByCreatedAt(i)
         setFeedCard(sortedArray)
         
+      };
+      source.onerror = (error) => {
+        console.error("EventSource failed:", error);
       };
     }, []);
 
 // OPEN AND CLOSE MODAL HADLER
     const OpenAndCloseModal=()=>{
+      
         setModal((prev) => !prev)
       }
 
@@ -75,16 +83,16 @@ export default function Review(props){
         <img src="http://localhost:3000/_next/image?url=https%3A%2F%2Frandomuser.me%2Fapi%2Fportraits%2Fmen%2F91.jpg&w=64&q=75"></img>
 
         </div>
-        <Backdrop openModal={openModal} OpenAndClose={OpenAndCloseModal}>
-        <PostModal OpenAndCloseModal={OpenAndCloseModal} reviewProps={props}/>
-        </Backdrop>  
+     
+        <PostModal OpenAndCloseModal={OpenAndCloseModal} reviewProps={props} openModal={openModal}/>
+    
       <div disabled onInput={(e)=>setText(e.target.innerText)} 
   className="review__box-comments-container-input"
    data-gramm="false"  contentEditable={true} suppressContentEditableWarning={true} data-placeholder="Add a comment…" 
    aria-placeholder="Add a comment…" 
    aria-label="Text editor for creating content" 
    role="textbox" aria-multiline="true" spellCheck="false"  onClick={OpenAndCloseModal}>
-<p>{text}</p>
+{/* <p>{text}</p> */}
   </div>
 
    </div>

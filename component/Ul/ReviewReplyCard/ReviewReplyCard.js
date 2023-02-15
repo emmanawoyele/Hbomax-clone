@@ -2,6 +2,7 @@ import { useState,useEffect } from "react";
 import HideComment from "./Comment";
 import ls from "local-storage";
 import axios from 'axios'
+import DeleteComp from "./DeleteComp";
 
 
 
@@ -9,18 +10,30 @@ import axios from 'axios'
 
 export default function ReviewReplyCard(props){
   let localstorageToken= ls("token")
-
-    const [text,setText] = useState('')
+  let localstorageId =ls('users')[0]._id
+  const [text,setText] = useState('')
     const [like, setLike]=useState(0)
     const [dislike, setDisLike]=useState(0)
     const [hidecomment, setHidecomment]=useState(false)
+const[hideDeleteButton, setDeleteButton]=useState(false)
+// This function handler checks is the current user by comparing id thats stored in
+// localstorage and id on the local. This function allows user to see delete button or not.
+const CheckUser=(ownerId)=>{
+if(ownerId===localstorageId){
+return <div className=" reply_container-userInfo-userImg-dot"  onClick={()=>HideDeleteHandler()}>
+<i class="fas fa-ellipsis-h"></i>
+</div>
+}else{
+  null
+}
 
+}
 
     const ReviewCommentsHandler=(e)=>{
         var contenteditable = document.querySelector('[contenteditable]'),
         text = contenteditable.textContent;
       setText(text)
-      console.log(text)
+ 
         }
 
     const LikeButtonHandlers=()=>{
@@ -43,19 +56,31 @@ export default function ReviewReplyCard(props){
       
       }
      
-      const HideCommentHandler=()=>{
-        setHidecomment(!false)
+      const HideCommentHandler=(e)=>{
+        
+        setHidecomment((prevState)=>!prevState)
+
+      }
+      const HideDeleteHandler=()=>{
+        setDeleteButton((prevState)=>!prevState)
+
       }
     return(
         <>
     <div className="reply_container"> 
-      
+  
     <div className="reply_container-userInfo">
       <div className="reply_container-userInfo-userImg">
         
         <img src="http://localhost:3000/_next/image?url=https%3A%2F%2Frandomuser.me%2Fapi%2Fportraits%2Fmen%2F91.jpg&w=64&q=75"></img>
         <span>Emmanuel</span>
+        {CheckUser(props.feed.OwnerId)}
+ \
+      
       </div >
+
+      {/* this is the delete container for post */}
+   {hideDeleteButton? <DeleteComp  feedId={props.feed}/>:null}
     <div className="reply_comments-userInfo_text">
     <p style={{color:"black"}}>
       {props.feed.comments}
@@ -95,20 +120,6 @@ export default function ReviewReplyCard(props){
       </div>
     </div>
     
-    
-      {/* <form>
-      <div style={{background:"red"}}onInput={(e)=>setText(e.target.innerText)} 
-      className="infomation-container_input"
-       data-gramm="false" contentEditable={true} suppressContentEditableWarning={true} data-placeholder="Add a comment…" 
-       aria-placeholder="Add a comment…" 
-       aria-label="Text editor for creating content" 
-       role="textbox" aria-multiline="true" 
-        
-      spellCheck="false">
-    {text}
-      </div>
-      </form>
-     */}
     </div>
     
     </>

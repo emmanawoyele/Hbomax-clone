@@ -95,7 +95,7 @@ if( getThis_month===newdate.getMonth()){
     const ShowMedia = () => {
     
         if (props.type === "front" ||props.type ==="single") {
-         return  <iframe className="featured_media__video " width="100%" height="100%" src={props.MediaUrl} title="YouTube video player" frameBorder="0" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope;picture-in-picture " allowFullScreen></iframe>
+         return  <iframe className="featured_media__video " width="100%" height="100%" src={props.MediaUrl} title="YouTube video player" allow="accelerometer ;  clipboard-write; encrypted-media; gyroscope;picture-in-picture " allowFullScreen></iframe>
 
         } else {
             return <img className="featured_media__img" src={props.MediaUrl} alt={props.movieTitle} />

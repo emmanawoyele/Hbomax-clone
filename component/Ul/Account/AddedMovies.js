@@ -23,7 +23,8 @@ export default  function AddwishList(){
         axios({
         
             method: "get",
-            url: "https://crowded-turtleneck-eel.cyclic.app/movie/wishlist",
+            url: `https://hboback-end.herokuapp.com/movie/wishlist`,
+            // url: `http://localhost:9000/movie/wishlist`,
             headers:{
                 "Content-Type": "application/json",
                 Authorization:"Bearer " + localstorageToken,
@@ -32,7 +33,7 @@ export default  function AddwishList(){
         
           }).then((response)=>{
           
-            globalState. setmovies(response.data)
+            globalState.setmovies(response.data)
            
            
             let mymovieList = ls('list')

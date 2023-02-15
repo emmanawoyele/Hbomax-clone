@@ -32,14 +32,16 @@ export default function CreateUser() {
   axios({
         
         method: "post",
-        url: "https://crowded-turtleneck-eel.cyclic.app/create",
+        url: "https://hboback-end.herokuapp.com/create",
+        // url: "http://localhost:8000/create",
+
         data: globalState.InformationUser,
       headers:{   'Content-Type': 'application/json' }
       }).then((response)=>{
-        console.log({a:response})
-        globalState.setUserInfo(response.data)
         if(response.status===201){
+          globalState.setUserInfo(response.data)
          return router.push('/login')
+        
         }else{
           return null
         }

@@ -6,6 +6,8 @@
     border-radius: 13px ;
     padding:5px ;
     margin: 34px 0 15px;
+    position: relative;
+  
 
 &-userInfo{
     padding: 20px;
@@ -23,6 +25,65 @@
             font-weight: 50px;
             font-size: 15px;
         }
+        &-dot{
+    background: transparent;
+    position: absolute;
+    color: #232222;
+    right: 3px;
+    top: 1px;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.5s ease;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    &:hover{
+background-color:#bbbcba;
+border-radius: 50%;
+    }
+        }
+    }
+    &-delete{ 
+        position:absolute;
+        top: 6%;
+        left: 67%;
+        width: 100px;
+        height: 100px;
+        z-index: 100;
+        border-radius: 10px;
+        // background-color: rgba(217, 116, 77, 0.77);
+        box-shadow: 1px 3px 5px 4px #c5c9cb;
+        cursor: pointer;
+    &-info{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    color: rgba(3, 4, 6, 1.08);
+    font-family: cursive;
+    font-weight: lighter;
+    i{
+    font-weight: 600;
+    }
+
+    }
+
+//         &::after{
+//     content: "";
+//   position:absolute;
+// //   margin:-20px;
+// top:0%;
+// right:-10%;
+//   width:50px;
+//   height:20px;
+//   margin: 0;
+// //   border-radius: 10%; /* NEW */
+//   border-right: 10px;
+// //   box-shadow: 0 0 0 50px #522d5b;
+// background-color: rgba(217, 116, 77, 0.77);
+
+//  border-top-right-radius:10px 25px ;
+//         }
     }
     &-icons{
        

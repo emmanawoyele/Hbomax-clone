@@ -9,6 +9,7 @@ const HideComment=(props)=>{
     let b;
     while(b=0,b<10,b++){
 return <div className="comments_card " >
+   
        
 <div className="comments_card-container-userImg"  key={b}> 
 <img src="http://www.tellafrica.com.ng/wp-content/uploads/2019/10/20191016_160311.jpg"/>
@@ -31,8 +32,7 @@ return <div className="comments_card " >
     }
     return<>
     <div className="card-container">
-      
-    
+   
       <div className="card-container-userImg" > 
         <img src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-732x549.jpg"/>
       </div >
@@ -55,7 +55,7 @@ return <div className="comments_card " >
     
   
     <div className="comments_card " >
-       
+    <h1>hello</h1>
         <div className="comments_card-container-userImg" > 
         <img src="https://gorillas.org/wp-content/uploads/thumb-gorillaaboutus.jpg"/>
       </div > 
