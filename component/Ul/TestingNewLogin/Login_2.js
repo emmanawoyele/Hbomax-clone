@@ -34,16 +34,9 @@ userRef.current.focus();
    await axios({
           
           method: "post",
-<<<<<<< HEAD
-          url: "https://hboback-end.herokuapp.com/create/login",
-          // url: "https://vast-pink-puffer-coat.cyclic.app/create/login",
-
-          // url: "http://localhost:9000/create/login",
-=======
           url:"https://hboback-end.herokuapp.com/create/login",
 
           // url: "http://localhost:8000/create/login",
->>>>>>> a0b0b5990fc713eeeead6d1b71042f513b32af03
 
           data:  globalState.user_login,
           headers:{  "Content-Type": "application/json"},
