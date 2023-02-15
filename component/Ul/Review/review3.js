@@ -33,19 +33,14 @@ export default function Review(props){
         // let source = new EventSource(`http://localhost:9000/comment?token=${localstorageToken}&id=${props.reviewProps.id}`,
 );
       source.onmessage = (event) => {
-        
-let i =JSON.parse(event.data)
-console.log(i)
         let parsedEventData= JSON.parse(event.data).filter((filterdMovie)=>{
            return filterdMovie.movieId === props.reviewProps.id
         });
-
-       const sortedArray = sortByCreatedAt(i)
-        setFeedCard(sortedArray)
-        
+       const sortedArray = sortByCreatedAt(parsedEventData)
+        setFeedCard(sortedArray) 
       };
       source.onerror = (error) => {
-        console.error("EventSource failed:", error);
+        setFeedCard("refresh your browser") 
       };
     }, []);
 
