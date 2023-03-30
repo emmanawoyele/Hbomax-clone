@@ -54,7 +54,7 @@ export default  function AddwishList(){
       console.log({e})
           });
       
-    },[globalState.favouriteMovies])
+    },[])
     // let localstorgeData =WishList
   
     let loopdata;

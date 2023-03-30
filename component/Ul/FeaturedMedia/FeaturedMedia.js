@@ -24,7 +24,7 @@ let width;
         setwidth('container')
 
     }
-    console.log(getwidth)
+    
   }, []);
   
   

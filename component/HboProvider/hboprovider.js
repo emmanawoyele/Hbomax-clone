@@ -71,6 +71,7 @@ setUser_login({...user_login,[e.target.name]:value})
   function shuffle(array) {
     
     let currentIndex= array.find((array)=>{
+      console.log(array)
       return array.offical!=false 
     })
     
@@ -80,7 +81,7 @@ setUser_login({...user_login,[e.target.name]:value})
     
     // While there remain elements to shuffle...
 
-    while (currentIndex != 0) {
+    while (currentIndex !==0) {
 
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
@@ -137,12 +138,11 @@ type: "Trailer",}
        
 
    axios.get(`https://api.themoviedb.org/3/movie/${key}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
-      .then(function (response) {
-        
+      .then(function (response) {  
+      console.log(response)
     let filtermovies= response.data.results
-   console.log(favouriteMovies)
-
- if(!filtermovies.length>0){
+   console.log({favouriteMovies})
+ if(!filtermovies.length>0  || typeof filtermovies === "undefined" ){
   setRandomId(data)
   setkey(video)
   
@@ -167,14 +167,12 @@ type: "Trailer",}
 
   // This Method is to add
   const WishlistHandler = async(video, id) => {
-    console.log({video})
+
    await axios({
       
       method: "post",
       url: `https://hboback-end.herokuapp.com/movie`,
       // url: `http://localhost:9000/movie`,
-
-      
       data:video,
   
       headers:{

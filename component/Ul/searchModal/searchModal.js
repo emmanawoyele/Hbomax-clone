@@ -25,16 +25,9 @@ function SearchModal(props) {
             let filterItems = getData.data.results
             filterItems.filter((items, i) => {
                 items.media_type === "movie" || items.media_type === "tv"
-
             })
             setSearchData(filterItems)
-
-
             setShowResults(true)
-
-
-
-
 
 
         } catch (error) {
@@ -46,7 +39,7 @@ function SearchModal(props) {
 
     useEffect(() => {
         let shuffuleMovies
-        async function dast(params) {
+        async function ShowDefaultMovies(params) {
             try {
                 let getData = await axios.get(`https://api.themoviedb.org/3/discover/movie?primany_release_year=2021&api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
                 let filteredData = getData.data.results;
@@ -68,9 +61,7 @@ function SearchModal(props) {
             }
         }
 
-        dast()
-
-
+       ShowDefaultMovies()
 
     }, [])
 

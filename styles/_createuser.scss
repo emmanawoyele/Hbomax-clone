@@ -59,6 +59,15 @@
         margin-bottom: 2rem;
         color: white;
         font-size: 1.5rem;
+        position: relative;
+        &_rice{
+            color:white;
+            position: absolute;
+            top: 432px;
+            right: 490px;
+            cursor: pointer;
+
+        }
 
     }
    &__colors{

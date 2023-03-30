@@ -16,7 +16,7 @@ import PlaceHolder from '../../component/Ul/PlaceHolder/PlaceHolder'
 
 
 export default function SingleMediapage(props) {
-  console.log(props)
+ 
  
 const[defaultMovies,setDefaultMovies]=useState([])
 const[RandomId,setRandomId]=useState([])
@@ -141,7 +141,7 @@ mediaBackDrop_Path= await axios.get(`https://api.themoviedb.org/3/${context.quer
 mediaData= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
 check= await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}/videos?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
 credit=await axios.get(`https://api.themoviedb.org/3/${context.query.mediaType==="movie"?"movie":"tv"}/${context.query.id}?api_key=${process.env.PRIVATE_API_KEY}&language=en-US`)
-console.log(mediaData)
+
  }catch(error){
 
 

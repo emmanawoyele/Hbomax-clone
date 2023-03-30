@@ -7,7 +7,7 @@ import Image from 'next/image'
 import axios from 'axios'
 import React from 'react'
 import PropTypes from 'prop-types';
-import { useEffect ,useRef} from 'react'
+import { useEffect ,useRef,useState} from 'react'
 import Link from 'next/link'
 
 
@@ -19,7 +19,8 @@ export default function LoginUser() {
     const userRef=useRef()
     const globalState= useStateContext()
  
-
+    const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
 useEffect(()=>{
 userRef.current.focus();
@@ -98,7 +99,9 @@ userRef.current.focus();
      
   }
 
-
+  const handleShowPassword = () => {
+    setShowPassword((prev)=>!prev);
+  }
   
 
     return (
@@ -117,10 +120,11 @@ userRef.current.focus();
         <div className="create-user__form">
       
                <div className="create-user__input-group">
-            
+               <label>Username</label>
                    <input type="text" ref={userRef}  name="email" value={globalState.user_login.email}  className="create-user__inputText" onChange={globalState.createUserLoginAction}/>
                    <label>Password</label>
-                   <input type="password"  name="password" value={globalState.user_login.password} autoComplete="on" className="create-user__inputText" onChange={globalState.createUserLoginAction}/>
+                   <input  type={showPassword ? "text" : "password"} name="password" value={globalState.user_login.password} autoComplete="on" className="create-user__inputText" onChange={globalState.createUserLoginAction}/>
+                   <div className='create-user__inputText_rice' onClick={handleShowPassword }><i className="fas fa-eye" /></div>
                   <div  className="create-user__colors">
                                   <div className="create-user__color create-user__color--active" style={{
                        background: "rgb(2,0,36)",
