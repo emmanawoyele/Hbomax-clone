@@ -55,7 +55,7 @@ return <div className="comments_card " >
     
   
     <div className="comments_card " >
-    <h1>hello</h1>
+    <h1 style={{color:"red"}}>hello</h1>
         <div className="comments_card-container-userImg" > 
         <img src="https://gorillas.org/wp-content/uploads/thumb-gorillaaboutus.jpg"/>
       </div > 

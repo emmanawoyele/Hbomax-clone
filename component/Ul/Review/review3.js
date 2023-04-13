@@ -15,7 +15,8 @@ export default function Review(props){
   const globalState=useStateContext()
     const [openModal,setModal]=useState(false)
     const[text,setText]=useState()
-    const[FeedCard,setFeedCard]=useState([])
+    const[FeedCard,setFeedCard]=useState([{
+      }])
     let localstorageToken= ls("token")
    
     // sorting fucntion
@@ -26,17 +27,20 @@ export default function Review(props){
         return i  
     }
     
-      
+      console.log(FeedCard)
 
     useEffect(() => {
       let source = new EventSource(`https://hboback-end.herokuapp.com/comment?token=${localstorageToken}`
         // let source = new EventSource(`http://localhost:9000/comment?token=${localstorageToken}&id=${props.reviewProps.id}`,
 );
       source.onmessage = (event) => {
+       
         let parsedEventData= JSON.parse(event.data).filter((filterdMovie)=>{
            return filterdMovie.movieId === props.reviewProps.id
         });
+      
        const sortedArray = sortByCreatedAt(parsedEventData)
+
         setFeedCard(sortedArray) 
       };
       source.onerror = (error) => {
@@ -94,7 +98,8 @@ export default function Review(props){
        
 
   <div  className="review__box-comments-container-replaycard">
-    {FeedCard.map((feeds)=>{
+    {
+    FeedCard.map((feeds)=>{
      return <ReviewReplyCard feed={feeds} key={feeds._id}/>
     })}
 

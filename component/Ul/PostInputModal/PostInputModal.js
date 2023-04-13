@@ -35,7 +35,7 @@ await axios({
     
  
 }
-console.log(text)
+
     
     return ( 
       <>

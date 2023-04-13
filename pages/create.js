@@ -33,7 +33,7 @@ export default function CreateUser() {
         
         method: "post",
         url: "https://hboback-end.herokuapp.com/create",
-        // url: "http://localhost:8000/create",
+        // url: "http://localhost:9000/create",
         data: globalState.InformationUser,
       headers:{   'Content-Type': 'application/json' }
       }).then((response)=>{

@@ -75,8 +75,6 @@ return <div className=" reply_container-userInfo-userImg-dot"  onClick={()=>Hide
         <img src="http://localhost:3000/_next/image?url=https%3A%2F%2Frandomuser.me%2Fapi%2Fportraits%2Fmen%2F91.jpg&w=64&q=75"></img>
         <span>Emmanuel</span>
         {CheckUser(props.feed.OwnerId)}
- \
-      
       </div >
 
       {/* this is the delete container for post */}
