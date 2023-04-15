@@ -21,8 +21,8 @@ const LogoutUser=async(e)=>{
 
    await axios({ 
         method: "post",
-        url: "https://hboback-end.herokuapp.com/create/logout",
-        // url: "http://localhost:9000/create/logout",
+        // url: "https://hboback-end.herokuapp.com/create/logout",
+        url: "http://localhost:9000/create/logout",
 
         headers:{
         Authorization:`Bearer ${localstorageToken}`,

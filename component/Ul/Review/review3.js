@@ -15,7 +15,16 @@ export default function Review(props){
   const globalState=useStateContext()
     const [openModal,setModal]=useState(false)
     const[text,setText]=useState()
-    const[FeedCard,setFeedCard]=useState([{
+    const[FeedCard,setFeedCard]=useState([{_id:"",
+    comments:"dddd",
+     Title:"jjjj",
+      movieId:"",
+      OwnerId:"",
+      createdAt:"",
+      updatedAt:"",
+     
+      
+      
       }])
     let localstorageToken= ls("token")
    
@@ -34,7 +43,7 @@ export default function Review(props){
         // let source = new EventSource(`http://localhost:9000/comment?token=${localstorageToken}&id=${props.reviewProps.id}`,
 );
       source.onmessage = (event) => {
-       
+     
         let parsedEventData= JSON.parse(event.data).filter((filterdMovie)=>{
            return filterdMovie.movieId === props.reviewProps.id
         });
