@@ -15,7 +15,7 @@ export default function Review(props){
   const globalState=useStateContext()
     const [openModal,setModal]=useState(false)
     const[text,setText]=useState()
-    const[FeedCard,setFeedCard]=useState([{_id:"",
+    const[FeedCard,setFeedCard]=useState([{_id:"ffff",
     comments:"dddd",
      Title:"jjjj",
       movieId:"",
@@ -39,7 +39,7 @@ export default function Review(props){
       console.log(FeedCard)
 
     useEffect(() => {
-      let source = new EventSource(`https://hboback-end.herokuapp.com/comment?token=${localstorageToken}`
+      let source = new EventSource(`https://hboback-end.herokuapp.com/comment?token=${localstorageToken}&id=${props.reviewProps.id}`
         // let source = new EventSource(`http://localhost:9000/comment?token=${localstorageToken}&id=${props.reviewProps.id}`,
 );
       source.onmessage = (event) => {
