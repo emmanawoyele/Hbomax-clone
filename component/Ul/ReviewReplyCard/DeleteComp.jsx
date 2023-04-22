@@ -10,12 +10,11 @@ const localstorageToken = ls("token")
 const DeleteComp=(props)=>{
 
 
-const DeleteHandler=async(getId)=>{
+const DeleteHandler=async(_id)=>{
 
-console.log("hey")
 await axios({
             method: "delete",
-      url: `https://hboback-end.herokuapp.com/comment/${getId}`,
+      url: `https://hboback-end.herokuapp.com/comment/${_id}`,
       // url: `http://localhost:9000/comment/${getId}`,
 
       headers: {
